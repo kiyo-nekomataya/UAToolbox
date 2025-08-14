@@ -1,0 +1,1914 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<!--  管理ツール ミニマムリリース用 -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com; connect-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src * blob: data:; media-src *">
+-->
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="color-scheme" content="dark light">
+
+<title>u-atoolbox</title>
+<!-- 
+/template/	./template/
+/lib/	./lib/
+/nas/	./nas/
+/xMapExtension.js	,/xMapExtension.js
+
+-->
+<link rel="shortcut icon" href="./images/icons/favicon.ico">
+
+<link href="./css/uatb.css" type="text/css" rel=stylesheet media="screen,tv">
+<link href="./css/uatb_printout.css" type="text/css" rel=stylesheet media="print">
+<link href="./nas/lib/nas_common_HTML.css" type="text/css" rel=stylesheet media="screen,tv">
+
+<link href="./nas/ext-lib/jquery-ui-1.13.1.custom/jquery-ui.min.css" type="text/css" rel="stylesheet">
+<link href="./nas/ext-lib/perfect-scrollbar/css/perfect-scrollbar.css" type="text/css" rel="stylesheet">
+<!--
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:700&display=swap" rel="stylesheet">
+-->
+<link href="./css/xmap.css" type="text/css" rel=stylesheet >
+<!--
+<link href="./css/tree-test.css" type="text/css" rel=stylesheet media="screen,tv">
+-->
+<!-- AIRライブラリはすべて削除 -->
+<!-- cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.2/markdown-it.min.js" integrity="sha512-ohlWmsCxOu0bph1om5eDL0jm/83eH09fvqLDhiEdiqfDeJbEvz4FSbeY0gLJSVJwQAp0laRhTXbUQG+ZUuifUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src=./nas/ext-lib/jquery-3.6.0.min.js></script>
+<script src=./nas/ext-lib/jquery-longpress/jquery.longpress.js></script>
+<script src=./nas/ext-lib/ecl/ecl.js></script>
+<script src=./nas/ext-lib/encoding.js/encoding.min.js></script>
+<script src=./nas/ext-lib/csv/csvsimple.js></script>
+
+<script src=./nas/ext-lib/psd.js/dist/psd.min.js></script>
+<script src=./nas/ext-lib/tiff.js/tiff.min.js></script>
+<script src=./nas/ext-lib/tga-js/dist/umd/tga.js></script>
+<!-- fabric.js  -->
+<script src=./nas/ext-lib/fabric.js/dist/fabric.min.js ></script>
+
+<!-- nas基礎ライブラリ -->
+<script src=./nas/lib/config.js></script>
+<script src=./nas/config_pman_reName.js></script>
+<script src=./nas/lib/nas_common.js></script>
+<script src=./nas/lib/nas_common_Image.js></script>
+<script src=./nas/lib/nas_AnimationValues.js></script>
+<script src=./nas/lib/cameraworkDescriptionDB.js></script>
+<script src=./nas/lib/pmio.js></script>
+<script src=./nas/lib/storyboard.js></script>
+<script src=./nas/lib/mapio.js></script>
+<script src=./nas/lib/xpsio.js></script>
+
+<script src=./nas/lib/etc/_pmdb_/configPMDB.js></script>
+
+<!--     汎用ライブラリのためソース分離 一括マージ可能      -->
+<script src=./nas/lib/postscriptConvert.js></script>
+<script src=./nas/lib/lib_AEK.js></script>
+<script src=./nas/lib/lib_TVP.js></script>
+<script src=./nas/lib/lib_stylosCSV.js></script>
+<script src=./nas/lib/lib_TSH.js></script>
+<script src=./nas/lib/lib_ARD.js></script>
+<script src=./nas/lib/lib_ARDJ.js></script>
+<script src=./nas/lib/lib_STS.js></script>
+<script src=./nas/lib/lib_TSX.js></script>
+<script src=./nas/lib/lib_TDTS.js></script>
+
+<!-- /* i18next */ -->
+<script src="./nas/ext-lib/i18n/i18next.min.js"></script>
+<script src="./nas/ext-lib/i18n/jquery-i18next.js"></script>
+<script src="./nas/ext-lib/i18n/i18nextXHRBackend.js"></script>
+
+<!-- /*  AdobeExtension/Scripts 準互換 多言語化ライブラリ*/ -->
+<script src=./nas/lib/nas_locale.js></script>
+
+<!-- システム言語リソース json化済み
+<script src=./nas/lib/messages.js></script>
+ -->
+ <!-- アプリケーション言語リソース -->
+<script src=./nas/scripts/remaping/messages.js></script>
+
+
+<!-- アプリケーションUIライブラリ-->
+
+<!-- アプリケーション共用メニューライブラリ -->
+<script src=./nas/lib/nas_menuItem.js></script>
+
+<!-- JQライブラリ -->
+<!--
+<script src=./nas/ext-lib/jquery-ui.js></script>
+-->
+<script src=./nas/ext-lib/jquery-ui-1.13.1.custom/jquery-ui.min.js></script>
+<script src=./nas/ext-lib/perfect-scrollbar/dist/perfect-scrollbar.min.js></script>
+<script src=./nas/lib/jquery-addon.js></script>
+
+<!-- nas-HTML拡張ライブラリ -->
+<script src=./nas/lib/nas_common_HTML.js       ></script>
+
+<script src=./nas/scripts/remaping/airUI.js    ></script>
+<script src=./nas/scripts/remaping/nodeUI.js   ></script>
+
+<script src=./nas/scripts/pman/pman.js         ></script>
+<script src=./nas/scripts/pman/pman.renamer.js ></script>
+<script src=./nas/scripts/pman/pman_util.js    ></script>
+
+<script src=./nas/lib/docio.js></script>
+
+<script src=./nas/lib/nas_preferenceLib.js></script>
+
+<script src=./nas/scripts/uat/uat_message_handler.js></script>
+
+<!-- /*  開発用テストコード   2016.07.16  追加*/ これらはすべてremaping.jsへ統合予定-->
+<script src=./nas/scripts/remaping/serviceAgent.js                 ></script>
+
+<script src=./nas/scripts/remaping/serviceAgent.SessionControls.js ></script>
+<script src=./nas/scripts/remaping/serverio_test.js                ></script>
+<script src=./nas/scripts/remaping/documentPanel.js                ></script>
+<script src=./nas/scripts/remaping/xUI.SessionControl.js           ></script>
+<script src=./nas/scripts/remaping/newTaskController.js            ></script>
+
+<script src=./nas/scripts/pman/canvasaddon.js                      ></script>
+<!-- 集計関数試験 -->
+<script src=./nas/scripts/pman/uaf_aggregate_test.js               ></script>
+<!-- 追加スタイル TEST-->
+<style>
+<!--
+.wideDialog {
+	width:100%;
+	height:100%;
+}
+-->
+</style>
+
+<!-- ライブラリインストール -->
+</head>
+<body
+	onload          = "var nRS = setTimeout('nas_pman_Startup()',10);nas.LangPack.chgLocale('ja');"
+	onbeforeunload  = "return nas_pman_reStart();"
+	onContextMenu   = "return false;"
+	onfocus         = "if(uat) uat.MH.appchange();"
+>
+<!--
+	onMouseDown     = "return xUI.flipContextMenu(event);"
+	onKeyDown='if(document.getElementById("iNputbOx")!==document.activeElement){document.getElementById("iNputbOx").focus();};xUI.keyDwon(event)'
+-->
+<div id=overlayHeadline >
+ <div class='fixedHeadline' id=UIheader>
+  <div class='fixedHeadline qdr3' id=UIheaderScrollV
+	onMouseDown =" return xUI.Mouse(event)"
+	onMouseUp   =" return xUI.Mouse(event)"
+	onDblClick  =" return xUI.Mouse(event)"
+	onMouseOver =" xUI.Mouse(event)"
+	class=sheet
+  ></div>
+  <div class='fixedHeadline 1' id=UIheaderScrollH
+	onMouseDown =" return xUI.Mouse(event)"
+	onMouseUp   =" return xUI.Mouse(event)"
+	onDblClick  =" return xUI.Mouse(event)"
+	onMouseOver =" xUI.Mouse(event)"
+  ></div>
+  <div class='fixedHeadline qdr2' id=UIheaderFix > </div>
+ </div>
+</div>
+<!--	簡易UIヘッダ	-->
+<!-- 固定コントロール fixedHeaderは、UIのマージン等を取得するためのエレメント 		onMouseOver=xUI.Mouse(event);
+-->
+<!-- // fixedHeader  -->
+	<div id="fixedHeader">
+<!-- WEBプルダウンメニュー -->
+<div id=pMenu></div>
+<!-- WEBプルダウンメニュー-->
+<!-- //新UI ヘッドバーメニュー-->
+<div
+	id=applicationHeadbar
+	class='applicationHeadbar'
+	style='display:table;'
+>
+  <div
+	class='cornerBox'
+	style='display:table-cell;'
+  >
+	<button
+		id=menuIcon
+		class='boxButton iconButton-hamberger'
+		style='background-color:gray;'
+	></button>
+	</div>
+	<div
+		style='display:table-cell;vertical-align:middle;text-align:center;margin:auto;padding-left:8px;'
+	>
+		<span id=multiMenu>
+<!-- history -->
+<button
+    id=pman_history_bwd
+        class='jobControlButton jobControl-history iconButton-goBWD'
+        onclick="pman.reName.history.select('bwd');"
+        title="戻る"
+        data-i18n='[title]history_bwd'
+    >
+</button><button
+    id=pman_history_fwd
+        class='jobControlButton jobControl-history iconButton-goFWD'
+        onclick="pman.reName.history.select('fwd');"
+        title="進む"
+        data-i18n='[title]history_fwd'
+    >
+</button>
+
+<!-- reName -->
+	<button id=doRename 
+		class='jobControl'
+		onclick='pman.reName.renameItem();'
+		title = 'リネーム実行'
+		disabled
+		>リネーム</button>
+	<button id=doBake
+		class='jobControl'
+		onclick='pman.reName.bakeItems();'
+		title = '画像ファイルとして焼付け'
+		disabled
+		>ベイク</button>
+	<button id=doPack
+		class='jobControl'
+		onclick='pman.reName.packItems();'
+		title = '納品パッケージを作る'
+		disabled
+		>パッケージ</button>
+<!-- 管理IDコントロール UI -->
+<!-- //ドキュメントコントロール(制作管理)メニュー-->
+	<span id =pmcui class=pmcui>
+		<span id=pmfui class=pmfui>
+		</span>
+	</span>
+<!-- ドキュメントコントロール(制作管理)メニュー//-->
+
+
+<!-- //node selector-->
+	<span
+		id=pmsui
+		style='float:right;vertical-align:middle;color:#dddddd;'
+	>
+	<input
+		id=xmapstring
+		type=text
+		size=28
+		value=""
+		onchange = "pman.reName.setSCi(this.value);"
+		ondblclick = "pman.reName.setSCi();"
+	>
+	</span>
+		</span>
+  </div><!--  -->
+  <div id='repository-info'>
+    <div
+		id="serverurl"
+		data-i18n='nosigninservice;[title]_description'
+	>
+		serverurl
+    </div>
+    <div
+	id="loginuser"
+	>
+		username
+    </div>
+    <div
+		id="currentrepository"
+	>no-repository
+    </div>
+  </div>
+  <div
+	style='display:table-cell;width:75px;vertical-align:middle;text-align:right;padding-right:16px;'
+  >
+	 <button
+	    id=loginstatus_button
+	    class='round-button round-button-offline'
+	    title="ユーザ切り替え"
+		data-i18n='[title]loginstatus_button_description'
+	></button>
+  </div>
+</div>
+<!-- 新UI ヘッドバーメニュー//-->
+ <!--
+<div align=center>
+	index_min.html ,v 1.1 2021/05/04  support@u-at.net <br />
+	<span id=app_version>0.1.0</span> <span id=server-url>[no-server]</span>
+	<br>
+</div>
+<hr>
+localStorage : <span id=localstoragestatus>-----</span><br>
+<br>
+
+currentMasterStorage: <span id=activeservicepath>-----</span><br>
+<br>
+	-->
+<!--// データブラウザ
+	暫定でdataBrowserが存在する場合は新規のマスタ管理モード
+	処理分岐キーとして使用する
+-->
+<div id=dataBrowser style='display:none'>
+<!-- 汎用データブラウザインターフェース -->
+<!-- タイトル、カット等の新規作成（登録）UI-->
+<!-- タイトル、カット等のエントリーセレクタ UI-->
+<!-- 入力機能は排除  ノードセレクト機能も排除-->
+<!-- div style="text-align:right;">
+
+<input type=text
+	class = ddpInput
+	id = titleInput
+	size=40
+	disabled=true
+	value='(*--title--*)'
+	onChange="documentDepot.currentSelection=documentDepot.buildIdentifier();"
+><input type=text
+	class = ddpInput
+	id = opusInput
+	size=12
+	disabled=true
+	value='(*--opus--*)'
+	onChange="documentDepot.currentSelection=documentDepot.buildIdentifier();"
+><input type=text
+	class = ddpInput
+	id = subtitleInput
+	size=42
+	disabled=true
+	value='(*--subtitle--*)'
+	onChange="documentDepot.currentSelection=documentDepot.buildIdentifier();"
+><br>
+
+<!--    issueSelector   -->
+<select
+	id=issueSelector
+	class=issueSelector
+	disabled=true
+	onChange="documentDepot.currentSelection=documentDepot.buildIdentifier(true);"
+	title='過去のバージョン'
+>
+	<option value=-1>#:---line//#:---stage//#:---job//(status)</option>
+</select>
+<!--    issueSelector   -->
+
+<!-- input	type=text
+	class = "ddpInput sciInput"
+	name=fileTest
+	id=cutInput
+	size=26
+	value='(*--c#--*)'
+	disabled=true
+	onChange="documentDepot.currentSelection=documentDepot.buildIdentifier();"
+>(<input	type=text
+	class = "ddpInput sciInput"
+	name=fileTest
+	id=timeInput
+	size=10
+	value='3 + 0 .'
+	disabled=true
+	onChange="documentDepot.currentSelection=documentDepot.buildIdentifier();"
+>)-->
+<!--
+<span class='subControl_TC' ><button
+	class='subControl subControl-incrS subControl-left-top'
+	onClick='xUI.tcControl("timeInput",3,nas.FRATE);return false;'
+>
+</button><button
+	class='subControl subControl-decrS subControl-left-bottom'
+	onClick='xUI.tcControl("timeInput",3,-nas.FRATE);return false;'
+>
+</button><button
+	class='subControl subControl-incr6 subControl-mid-top'
+	onClick='xUI.tcControl("timeInput",3,6);return false;'
+>
+</button><button
+	class='subControl subControl-decr6 subControl-mid-bottom'
+	onClick='xUI.tcControl("timeInput",3,-6);return false;'
+>
+</button><button
+	class='subControl subControl-incr subControl-right-top'
+	onClick='xUI.tcControl("timeInput",3,1);return false;'
+>
+</button><button
+	class='subControl subControl-decr subControl-right-bottom'
+	onClick='xUI.tcControl("timeInput",3,-1);return false;'
+>
+</button></span> -->
+<!-- /div -->
+
+
+<!-- 識別子表示エリア -->
+	<div id=current_identifier><br>	</div>
+
+<!-- アサインメント表示エリア -->
+	<div id='ddp_assignment' style='text-align:left;'>
+<!--
+<button
+title = "＊担当者指定があった場合表示される （指定がないときは、何も表示されない）"
+onclick = 'var trgt = $("#ddp_assingn_notoText");if(trgt.is(":visible")){trgt.hide()}else{trgt.show()};'
+>▶To:<span>(担当)</span>様へ(アサインされた担当者が表示される)</button> -->
+<!--
+	<div id='ddp_assingn_notoText' style='text-align:left;display:none;'><hr>
+申し送りが存在すれば 担当名がボタン化 またはひねり矢印が表示される。
+クリックすると作業終了時の申し送りが表示される…トグル表示<br>
+HTML（画像を使用可能）か？<br>
+この申し送りは一時的な付箋の様な扱いで<br>
+無くても良い<br>
+永続的な保存はできない<br>
+メモ程度
+アサインメントによるソートは実装すべきか？<br>
+	</div> -->
+
+	</div>
+**
+<hr>
+
+<!-- メニューバー と ロゴ -->
+<!-- //for management -->
+	<div id=ddp-man class='documentPanelTools documentPanelTools-man' >
+
+		<div id=localMultiLoader class='debug'>
+		<form id="multiLoader" name="multiLoader" method="post" action="javascript:void(0);" enctype="multipart/form-data">
+一括登録 :
+			<input type=file id=myCurrentOpus name=XPSBodys multiple=true size=256  class='show'>
+			<a href="javascript:" onClick='var tgt=document.getElementById("buildWithCSV");tgt.checked=(tgt.checked)?false:true;return false;'
+			>cvsファイルから登録</a> : <input id=buildWithCSV type=checkbox>
+<!--<//input>-->
+			<button
+				class='documentPanelButton-management debug'
+			>実行</button>
+		</form>
+		</div>
+
+		<button
+			onClick='alert("お待ち下さい");'
+			class='documentPanelButton-management debug'
+			disabled=true
+			title="local repository only"
+		>一括ダウンロード </button><button
+			onClick='alert("お待ち下さい");'
+			class='documentPanelButton-management debug'
+			disabled=true
+			title="local repository only"
+		>一括登録 </button><button
+			id='ddp-removeentry'
+			onClick='if(serviceAgent.currentRepository===localRepository){localRepository.removeEntry(documentDepot.currentSelection);selectSCi();}'
+			class='documentPanelButton-management'
+			disabled=true
+			title="local repository only ローカルリポジトリからカットを削除します"
+		>エントリ削除</button><button
+			onClick='serviceAgent.addTitle();selectSCi();'
+			class='documentPanelButton-management debug'
+			disabled=true
+			title="タイトル登録（デバッグ）"
+		>makeTitle</button><button
+			onClick='hello();'
+			disabled=true
+			class='documentPanelButton-management debug'
+			title="エピソード登録（デバッグ）"
+		>makeEpisode</button><button
+			id=ddp-addentry
+			onClick='serviceAgent.addEntry();'
+			class='documentPanelButton-management'
+			disabled=true
+			title="カットを新規に登録します"
+		>新規登録</button>
+	</div>
+<!-- for management// -->
+
+	<div class='documentPanelTools'>
+		<button
+			id='ddp-reference'
+			onClick='console.log("read to reference :" + decodeURIComponent(documentDepot.currentSelection));serviceAgent.getEntry(documentDepot.currentSelection,true);'
+			class='documentPanelButton'
+			title="参照読出  readout - reference"
+			disabled=true
+		>参照</button><button
+			id='ddp-readout'
+			onClick='console.log("read :" + decodeURIComponent(documentDepot.currentSelection));documentDepot.openEntry(documentDepot.currentSelection);'
+			class='documentPanelButton'
+			title="読出 readout"
+			disabled=true
+		>読出</button>
+<!--  console.log("read :" + decodeURIComponent(documentDepot.currentSelection));
+	serviceAgent.getEntry(
+			documentDepot.currentSelection,false,function(){
+				console.log(xUI.XPS);
+				if(
+					xUI.currentUser.sameAs(xUI.XPS.update_user)&&
+					(xUI.XPS.currentStatus.content.match(/(Hold|Active)/))&&
+					(xUI.sessionRetrace==0)
+				){
+					serviceAgent.activateEntry();
+				}
+			}
+	); -->
+		<input type='text' id='ddp-searchtext' size=20 ><button
+			id='ddp-search'
+			onClick='alert(this.innerHTML);'
+			class='iconButton iconButton-search'
+			title=" 検 索 "
+		> </button><button
+			id='ddp-close'
+			onClick='xUI.sWitchPanel("File");'
+			class='documentPanelButton'
+			title=" ウインドウを閉じる "
+		>Cancel</button>
+	</div>
+	<div
+		id = sci_filters
+		align=center
+>
+<!-- //ソートスイッチ -->
+		<button
+			id=sortOrderReset
+			onclick = "documentDepot.sortOrderReset()"
+		>RESET</button>
+	<span
+		id=sortOrderList
+		>
+		<button
+			id=sortOrder01
+			class='sortOrder sortOrder_none'
+			onclick='var V=this.innerHTML.split(":");documentDepot.sortOrderChange(V[0].trim(),((V[1]=="▼")?false:true))'
+		>name :</button><button
+			id=sortOrder02
+			class='sortOrder sortOrder_none'
+			onclick='var V=this.innerHTML.split(":");documentDepot.sortOrderChange(V[0].trim(),((V[1]=="▼")?false:true))'
+		>stage :</button><button
+			id=sortOrder03
+			class='sortOrder sortOrder_none'
+			onclick='var V=this.innerHTML.split(":");documentDepot.sortOrderChange(V[0].trim(),((V[1]=="▼")?false:true))'
+		>user :</button><button
+			id=sortOrder04
+			class='sortOrder sortOrder_none'
+			onclick='var V=this.innerHTML.split(":");documentDepot.sortOrderChange(V[0].trim(),((V[1]=="▼")?false:true))'
+		>date :</button><button
+			id=sortOrder05
+			class='sortOrder sortOrder_none'
+			onclick='var V=this.innerHTML.split(":");documentDepot.sortOrderChange(V[0].trim(),((V[1]=="▼")?false:true))'
+		>status :</button>
+	</span>
+<!-- ソートスイッチ// -->
+<!-- //ラインフィルタ -->
+	<select
+		id="lineSelector"
+		title="ライン選択"
+		style="width:200;text-align:right"
+		onchange="serviceAgent.switchRepository()"
+	>
+	<option value='0' selected>0:(本線)
+	</select>
+<!-- ラインフィルタ// -->
+<!-- //データ・タイプスイッチ -->
+	<select
+		id="typeSelector"
+		title="XMAP/XPST"
+		style="width:200;text-align:right"
+		onchange="serviceAgent.switchRepository()"
+	>
+	<option >xmap
+	<option selected>xpst
+	</select>
+<!-- データ・タイプスイッチ// -->
+<!-- //カット番号フィルタ -->
+	<input
+		type =text
+		id="rangeFilter"
+		title="範囲指定"
+		style="width:17%;text-align:center"
+		autocomplete = "on"
+		list = "rangeFilterList"
+		value = ""
+		onchange="serviceAgent.switchRepository()"
+	>
+	<datalist id =rangeFilterList>
+	<option value="1-50">
+	<option value="51-100">
+	<option value="101-150">
+	<option value="151-200">
+	<option value="201-250">
+	<option value="251-300">
+	<option disabled>==================
+	<option value="301-350">
+	<option value="351-">
+
+	</datalist>
+<!-- カット番号フィルタ// -->
+<!-- //ステータスフィルタ -->
+	<select
+		id="statusSelector"
+		title="ステータス選択"
+		style="width:17%;text-align:center"
+		onchange="serviceAgent.switchRepository()"
+	>
+	<option value="all" selected>(*--all--*)
+	<option value="startup">未着手
+	<option value="active,hold">作業中/保留中
+	<option value="active">作業中
+	<option value="hold">保留中
+	<option value="fixed">終了(チェック待ち)
+	<option value="compleat">チェック済
+	<option disabled>==================
+	<option value="aborted">削除済み
+	</select>
+
+	</div>
+	<div
+		id = browser
+		align=center
+>
+<!-- ステータスフィルタ// -->
+<!-- //サーバセレクタ -->
+	<div class=browserpain>
+	<button
+		style="width:82px;"
+	>ー</button><button
+		style="width:82px;"
+	>＋</button>
+	<br>
+	<select
+		class = document-selector
+		id = 'serverSelector'
+		title = "サービス選択"
+		size = 6
+		style="width:100%;text-align:center"
+		onchange="pman.updateServerSelector(this.value);"
+	>
+	<option>[SERVER]
+	</select>
+	</div>
+<!-- サーバセレクタ// -->
+<!-- //リポジトリセレクタ -->
+	<div class=browserpain>
+	<button
+		style="width:82px;"
+	>ー</button><button
+		style="width:82px;"
+	>＋</button>
+	<br>
+	<select
+		class = document-selector
+		id="repositorySelector"
+		title="リポジトリ選択"
+		size = 6
+		style="width:100%;text-align:right"
+		onchange="serviceAgent.switchRepository(this.value)"
+	>
+	<option selected value = 0>[localRepository]
+	</select>
+	</div>
+<!-- リポジトリセレクタ// -->
+<!-- //タイトルセレクタ -->
+	<div class=browserpain  style='display:none;'>
+	<button
+		style="width:82px;"
+	>ー</button><button
+		style="width:82px;"
+	>＋</button>
+	<br>
+	<select
+		class = document-selector
+		id="workTitleSelector"
+		title="タイトル選択"
+		size = 6
+		style="width:100%;text-align:right"
+		onchange="documentDepot.updateOpusSelector(this.value);"
+	>
+	<option selected>[TITLE]
+	</select>
+	</div>
+<!-- タイトルセレクタ// -->
+<!--
+  <select
+	id="productSelector"
+	title="エピソード選択"
+	style="width:320;text-align:center"
+	onchange="serviceAgent.switchRepository()"
+  >
+<option selected>[PRODUCT]
+  </select>
+-->
+<!-- //プロダクトセレクタ -->
+	<div class=browserpain style='display:none;'>
+	<button
+		style="width:82px;"
+	>ー</button><button
+		style="width:82px;"
+	>＋</button>
+	<br>
+	<select
+		name="opus_numbers"
+		id="opusSelect"
+		title="プロダクト選択"
+		class="document-selector document-selector-opus"
+		size=6
+		onChange='setProduct(serviceAgent.currentRepository.pmdb.products.entry(this.value));'
+	>
+	<option selected>(*-- no title --*)
+<!--
+-->
+	</select>
+	</div>
+<!-- プロダクトセレクタ// -->
+<!-- //カットセレクタ -->
+	<div class=browserpain style='display:none;'>
+	<button
+		style="width:82px;"
+	>ー</button><button
+		style="width:82px;"
+	>＋</button>
+	<br>
+	<select
+		name="cutList"
+		id="cutList"
+		title="カット選択"
+		class="document-selector document-selector-cut"
+		size=6
+		multiple=true
+		onChange="selectSCi();"
+		ondblclick='if(this.selectedIndex>0){document.getElementById("ddp-readout").click();}'
+	>
+	<option >(*-- no document --*)
+	</select>
+	</div>
+<!-- カットセレクタ// -->
+<!-- //タイトルセレクタ2 -->
+	<div class=browserpain>
+	<button
+		style="width:82px;"
+	>ー</button><button
+		style="width:82px;"
+	>＋</button>
+	<br>
+	<select
+		class = document-selector
+		id   = 'workTiteleSelector'
+		title="作業タイトル選択"
+		size = 6
+		style = "width:164px;"
+	>
+	<option>---
+	<option>---
+	<option>---
+	<option>---
+	</select>
+	</div>
+<!-- タイトルセレクタ2// -->
+<!-- //エピソードセレクタ -->
+	<div class=browserpain>
+	<button
+		style="width:32px;"
+	>ー</button><button
+		style="width:32px;"
+	>＋</button>
+	<br>
+	<select
+		class = document-selector
+		id = 'episodeSelector'
+		size = 6
+		title=エピソード選択
+		style = "width:64px;"
+	>
+	<option>---
+	<option>---
+	<option>---
+	<option>---
+	</select>
+	</div>
+<!-- エピソードセレクタ// -->
+<!-- //PMDBテーブルセレクタ -->
+	<div class=browserpain>
+	<button
+		style="width:82px;"
+	>ー</button><button
+		style="width:82px;"
+	>＋</button>
+	<br>
+	<select
+		class = document-selector
+		id   = 'pmdbtables'
+		size = 6
+		title ="pmdbテーブル選択"
+		style = "width:164px;"
+	>
+	<option>---
+	<option>---
+	<option>---
+	<option>---
+	</select>
+	</div>
+<!-- PMDBテーブルセレクタ// -->
+<!-- //PMDB編集BOX -->
+	<div class=browserpain>
+	<input
+		id   =pmdb_idf
+		type =text
+		size =72
+		style="width:314px;"
+	><button
+		style="width:82px;"
+	>RESET</button><button
+		style="width:82px;"
+	>SAVE</button>
+<br>
+	<textarea	
+		name=msg_well
+		title="pmdbテーブル編集"
+		id=msg_well
+		style="width:480px;height:200px;padding:0;margin:0;"
+	></textarea>
+	</div>
+<!-- PMDB編集BOX// -->
+<!-- 	<div>
+<span align=left>
+<button
+ id='ddp-refresh'
+ onClick='documentDepot.rebuildList(true);'
+ class='iconButton iconButton-reload'
+ title="リストを最新の情報に更新"
+> </button>
+<button
+class=productFilter
+onclick="documentDepot.products.sort();documentDepot.updateOpusSelector();"
+	>sort</button><button
+class=productFilter
+onclick="documentDepot.products.reverse();documentDepot.updateOpusSelector();"
+	>reverse</button><button
+class=productFilter
+onclick='documentDepot.updateOpusSelector(new RegExp(document.getElementById("productFilterText").value),true);'
+	>hide</button><input
+id = productFilterText
+class = productFilter
+type = text
+size =12
+style="height:20px;"
+value=".+"
+	><button
+class=productFilter
+onclick='documentDepot.updateOpusSelector(new RegExp(document.getElementById("productFilterText").value));'
+	>apply</button><button
+class=productFilter
+onclick='document.getElementById("productFilterText").value=".+";'
+	>reset</button>
+	</span>
+<span style="float:right;">
+
+<button
+id='ddp-refresh2'
+class='iconButton iconButton-reload'
+onclick="documentDepot.updateDocumentSelector();"
+title="ドキュメントを更新"
+	></button><button
+class=numberFilter
+onclick='documentDepot.updateDocumentSelector(new RegExp("[^1-9][0-9][0-9][^0-9]*$"));'
+	>~99</button><button
+class=numberFilter
+onclick='documentDepot.updateDocumentSelector(new RegExp("1[0-9][0-9][^0-9]*$"));'
+	>~199</button><button
+class=numberFilter
+onclick='documentDepot.updateDocumentSelector(new RegExp("2[0-9][0-9][^0-9]*$"));'
+	>~299</button><button
+class=numberFilter
+onclick='documentDepot.updateDocumentSelector(new RegExp("3[0-9][0-9][^0-9]*$"));'
+	>~399</button></span>	</div> -->
+<!-- fordebug 
+<button onClick='documentDepot.documentsUpdate()'>documentsUpdate</button>
+<button onClick='documentDepot.updateOpusSelector()'>updateOpusSelector</button>
+<button onClick='documentDepot.updateDocumentSelector()'>updateDocumentSelector</button>
+<button onClick='documentDepot.rebuildList()'>rebuildList</button>
+<br>
+<button onClick='serviceAgent.currentRepository.getProducts()'>getProducts</button>
+<button onClick='serviceAgent.currentRepository.getEpisodes(false,false,documentDepot.currentProduct)'>getEpisodes</button>
+<button onClick='console.log(documentDepot.currentSelection);serviceAgent.currentRepository.getSCi(false,false,documentDepot.currentSelection)'>getSCi</button>
+
+<button onClick='console.log(serviceAgent.currentRepository)'>Repository</button>
+<button onClick='console.log(serviceAgent.currentRepository.productsData)'>productsData</button>
+<button onClick='console.log(serviceAgent.currentRepository.entryList)'>entryList</button>
+-->
+	</div>
+
+</div>
+<!--データブラウザ// 試験中	-->
+
+<!-- //ログイン/アカウントメニュー -->
+<!-- アカウントメニューの機能は新規のヘッダUIに統合 このエリアはサーバ情報の維持とダウンロード保存のための不可視要素-->
+<div id=account_box>
+    <span
+        id = server-info
+        client_id='b115aead773388942473e77c1e014f4d7d38e4d4829ae4fd1fa0e48e1347b4cd'
+        client_secret='54c0f02c38175436df16a058cc0c0e037038c82d3cc9ce4c212e3e4afe0449dd'
+        current_user=''
+        current_server=''
+        oauth_token=''
+        last_authrized=''
+        session_token=''
+    >
+    </span>
+    <div style="float:clear;">
+		<form	name=saveXps
+			id=saveXps
+			method=POST
+			encode=UTF-8
+			enctype="application/x-www-form-urlencoded"
+			action="javascript:void(0);"
+		>
+			<input	type=hidden
+				id=COMMAND
+				name=COMMAND
+				value=save
+			>
+			<input	type=hidden
+				id=encode
+				name=encode
+				value=utf8
+			>
+			<input	type=hidden
+				id=XPSFilename
+				name=XPSFilename
+			>
+			<input
+				type=hidden
+				id=XPSBody
+				name=XPSBody
+			>
+        </form>
+    </div>
+</div>
+<!--//バージョン情報-->
+<div id=optionPanelVer >
+	<div align=center>
+このコンテンツは、Javascriptによるアプリケーションです。<br>
+Javascriptを有効にした状態でご使用ください。<br>
+This content is an application by Javascript. <br>
+Please use with Javascript enabled<br>
+<br><hr />
+<B>Univarsal Animation Toolbox(β)<br>汎用制作管理データプレビューア(β)</B>
+<br>
+    Node.js  :<span id="node-version">---</span><br>
+    Chromium :<span id="chrome-version">---</span><br>
+    Electron :<span id="electron-version">---</span><br>
+<hr>
+    uaf-core :<span id="uaf-version">---</span><br>
+    ua-toolbox :<span id="uatb-version">---</span><br>
+	
+<img src=./css/images/logo/splash_512UATb.png border=0 height=192 onClick='xUI.sWitchPanel("Ver","hide");'/><br>
+<img src=./css/images/logo/yal.png border=0 height=96 onClick='xUI.sWitchPanel("Ver","hide");'/><br>
+<img src=./css/images/logo/nekomataya_logo.png border=0 height=48 onClick='xUI.sWitchPanel("Ver","hide");'/><br>
+<span id= appMode>---</span><br>
+<span style="font-size:small" id=versionString>
+UATb 2022 / Yokohama Animation Lab. | Nekomataya<br>
+<span id=myVer0></span> <span id=myServer0>[no-server]</span><br>
+
+xMap Ver. :nasMAP-FILE 1.9x<br>
+Xpst Ver. :nasTIME-SHEET 0.9x<br>
+</span>
+<input	type=button
+	value="OK"
+	style="width:36%"
+	onClick='xUI.sWitchPanel("Ver");'
+><br>
+質問やバグの通報は<a href="mailto:info@u-at.net" target=_balnk>U-AT.net</a>まで。
+<hr>
+	</div>
+</div>
+<!--バージョン情報//-->
+<!--//ログインパネル-->
+<div class='loginPanel' id=optionPanelLogin >
+
+    <span
+		class= 'centering-box'
+    >
+    <span
+		data-i18n='servicenode'
+    >server</span> : 
+    <select
+		id=serviceSelector
+		class=debug
+		onChange="serviceAgent.switchService(this.value)"
+	>
+<option value='-1'>+no server selected+
+	</select>
+<br>
+	<span
+		data-i18n='mailaddress'
+	>mail-address</span> : 	
+	<input
+		id='current_user_id'
+		type='text'
+		autocomplete='on'
+		list='recentUsers'
+		size=32
+		value='kiyo@nekomataya.info'
+		onchange ='this.value=(new nas.UserInfo(this.value)).email;'
+	>
+	<datalist id='recentUsers'></datalist>
+<br>
+	<span
+		data-i18n='password'
+	>password</span> : 
+	<input
+		id='current_user_password'
+		type=password
+		size=32
+		value='devTest'
+	>
+<br>
+	<button
+		class='sign'
+		id='login_button'
+		onclick='serviceAgent.authorize(function(){if($("#optionPanelLogin").isVisible()) xUI.sWitchPanel("Login");
+});'
+	>SIGNIN / signout</button>
+<hr>
+共有サービスにログインします<br>
+ログインしないで作業を開始する場合は、キャンセルしてください
+	</span>
+</div>
+<!--ログインパネル//-->
+<!-- ログイン/アカウントメニュー// -->
+
+<!-- //新規アイテム挿入ダイアログ -->
+<!-- syncItemDlg(アイテム名,用紙色,修正フラグ) -->
+<div class=optionPanelModal id=optionPanelInsertItem >
+	<div style="text-align:center;">
+		<p data-i18n='insertNewItem'>新規アイテムを挿入します</p>
+		<p data-i18n='cufirmItemName'>アイテムの名前を確認してください</p>
+		<p data-i18n='bgColorIsSelectable'>背景色が選択できます</p>
+		<hr>
+		<button
+			id=newCanvasItemOvl
+			class = itemSelector
+			onclick='pman.reName.canvasPaint.guessItemName(true);'
+			data-i18n='overlay'
+		>オーバーレイ</button>
+		<button
+			id=newCanvasItem
+			class = itemSelector
+			onclick='pman.reName.canvasPaint.guessItemName(false);'
+			data-i18n='newItem'
+		>新規アイテム</button><br>
+		<p data-i18n='newItemName'>
+		新規アイテム名</p>:<input
+			id=newItemText
+			type=text
+			value=""
+			size=24
+			onChange='pman.reName.canvasPaint.syncItemDlg(this.value);'
+		></input><br>
+		<p data-i18n='backgroundColor'>
+		背景色</p>:<span
+			id=bColorSelector
+		></span>
+<hr>
+		<button
+			class=modalBt
+			onclick = 'xUI.sWitchPanel("Item","close")'
+			data-i18n='Cancel'
+		>Cancel</button>
+		<button
+			class=modalBt
+			onclick = 'pman.reName.insertCanvasAsset(pman.reName.canvasPaint.currentReference.item);'
+			data-i18n='Ok'
+		>O K</button>
+	</div>
+</div>
+<!-- 新規アイテム挿入ダイアログ// -->
+
+<!-- //Canvas編集メニュー -->
+<div class=optionPanelFloat id=optionPanelPaint >
+<dl><dt class="floatPanelHeader">paint menu<a href="" class=minimize ><img src=./images/ui/minimize.png alt="＿"></a><a href="" class=close ><img src=./images/ui/close.png alt="×"></a></dt></dl>
+<div id=formPaint class='centeringForm'>
+	<div class='centeringForm blockMenu'>
+         <button id='select' class='paintTool iconButton iconButton-plus' onclick='pman.reName.canvasPaint.setTool(this.id)' title='select'>
+</button><button id='selectRect' class='iconButton iconButton-selectBox paintTool' onclick='pman.reName.canvasPaint.setTool(this.id);' title ='text'>
+</button><button id='addText' class='iconButton iconButton-addText paintTool' onclick='pman.reName.canvasPaint.setTool(this.id)' title ='addText'>
+</button><button id='stamp' class='iconButton iconButton-footStamp paintTool' onclick='pman.reName.canvasPaint.setTool(this.id)' title ='stamp'>
+</button>
+<br>
+         <button id='pen' class='paintTool iconButton iconButton-pen_3' onclick='pman.reName.canvasPaint.setTool(this.id)' title='ペンツール'>
+</button><button id='circle' class='iconButton iconButton-circle paintTool' onclick='pman.reName.canvasPaint.setTool(this.id)' title ='楕円ツール'>
+</button><button id='rect' class='iconButton iconButton-rect paintTool' onclick='pman.reName.canvasPaint.setTool(this.id)' title ='矩形ツール'>
+</button>
+<br>
+         <button id='hand' class='paintTool iconButton iconButton-hand' onclick='pman.reName.canvasPaint.setTool(this.id)' title='hand'>
+<!--</button><button id='' class='iconButton paintTool' onclick='pman.reName.canvasPaint.setTool(this.id);' title =''>
+</button><button id='' class='iconButton paintTool' onclick='pman.reName.canvasPaint.setTool(this.id)' title =''>
+</button><button id='' class='iconButton paintTool' onclick='pman.reName.canvasPaint.setTool(this.id)' title =''>-->
+</button>
+<br><hr>
+	</div>
+	<div class='centeringForm blockMenu'>
+
+         <button id='removeCanvasObject' class='iconButton iconButton-eraser paintCommand' onclick='pman.reName.canvasPaint.removeSelection()' title='選択オブジェクトを削除'>
+</button><button id='clearCanvasField' class='iconButton iconButton-close paintCommand' onclick='pman.reName.canvasPaint.clearContent()' title='すべてのオブジェクトを削除'>
+</button><button id='groupingCanvasObject' class='iconButton iconButton-group paintCommand' onclick='pman.reName.canvasPaint.groupingSelection()' title='選択オブジェクトをグループ化'>
+</button><button id='ungroupingCanvasObject' class='iconButton iconButton-ungroup paintCommand' onclick='pman.reName.canvasPaint.ungroupingSelection()' title='グループ化を解除'>
+</button>
+<br>
+         <button id='note_copy' class='iconButton iconButton-copy itemCommand' onclick='pman.reName.canvasPaint.copy();' title='canvas copy'>
+</button><button id='note_cut' class='iconButton iconButton-cut itemCommand' onclick='pman.reName.canvasPaint.cut();' title='canvas cut'>
+</button><button id='note_paste' class='iconButton iconButton-paste itemCommand' onclick='pman.reName.canvasPaint.paste();' title='canvas paste'>
+</button><button id='note_discard' class='iconButton iconButton-destroy itemCommand' onclick='pman.reName.canvasPaint.discardChange();pman.reName.canvasPaint.syncCommand();' title='セッションの変更を破棄'>
+</button>
+<br>
+         <button id='note_undo' class='iconButton iconButton-undo itemCommand' onclick='pman.reName.canvasPaint.undo();' title='canvas undo'>
+</button><button id='note_redo' class='iconButton iconButton-redo itemCommand' onclick='pman.reName.canvasPaint.redo();' title='canvas redo'>
+</button><!--<button id='zoomCtrl' class='iconButton iconButton-zoom itemCommand' onclick='xUI.sWitchPanel("Zoom");' title='zoomControl'>
+</button><button id='appearanceCtrl' class='iconButton iconButton-eye itemCommand' onclick='xUI.sWitchPanel("Appearance");' title='appearanceControl'>
+</button>-->
+<!--	<button id='lightBoxPrp' class='iconButton iconButton-ONS itemCommand' onclick='xUI.sWitchPanel("lightBoxProp");' title='lightBoxProperty'></button>
+		<button id='lightBoxCtrl' class='iconButton iconButton-ONSsetting itemCommand' onclick='xUI.sWitchPanel("lightBoxControl");' title='lightBoxControl'>
+		</button>
+		<button id='thumbnailCtrl' class='iconButton iconButton-gia itemCommand' onclick='xUI.sWitchPanel("ThumbnailSize");' title='サムネイル'>
+		</button>
+		<button id='previewCtrl' class='iconButton iconButton-zoom itemCommand' onclick='xUI.sWitchPanel("PreviewSize");' title='zoom'>
+		</button> -->
+
+<br>
+	</div>
+<!--
+	<div class='centeringForm blockMenu'>
+
+         <button id='unsetPaint' class='iconButton iconButton-toLeft itemCommand' onclick='pman.reName.canvasPaint.unset();' title='unsetPaintMode'>
+</button>
+		<button id='addCanvasAsset' class='iconButton iconButton-addItem itemCommand' onclick='pman.reName.insertCanvasAsset();' title='アイテムを挿入'>
+</button>
+		<button id='setPaintMode' class='iconButton iconButton-editItem itemCommand' onclick='pman.reName.canvasPaint.set(pman.reName.selection[0]);' title='アイテムを編集'>
+</button>
+<hr>
+	</div> -->
+<!--<button id='' class='iconButton iconButton- itemCommand' onclick='' title=''></button>-->
+	<div class='centeringForm blockMenu'>
+
+         <button id='note_switch'    class='iconButton iconButton-space iconButton-wide4 itemCommand' onclick='pman.reName.canvasPaint.switch();' title='編集状態の切り替え'> EDIT
+</button><br><span id='note_item' class='note_item note_item_focus'> ・・・ </span><hr>
+         <button id='black' class='graphicColorChip graphicColorBlack' onclick='pman.reName.canvasPaint.setColor(this.id);'>
+</button><button id='white' class='graphicColorChip graphicColorWhite' onclick='pman.reName.canvasPaint.setColor(this.id);'>
+</button><button id='red' class='graphicColorChip graphicColorRed' onclick='pman.reName.canvasPaint.setColor(this.id);'>
+</button><button id='green' class='graphicColorChip graphicColorGreen' onclick='pman.reName.canvasPaint.setColor(this.id);'>
+</button><button id='blue' class='graphicColorChip graphicColorBlue' onclick='pman.reName.canvasPaint.setColor(this.id);'>
+</button><button id='backdrop' class='graphicColorChip graphicColorBackdrop' onclick='pman.reName.canvasPaint.setColor(this.id);'>
+</button><br>
+<hr>
+	</div>
+	<div class='centeringForm blockMenu'>
+<button id='dot1' class='graphicToolButton oneChr' onclick='pman.reName.canvasPaint.setPenWidth(1);'>.</button>
+<button id='dot2' class='graphicToolButton oneChr' onclick='pman.reName.canvasPaint.setPenWidth(3)'>・</button>
+<button id='dot3' class='graphicToolButton oneChr' onclick='pman.reName.canvasPaint.setPenWidth(6);'>●</button>
+<br>
+<button id='colorReset' class='graphicToolButton' onclick='pman.reName.canvasPaint.resetColor();'>[reset]</button>
+<br>
+	<div>
+	<button id='colorSelectBG' class='graphicColorSelect graphicColorSelectBG' onclick='pman.reName.canvasPaint.swapColor()'></button>
+	<button id='colorSelectFG' class='graphicColorSelect graphicColorSelectFG' onclick='pman.reName.canvasPaint.swapColor();'></button>
+	</div>
+
+	</div>
+</div>
+</div>
+<!-- Canvas編集メニュー// -->
+<!-- //手描きメモ用テキスト編集UI -->
+<div class=optionPanelFloat id=optionPanelText >
+<dl><dt class="floatPanelHeader">text edit<a href="" class=minimize ><img src=./images/ui/minimize.png alt="＿"></a><a href="" class=close ><img src=./images/ui/close.png alt="×"></a></dt></dl>
+	<div id = formText>
+		<textarea
+			id = 'textToolEditBox'
+			class = textEditBox
+		></textarea>
+<hr>
+		<button
+			class=modalBt
+			onclick = 'xUI.sWitchPanel("Text","close")'
+		>Cancel</button>
+		<button
+			class=modalBt
+			onclick = 'pman.reName.canvasPaint.putText(document.getElementById("textToolEditBox").value);'
+		>O K</button>
+	</div>
+</div>
+<!-- 手描きメモ用テキスト編集UI// -->
+<!-- //スタンプセレクタ -->
+<div class=optionPanelFloat id=optionPanelStamp >
+<dl><dt style="background-color:#888888;">stamp select<a href="" class=minimize ><img src=./images/ui/minimize.png alt="＿"></a><a href="" class=close ><img src=./images/ui/close.png alt="×"></a></dt></dl>
+	<div id = formStamp>
+		<div id=stampList>stamp area
+		</div>
+	</div>
+</div>
+<!-- スタンプセレクタ// -->
+<!--		onDblClick='xUI.ibCP.switch(-1);'-->
+
+<!--	//ポスト状ツールバー/toolbarPost	-->
+<div id=toolbarPost>
+	<div
+		class='cornerBox'
+		style='background-color:gray;'
+	>
+	<button
+		class='boxButton iconButton-hamberger'
+		style='background-color:gray;'
+		data-i18n='[title]pmenu_description'
+	></button>
+	</div>
+<!-- //ツールバー切り替えボタン	-->
+<span id="ibCPSelector" class=ibCPnav>
+	<button
+	id=ibCmenuSwitch
+		class='boxButton iconButton-menuFwd'
+		title="前のメニュー"
+	>
+	</button>
+</span>
+<!-- ツールバー切り替えボタン//	-->
+<!-- //アイコンポストメニューコンテント 初期化プロセスが生成する -->
+	<div id="ibContent">
+	</div>
+<!--  アイコンポストメニューコンテント//          -->
+</div>
+<!--	ポスト状ツールバー/toolbarPost//	-->
+
+<!-- //アプリケーションパネルUIリソース -->
+        <div id=applicationUIStore>
+
+<!-- コンテキストメニュー -->
+<!--
+    regionの分類
+    onHeadline
+    onTimelineTrackLabel
+        onTimelineTrack
+        onSelection
+        onSection
+    onTimelineTrackHeader
+    onReferenece
+    onRefereneceHeader
+    outer
+
+    onAssetBrowser
+    
+
+    管理モードによるメニュー切替はモード変更メソッド(xUI.setUImode)
+    表示モードによるメニュー抑制はリセッターメソッド(xUI.resetSheet)が
+    アプリケーションのホスト状態による遷移も同様に(xUI.resetSheet)で行う
+
+    操作中の編集モードによるON/OFFはflipcMメソッドが担当する。
+-->
+<!--    //コンテキストメニューUI        -->
+<div id ="contextMenu" class ="contextMenu optionPanelFloat">
+
+    <ul class='cMonHeadline'>
+		<li id=cMbrowseMenu>
+			<span id=cMbrowse-d class='cM cM-alt'>書類選択</span>
+			<A	id=cMbrowse
+				href = 'javascript:void(0)'
+				onclick = 'xUI.sWitchPanel("File");return false;//myScenePref.open();document.getElementById("scnNewSheet").checked=true;return false;'
+				title="ドキュメントを選択"
+			>書類選択</A>
+		</li>
+	<hr>
+		<li>
+			<span id=cMnewdoc-d class='cM cM-alt'>新規書類</span>
+			<A	id=cMnewdoc
+				href = 'javascript:void(0)'
+				onclick = 'myScenePref.open("new");return false;'
+				title="新規書類"
+			>新規書類</A>
+		</li>
+	</ul>
+</div>
+<!--    コンテキストメニューUI//        -->
+<!-- コンテキストメニュー -->
+<!-- //新規アイテム挿入モーダルパネル -->
+
+<!-- 新規アイテム挿入モーダルパネル// -->
+<!-- //モーダルダイアログ用ボタンUI -->
+<div id=ModalUIStore style="display:none;">
+<div id=CWLabelTemplate>
+<hr>
+    <button onclick="inputButtonText(this.innerHTML);">PAN</button>
+    <button onclick="inputButtonText(this.innerHTML);">Follow</button>
+    <button onclick="inputButtonText(this.innerHTML);">Slide</button>
+    <button onclick="inputButtonText(this.innerHTML);">TU</button
+><button onclick="inputButtonText(this.innerHTML);">TB</button>
+    <button onclick="inputButtonText(this.innerHTML);">MLTU</button
+><button onclick="inputButtonText(this.innerHTML);">MLTB</button
+><button onclick="inputButtonText(this.innerHTML);">MLSL</button>
+<button onclick="inputButtonText(this.innerHTML);">画面動</button>
+<button onclick="inputButtonText(this.innerHTML);">ハンディブレ</button>
+<button onclick="inputButtonText(this.innerHTML);">ブレ</button>
+<hr>
+</div>
+<div id=FXLabelTemplate>
+<hr>
+    <button onclick="inputButtonText(this.innerHTML);">FI</button
+><button onclick="inputButtonText(this.innerHTML);">FO</button>
+    
+    <button onclick="inputButtonText(this.innerHTML);">OL</button
+><button onclick="inputButtonText(this.innerHTML);">WIPE</button>
+    
+    <button onclick="inputButtonText(this.innerHTML);">WXP</button
+><button onclick="inputButtonText(this.innerHTML);">透過光</button>
+
+    <button onclick="inputButtonText(this.innerHTML);">FLT</button
+><button onclick="inputButtonText(this.innerHTML);">FX</button>
+
+ <button onclick="inputButtonText(this.innerHTML);">通常</button
+><button onclick="inputButtonText(this.innerHTML);">SC</button
+><button onclick="inputButtonText(this.innerHTML);">加算</button
+><button onclick="inputButtonText(this.innerHTML);">覆焼</button
+><button onclick="inputButtonText(this.innerHTML);">乗算</button
+><button onclick="inputButtonText(this.innerHTML);">焼込</button
+><button onclick="inputButtonText(this.innerHTML);">差分</button>
+<hr>
+</div>
+<div id=CLLabelTemplate>
+<hr>
+ <button class=oneChr onclick='inputButtonText(this.innerHTML);'>A</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">B</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">C</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">D</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">E</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">F</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">G</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">H</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">I</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">J</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">K</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">L</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">M</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">N</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">O</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">Q</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">P</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">R</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">S</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">T</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">U</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">V</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">W</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">X</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">Y</button
+><button class=oneChr onclick="inputButtonText(this.innerHTML);">Z</button
+>
+
+<hr>
+</div>
+<div id=DSLabelTemplate>
+<hr>
+    <button onclick="inputButtonText(this.innerHTML);">SE</button>
+    <button onclick="inputButtonText(this.innerHTML);">台詞</button>
+    <button onclick="inputButtonText(this.innerHTML);">M.</button>
+    <button onclick="inputButtonText(this.innerHTML);">N.</button>
+<hr>
+</div>
+<div id=BGLabelTemplate>
+<hr>
+    <button onclick="inputButtonText(this.innerHTML);">BG</button>
+    <button onclick="inputButtonText(this.innerHTML);">BOOK1</button>
+    <button onclick="inputButtonText(this.innerHTML);">BOOK2</button>
+<hr>
+</div>
+
+<!--    トラックラベルセレクタ  -->
+
+
+<!-- 増減 -->
+<div id=TCIFTemplate >
+<hr><div style="text-align:right;"><button
+onclick='nas.incrFCTonHTMLInput(document.getElementById("nas_modalInput"),"1+0")'
+    >+1s</button><button
+onclick='nas.incrFCTonHTMLInput(document.getElementById("nas_modalInput"),"-(1+0)")'
+ >-1s</button> <button
+onclick='nas.incrFCTonHTMLInput(document.getElementById("nas_modalInput"),"6")'
+ >+6</button><button
+onclick='nas.incrFCTonHTMLInput(document.getElementById("nas_modalInput"),"-(6)")'
+ >-6</button> <button
+onclick='nas.incrFCTonHTMLInput(document.getElementById("nas_modalInput"),"1")'
+ >+1</button><button
+onclick='nas.incrFCTonHTMLInput(document.getElementById("nas_modalInput"),"-(1)")'
+ >-1</button>
+<hr></div>
+</div>
+<input id=editTC size=12 value="-(00+00)">
+<button
+onclick='nas.incrFCTonHTMLInput(document.getElementById("editTC"),"1+0")'
+    >+1s</button><button
+onclick='nas.incrFCTonHTMLInput(document.getElementById("editTC"),"-(1+0)")'
+ >-1s</button> <button
+onclick='nas.incrFCTonHTMLInput(document.getElementById("editTC"),"6")'
+ >+6</button><button
+onclick='nas.incrFCTonHTMLInput(document.getElementById("editTC"),"-(6)")'
+ >-6</button> <button
+onclick='nas.incrFCTonHTMLInput(document.getElementById("editTC"),"1")'
+ >+1</button><button
+onclick='nas.incrFCTonHTMLInput(document.getElementById("editTC"),"-(1)")'
+ >-1</button>
+    <button> OK </button><button>Reset</button><hr>
+</div>
+<!-- モーダルダイアログ用ボタンUI// -->
+<!--	プログレスパネル	-->
+<div class=optionPanelModal id=optionPanelProg >
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+		<center><b>処理中です…</b></center><br>
+		<center><img src=./images/ui/wait.gif width=42 height=42></center><br>
+		<center><b>processing......</b></center><br>
+<br>
+<br>
+<br>
+<br>
+<br><hr>
+</div>
+<!--	プログレスパネル	-->
+<!--スタートアップファイルセレクタ-->
+<div class=optionPanelModal id=optionPanelOpenDialog >
+	<button onclick="pman.reName.openFolder();">TEST</button>
+</div>
+<!--スタートアップファイルセレクタ-->
+
+        </div>
+<!-- アプリケーションパネルUIリソース// -->
+
+
+
+
+
+
+<hr>
+<!-- //1 -->
+<div id='rename_document_menu' class=hide_>
+	<label for=openFolder>
+	<button onclick="document.getElementById('openFolder').click();">[フォルダを開く]</button>
+	<input type=file id=openFolder name=openFolder  webkitdirectory multiple
+		onclick = 'this.value="";'
+		onchange='console.log("change");pman.reName.openItems(this.files,false,true,event);' style="visibility:hidden;width:1px;">
+	</label>
+	<label for=openFile>
+	<button onclick="document.getElementById('openFile').click();">[ファイルを開く]</button>
+	<input type=file multiple id=openFile name=openFile
+		onclick = 'this.value="";'
+		onchange='console.log("change");pman.reName.openItems(this.files,false,true,event,);' style="visibility:hidden;width:1px;">
+	</label>
+	<button onclick='pman.reName.initItems(null,"",true)'>[閉じる]</button>
+	<button onclick='pman.reName.renameItem();'>[リネーム]</button>
+	<button onclick='pman.reName.downloadItems();'>[ダウンロード]</button>
+	<button onclick='pman.reName.exportScript();'>[スクリプト]</button>
+</div>
+<!-- 1// -->
+<!-- //2 -->
+<div id='rename_setting' class='tool-inline hide_'>
+	<!-- ソートキー -->
+	降順整列: <span>
+    <label class="switch__label" for='descendingOrder' title='下から順に並べる'>
+        <input type="checkbox" class="switch__input" id='descendingOrder' onchange="pman.numOrderUp = this.checked;xUI.sync('numOrder');">
+        <span class="switch__content"></span>
+        <span id="spinSlider" class="switch__slider"></span>
+    </label></span>
+	マルチネーム: <span>
+    <label class="switch__label" for='nameExt' title='複数の原稿をアンダーバーで振分'>
+        <input type="checkbox" class="switch__input" id='nameExt' onchange="pman.reName.nameExt= this.checked;xUI.sync('nameExt');">
+        <span class="switch__content"></span>
+        <span id="spinSlider" class="switch__slider"></span>
+    </label></span>
+	自動ソート: <span>
+    <label class="switch__label" for='sortAuto' title='名前で自動並べ替え'>
+        <input type="checkbox" class="switch__input" id='sortAuto' onchange="pman.reName.sortAuto = this.checked;xUI.sync('sortAuto');">
+        <span class="switch__content"></span>
+        <span id="spinSlider" class="switch__slider"></span>
+    </label></span>
+    連番桁数:
+    <select id=numDigit onchange = "pman.reName.renameDigits = this.value ; xUI.sync('renameDigits');" title='連番の桁数'>
+    	<option id ='numDigit_0' value=1>1:0</option>
+    	<option id ='numDigit_00' value=2>2:00</option>
+    	<option id ='numDigit_000' value=3>3:000</option>
+    	<option id ='numDigit_0000' value=4>4:0000</option>
+    	<option id ='numDigit_00000' value=5>5:00000</option>
+    </select>
+</div>
+<!-- 2// -->
+<!-- //3 -->
+<div id='rename_edit_tools' class=hide_>
+	<button class='fileRenamer-toolbutton' onclick='pman.reName.selectAll(true);' >全選択</button>
+	<button class='fileRenamer-toolbutton' onclick='pman.reName.selectAll(false);'>全解除</button>
+	<button class='fileRenamer-toolbutton' onclick='pman.reName.addGroup();'>グループ</button>
+	<button class='fileRenamer-toolbutton' onclick='pman.reName.remove();'>削除</button>
+	<button class='fileRenamer-toolbutton' onclick='pman.reName.items.reverse();pman.reName.refreshItemlist();'>逆順</button>
+	<button class='fileRenamer-toolbutton' onclick='pman.reName.setName("++");'>++</button>
+	<button class='fileRenamer-toolbutton' onclick='pman.reName.setName("--");'>--</button>
+	<button class='fileRenamer-toolbutton' onclick='pman.reName.setName("#");'>桁合わせ</button>
+	<button class='fileRenamer-toolbutton' onclick='pman.reName.setxMapName();'>カット番号</button>
+	<button class='fileRenamer-toolbutton' onclick='pman.reName.setXpsName();'>タイムシート</button>
+</div>
+<!-- 3// -->
+<!-- //4 -->
+
+<div id='optionPanelSearch' class='tool-inline hide_'>
+  検索：置換
+	<button onclick="pman.reName.searchAndSelect(document.getElementById('replace_target').value);">検索</button>  
+	<input class=replacement id=replace_target type="text">
+	<button onclick="pman.reName.replaceName(document.getElementById('replace_target').value,document.getElementById('replace_dest').value);">⇒ 置換 ⇒</button>  
+	<input class=replacement id=replace_dest   type="text">
+	<label >(正規表現)
+	<input class=replacement id=replace_regex type="checkbox">
+	</label>
+</div>
+<!-- 4// -->
+<!-- //5 -->
+<div id='optionPanelThumbnailSize' class='tool-inline hide_'>
+	<!-- サムネイル設定 -->
+	サムネイル: <span>
+    <label class="switch__label" for='showTM' >
+        <input type="checkbox" class="switch__input" id='showTM' 
+            onclick="pman.reName.switchThumbnail();"
+        >
+        <span class="switch__content"></span>
+        <span id="spinSlider" class="switch__slider"></span>
+    </label></span>
+<!-- <div id='optionPanelThumbnailSize' class='tool-inline hide_'> -->
+	<input id=thumbnailSizeSlider type=range min=32 max=256 value=152 step=8 onchange ="pman.reName.setThumbnailSize(this.value);" ondoubleclick="this.value = 152;">
+</div>
+<!-- 5// -->
+<!-- //6 -->
+<div id='optionPanelPreviewSize' class='tool-inline hide_'>
+	<!-- プレビューサイズ（ZOOM）設定 -->
+	zoom: 
+	<input id=previewSizeSlider type=range min=0 max=6 value=1 step=1 onchange ="pman.reName.changeView(null,parseInt(this.value));">
+</div>
+<!-- 6// -->
+<!-- //7 -->
+<div
+	id=work_slip class=hide_
+>
+<a onclick="if($('#work_slip_content').isVisible()){$('#work_slip_content').hide();}else if(xUI.currentUser){ pman.reName.exportWorkSlip();$('#work_slip_content').show();};">[X]作業伝票</a>
+<a onclick="pman.reName.setSlipNote();">申し送り</a>
+	<button onclick='pman.reName.exportWorkSlip(true);'>伝票書出</button>
+<label for=slip_auto>
+自動 :
+	</label>
+<input id=slip_auto type="checkbox">	
+
+	<div id =work_slip_content
+		style ="width:960px;height:240px;display:none;"
+	>
+<textarea
+	id =work_slip_content_body
+	style ="width:640px;height:240px;"
+	disabled
+></textarea><br>
+<!-- 申し送り:<br>
+<textarea
+	id =work_slip_note_body
+	style ="width:640px;height:100px;"
+></textarea><br>-->
+	</div>
+</div>
+<!-- 7// -->
+
+
+<!-- //8 -->
+<div
+	id='flip_control' class='tool-inline hide_'>
+<button
+	id='flipSw'
+	class='tool-inline-button'
+	title="再生/停止"
+	onclick = 'pman.reName.flipStart();'
+><img id='flipSwitch' src=./css/images/sbd-ui/play.png></button>
+	<label for=flipLoop>
+    LOOP:
+    <select id=flipLoop onchange = "pman.reName.flip.loop = parseInt(this.value) ; xUI.sync('flipLoop');">
+    	<option id ='loop_1'  value=1  >1回</option>
+    	<option id ='loop_3'  value=3  >3回</option>
+    	<option id ='loop_10' value=10 >10回</option>
+    	<option id ='loop_0'  value=-1 >無限</option>
+    </select>
+    </label>
+	<label for=flipRate>
+    RATE:
+    <select id=flipRate onchange = "pman.reName.flip.rate = parseFloat(this.value) ; xUI.sync('flipRate');">
+    	<option id ='rate_1'  value='41.666667' >1</option>
+    	<option id ='rate_2'  value='83.333333' >2</option>
+    	<option id ='rate_3'  value='125'       >3</option>
+    	<option id ='rate_4'  value='166.666667'>4</option>
+    	<option id ='rate_6'  value='250'       >6</option>
+    	<option id ='rate_8'  value='333.333333'>8</option>
+    	<option id ='rate_12' value='500'       >12</option>
+    </select> /24
+    </label>
+    <label class="switch__label_tryval" for='flipMode'>
+	<input id ='flipMode' class = "base__slider_tryval" type="range"  min="0" max="2" value="0" onChange="pman.reName.flip.mode = parseInt(this.value);xUI.sync(this.id)">
+	<span id="flipSlider" class="switch__slider_tryval" ></span>
+    </label>
+
+</div>
+<!-- 8// -->
+<!-- //9 -->
+<div
+	id='flip_seekbar' class='tool-inline hide_'>
+	<button
+		id='flipHeadPrev'
+		class='tool-inline-button'
+		title="start"
+		onclick = 'if(pman.reName.flip.play != 0) pman.reName.flipStop();pman.reName.select("prev");'
+	><img src=./css/images/sbd-ui/STRT.png></button>
+    <label class="flip_play_seekbar" for='flipSeekbar'>
+	<input id ='flipSeekbar' type="range"  min="0" max="100" value="0" onMouseDown='if(pman.reName.flip.play != 0) pman.reName.flipStop();' onInput="pman.reName.flipSelect(this.value);">
+	<span id="flipSeekbarLabel">  </span>
+	</label>
+	<button
+		id='flipHeadNext'
+		class='tool-inline-button'
+		title="end"
+		onclick = 'if(pman.reName.flip.play != 0) pman.reName.flipStop();pman.reName.select("next");'
+	><img src=./css/images/sbd-ui/END.png></button>
+
+</div>
+<!-- 9// -->
+<!-- //10 -->
+<div	id='lightBoxControl' class='tool-inline hide_'>
+	<!-- 透過台設定 -->
+    <span>
+overlay:
+    <label class="switch__label" for='switchOvl' >
+        <input type="checkbox" class="switch__input" id='switchOvl' 
+            onchange="pman.reName.lightBox.overlay=(((this.checked)?true:false));pman.reName.setPreview(pman.reName.focus);"
+        >
+        <span class="switch__content"></span>
+        <span id="spinSlider" class="switch__slider"></span>
+    </label></span>
+    <span>
+lightbox:
+    <label class="switch__label" for='switchLB' >
+        <input type="checkbox" class="switch__input" id='switchLB' 
+            onchange="pman.reName.lightBox.disabled=(((this.checked)?false:true));pman.reName.setPreview(pman.reName.focus);"
+        >
+        <span class="switch__content"></span>
+        <span id="spinSlider" class="switch__slider"></span>
+    </label></span>
+    <span>
+    <label for='LBCount' >
+through:
+        <select id='LBCount' 
+            onchange="pman.reName.lightBox.underlay = parseInt(this.value);pman.reName.setPreview(pman.reName.focus);"
+        >
+        <option value=0>無効</option>
+        <option value=1>1枚</option>
+        <option value=2>2枚</option>
+        <option value=3>3枚</option>
+        <option value=4>4枚</option>
+        </select>
+    </label>
+    <button onclick = "xUI.sWitchPanel('lightBoxProp')">詳細
+    </button>
+    </span>
+<!-- //11 -->
+<div	id='lightBoxProperty' class='tool-inline hide_'>
+
+    <span>
+    <label for='LBMode' >
+合成モード:
+        <select id='LBMode' 
+            onchange="pman.reName.lightBox.blendingMode = this.value;pman.reName.setPreview(pman.reName.focus);"
+        >
+        <option value='normal'   >通常</option>
+        <option value='darken'   >比較暗</option>
+        <option value='multiply' >乗算</option>
+        </select>
+    </label>
+    </span>
+
+    <span>
+    <label for='LBOpacity' >
+合成濃度(%)
+        <input type=range id='LBOpacity' min=50 max=85 value=65 step=5
+            onchange="pman.reName.lightBox.opacity = parseFloat(this.value)/100;pman.reName.setPreview(pman.reName.focus);"
+        >
+    </label>
+    </span>
+</div>
+<!-- 11// -->
+</div>
+<!-- 10// -->
+<!-- //12 -->
+<!-- <div id='ovlItemControl' class='tool-inline hide_'>
+	<button
+		id = 'addOverlay'
+		class='tool-inline-button'
+		onclick = 'pman.reName.insertCanvasAsset(pman.reName.selection[0],"","white",false);'
+	>白紙を挿入</button>
+	<button
+		id = 'addOverlay'
+		class='tool-inline-button'
+		onclick = 'pman.reName.insertCanvasAsset(pman.reName.selection[0]);'
+	>修正を追加</button>
+	<button
+		id = 'editOverlay'
+		class='tool-inline-button'
+		onclick='pman.reName.canvasPaint.set(pman.reName.selection[0]);xUI.sWitchPanel("Paint","show");'
+	>編集開始</button>
+</div>  -->
+<!-- 12// -->
+<!-- //13 -->
+<div	id='uafBundleFilter' class='tool-inline hide_'>
+	<!-- UAFバンドルフィルタ -->
+	         <button id="UBF_aborted" class="tool-inline-button" onclick="pman.reName.uafBundleFilter('aborted')">(欠番)
+	</button>
+	         <button id="UBF_CT"   class="tool-inline-button" onclick="pman.reName.uafBundleFilter('CT')">CT
+	</button><button id="UBF_3DLO" class="tool-inline-button" onclick="pman.reName.uafBundleFilter('3DLO')">3DLO
+	</button><button id="UBF_LO"   class="tool-inline-button" onclick="pman.reName.uafBundleFilter('LO')">LO
+	</button><button id="UBF_GE"   class="tool-inline-button" onclick="pman.reName.uafBundleFilter('GE')">原画
+	</button><button id="UBF_DO"   class="tool-inline-button" onclick="pman.reName.uafBundleFilter('DO')">動画
+	</button><button id="UBF_PT"   class="tool-inline-button" onclick="pman.reName.uafBundleFilter('PT')">彩色
+	</button>
+	         <button id="UBF_step0" class="tool-inline-button" onclick="pman.reName.uafBundleFilter('step0')">未着手
+	</button><button id="UBF_step1" class="tool-inline-button" onclick="pman.reName.uafBundleFilter('step1')">+1
+	</button><button id="UBF_step2" class="tool-inline-button" onclick="pman.reName.uafBundleFilter('step2')">+2
+	</button><button id="UBF_step3" class="tool-inline-button" onclick="pman.reName.uafBundleFilter('step3')">+3
+	</button><button id="UBF_step4" class="tool-inline-button" onclick="pman.reName.uafBundleFilter('step4')">+4~
+	</button>
+	         <button id="UBF_A" class="tool-inline-button" onclick="pman.reName.uafBundleFilter('A')">Active
+	</button><button id="UBF_H" class="tool-inline-button" onclick="pman.reName.uafBundleFilter('H')">Hold
+	</button><button id="UBF_R" class="tool-inline-button" onclick="pman.reName.uafBundleFilter('R')">Rework
+	</button><button id="UBF_F" class="tool-inline-button" onclick="pman.reName.uafBundleFilter('F')">Fixed
+	</button><button id="UBF_C" class="tool-inline-button" onclick="pman.reName.uafBundleFilter('C')">Compreated
+	</button>
+</div>
+<!-- 13// -->
+<!-- //14 -->
+<!-- 14// -->
+<hr>
+<!-- //15 -->
+<div	id='optionPanelFilter' class='tool-inline hide_'>
+  フィルタ関数 : function(itm){
+	<input class=filter_func id=filter_func type="text" size=96 value='return(itm.text == "hide_item_name");//'>
+	};
+	<button onclick='pman.reName.filterUX();'>フィルタ</button>  
+	<label >(反転)
+	<input type='checkbox' id='filterNeg' title='フィルタ実行結果を反転する'>
+	</label>
+</div>
+<!-- 15// -->
+<hr>
+<!-- //application status -->
+<div id=app_status class=application_status>***<hr></div>
+<!--
+node :<span id='node-version'>node-version</span>
+electron :<span id='electron-version'>version</span>
+chrome :<span id='chrome-version'>version</span>
+-->
+<!-- application status// -->
+<hr>
+<!-- // basefolder & previewitem display -->
+<div>
+<span id="basefolder" class="folderlabel" >[ -------- ] </span>
+<span id="basefolder_reName_status" class="folderlabel"> select 0 / 0 files :
+</span>
+	<input
+		type=text
+		id="previewheader_reName_text"
+		onchange = "pman.reName.applyInputText(pman.reName.focus);"
+		style="width:35%;"
+	><span id= "previewheader_reName_path" style="width:35%;color:gray;margin-left:16px;"></span>
+</div>
+
+<!-- basefolder & previewitem display //-->
+</div>
+<!-- fixedHeader// -->
+<div class=headerTool>
+  <div id="scrollSpaceHd" class="screenSpace"></div>
+</div>
+<!-- リネーム編集UI -->
+<div
+	id=fileRenamer
+>
+<!--
+// ブラウザエリア 
+	<div
+		id = browseStrip
+		class = 'xmap_property xmap_itemBrowser itemStrip repositoryBrowser-column'
+	>
+		<div id="repositoryItemList"  class="groupColumn" >
+			<div class="rootLine">(empty)
+			</div>
+			<div class="endSign">end
+			</div>
+		</div>
+	</div>
+
+ ブラウザエリア //-->
+<!-- 編集エリア -->
+	<div
+        id = fileStrip
+        class = 'xmap_property xmap_assetBrowser assetStrip fileRenamer-column'
+	>
+		<div id="itemList"  class="groupColumn" >
+			<div class="endSign">end
+			</div>
+		</div>
+	</div>
+<!-- 編集エリア -->
+<!-- グループラベルエリア -->
+	<div
+		id = prefixStrip
+		class = 'xmap_property xmap_assetBrowser assetStrip fileRenamer-column'
+
+	>
+		<div class=groupColumn>
+			<div style='display:table-cell;'>[X] prefix:</div>
+	<input id=prefix_bt_free_text type=text size = 13 value="(自由入力)" class='fileRenamer-button'  style="display:none;" onchange="document.getElementById('prefix_bt_free').innerText=this.value;document.getElementById('prefix_bt_free').style.display='inline';document.getElementById('prefix_bt_free_text').style.display='none';">
+	<button id=prefix_bt_free class='fileRenamer-button fileRenamer-button-free' style='display:table-cell;' onclick='pman.reName.setName(this.innerText)' title='[Alt]+クリックで編集'>(自由入力)</button>
+
+    <select id=prefixSelect class='fileRenamer-select' style='display:table-cell;' onchange="pman.reName.drawPrefix(this.value);">
+    	<option value="LO">LO</option>
+    	<option value="原画">原画</option>
+    	<option value="動画">動画</option>
+    	<option value="CELL">CELL</option>
+    </select>
+		</div>
+		<div>
+			<div id='rename_prefix_column' class="groupColumn" >
+			</div>
+		</div>
+	</div>
+<!-- グループラベルエリア -->
+<!-- ポストフィックスエリア -->
+	<div
+		id = suffixStrip
+		class = 'xmap_property xmap_assetBrowser assetStrip fileRenamer-column fileRenamer-column-suffix'
+	>
+		<div class=groupColumn>
+			<div style='display:table-cell;'>[X] postfix:</div>
+	<input id=postfix_bt_free_text type=text size=13 value="(自由入力)" class='fileRenamer-button' style="display:none;"  onchange="document.getElementById('postfix_bt_free').innerText=this.value;document.getElementById('postfix_bt_free').style.display='inline';document.getElementById('postfix_bt_free_text').style.display='none';">
+	<button id=postfix_bt_free class='fileRenamer-button fileRenamer-button-free' onclick='pman.reName.setName(this.innerText,true)' title='[Alt]+クリックで編集' style='white-space: nowrap;'>(自由入力)</button>
+
+    <select id=postfixSelect class='fileRenamer-select' style='display:table-cell;' onchange="pman.reName.drawPostfix(this.value);">
+    	<option value="check">check</option>
+    	<option value="PLUS">PLUS</option>
+    	<option value="checkA">checkA</option>
+    	<option value="other">other</option>
+    </select>
+    	</div>
+		<div>
+			<div id='rename_postfix_column' class="groupColumn" >
+			</div>
+		</div>
+	</div>
+<!-- ポストフィックスエリア -->
+<!-- プレビューエリア -->
+	<div
+		id = previewBox
+		class='xmap_property xmap_assetBrowser'
+	>
+
+
+		<div id=previewWindow class='mousedragscrollable' >
+		<img
+			id=imgPreview
+			src="./css/images/pman-ui/no-item.png"
+		>
+		</div>
+	</div>
+<!-- プレビューエリア -->
+</div>
+<!-- リネーム編集UI -->
+<!-- ファイル名変更パネル// -->
+
+<!-- //commandTest -->
+<div id=commandList ></div>
+<!-- commandTest// -->
+<!--
+	サーバーオンサイトの状況を真似る場合
+	この位置に backend_variables を置いて
+	プロパティに以下のいずれかの１行を加える
+	data-server_url='https://remaping-stg.u-at.net'
+	data-server_url='https://remaping.scivone-dev.com'
+	data-server_url='https://u-at.net'
+	アドレスはサーバーのルートを使用 2017.04.13
+-->
+<span id="backend_variables"
+	  data-organization_token="<%= @current_membership.organization.token %>"
+	  data-user_access_token="<%= @user_access_token %>"
+	  data-user_token="<%= current_user.token %>"
+	  data-user_name="<%= current_user.show_name %>"
+	  data-user_email="<%= current_user.email %>"
+	  data-episode_id="<%= @cut.episode.nil? ? nil : @cut.episode.id %>"
+	  data-frame_rate="<%= @cut.episode.nil? ? nil : @cut.episode.product.frame_rate %>"
+	  data-cut_id="<%= @cut.id %>"
+	  data-product_token="<%= @cut.episode.nil? ? nil : @cut.episode.product.nil? ? nil : @cut.episode.product.token %>"
+	  data-episode_token="<%= @cut.episode.nil? ? nil : @cut.episode.token %>"
+	  data-cut_bag_token="<%= @cut.cut_bag.nil? ? nil : @cut.cut_bag.token %>"
+	  data-cut_token="<%= @cut.token %>"
+	  data-scale="<%= @cut.scale %>"
+	  data-line_id="<%= @cut.line_id %>"
+	  data-stage_id="<%= @cut.stage_id %>"
+	  data-job_id="<%= @cut.job_id %>"
+	  data-status="<%= @cut.status %>"
+	  data-sheet_color="<%= @cut.episode.nil?  ? nil : @cut.episode.product.sheet_color_hex %>"
+	  data-session_token="<%= @session_token %>"
+></span>
+
+<div id=underlay><img src=./css/images/logo/logo_UATb.png width='256'></div>
+</body></html>

@@ -1,0 +1,47 @@
+﻿/*sbdConvert | sbdEditor*/
+applicationMenu
+
+documentMenu
+	open
+	setImege
+	saveAs
+	RecentFiles
+	reloadDocument
+	
+editMenu
+	selectShot
+	selectColumn
+	Cut
+	Copy
+	Paste
+	--------
+	Preference
+showMenu
+	player
+	page
+	
+	console
+toolsMenu
+	navigationPost
+	toolBarMenu
+	
+
+optionsMenu
+	
+	
+	
+	
+	
+
+playerMenu
+	play|stop
+	setWorkAreaStart
+	setWorkAreaEnd
+	resetWorkArea
+	
+	
+	
+	
+	
+Bookmarks
+	

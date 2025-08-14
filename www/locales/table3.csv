@@ -1,0 +1,748 @@
+//remove,id,prefix,key,en,ja
+var source = `FALSE,,blendingmode,blendingmode-color,COLOR,カラー（色相と彩度）
+FALSE,,blendingmode,blendingmode-color_burn,COLOR_BURN,焼き込み
+FALSE,,blendingmode,blendingmode-color_dodge,COLOR_DODGE,覆い焼き
+FALSE,,blendingmode,blendingmode-darker,DARKER,比較（暗）
+FALSE,,blendingmode,blendingmode-difference,DIFFERENCE,差の絶対値
+FALSE,,blendingmode,blendingmode-exclusion,EXCLUSION,除外
+FALSE,,blendingmode,blendingmode-hard_light,HARD_LIGHT,ハードライト
+FALSE,,blendingmode,blendingmode-hue,HUR,色相
+FALSE,,blendingmode,blendingmode-lighten,LIGHTEN,比較（明）
+FALSE,,blendingmode,blendingmode-luminosity,LOMINOSITY,明度
+FALSE,,blendingmode,blendingmode-multiply,MULTIPLY,乗算
+FALSE,,blendingmode,blendingmode-normal,NORMAL,通常
+FALSE,,blendingmode,blendingmode-overlay,OVERLAY,オーバーレイ
+FALSE,,blendingmode,blendingmode-saturation,SATURATION,彩度
+FALSE,,blendingmode,blendingmode-screen,SCREEN,スクリーン
+FALSE,,blendingmode,blendingmode-silhouette_alpha,SILHOUETTE_ALPHA,シルエットアルファ
+FALSE,,blendingmode,blendingmode-silhouette_luma,SILHOUETTE_LUMA,シルエットルミナンス
+FALSE,,blendingmode,blendingmode-soft_light,SOFT_LILGHT,ソフトライト
+FALSE,,camerawork,cam-backlight,backlight,透過光
+FALSE,,camerawork,cam-bar,bar,縦棒
+FALSE,,camerawork,cam-bigcloseup,bigcloseUp,ビッグクローズアップ
+FALSE,,camerawork,cam-blur,blur,ブラー
+FALSE,,camerawork,cam-bokeh,bokeh,ボケ
+FALSE,,camerawork,cam-bustShot,bustShot,バストショット
+FALSE,,camerawork,cam-cameraShake,cameraShake,画面動
+FALSE,,camerawork,cam-cameraShakeL,cameraShakeL,画面動(強)
+FALSE,,camerawork,cam-cameraShakeS,cameraShakeS,画面動(弱)
+FALSE,,camerawork,cam-closeUp,closeUp,クローズアップ
+FALSE,,camerawork,cam-clossFilter,clossFilter,クロスフィルタ
+FALSE,,camerawork,cam-crane,crane,クレーンショット
+FALSE,,camerawork,cam-cutIn,cutIn,カットイン
+FALSE,,camerawork,cam-diffusionFilter,diffusionFilter,ディフュージョンフィルタ
+FALSE,,camerawork,cam-dolly,dolly,ドリーショット
+FALSE,,camerawork,cam-fadeIn,fadeIn,FI
+FALSE,,camerawork,cam-fadeOut,fadeOut,FO
+FALSE,,camerawork,cam-fairing,fairing,フェアリング
+FALSE,,camerawork,cam-fix,fix,FIX
+FALSE,,camerawork,cam-focusIn,focusIn,フォーカスイン
+FALSE,,camerawork,cam-focusOut,focusOut,フォーカスアウト
+FALSE,,camerawork,cam-foggyFilter,foggyFilter,フォギーフィルタ
+FALSE,,camerawork,cam-follow,follow,follow
+FALSE,,camerawork,cam-followSlide,followSlide,フォロースライド
+FALSE,,camerawork,cam-followTracking,followTracking,フォロートラッキング
+FALSE,,camerawork,cam-fullFigure,fullFigure,フルフィギュア
+FALSE,,camerawork,cam-fullLong,fullLong,フルロング
+FALSE,,camerawork,cam-handShake,handShake,ハンディブレ
+FALSE,,camerawork,cam-handShakeL,handShakeL,ハンディブレ大
+FALSE,,camerawork,cam-handShakeS,handShakeS,ハンディブレ小
+FALSE,,camerawork,cam-highContrast,highContrast,ハイコン
+FALSE,,camerawork,cam-insert,insert,挿入
+FALSE,,camerawork,cam-iris,iris,アイリス
+FALSE,,camerawork,cam-irisIn,irisIn,アイリスイン
+FALSE,,camerawork,cam-irisOut,irisOut,アイリスアウト
+FALSE,,camerawork,cam-jumpSlide,jumpSlide,ジャンプスライド
+FALSE,,camerawork,cam-kneeShot,kneeShot,ニーショット
+FALSE,,camerawork,cam-kurokoma,kurokoma,黒コマ
+FALSE,,camerawork,cam-longShot,longShot,ロングショット
+FALSE,,camerawork,cam-middleShot,middleShot,ミドルショット
+FALSE,,camerawork,cam-multi,multi,マルチ
+FALSE,,camerawork,cam-multiPlain,multiPlain,マルチ・プレーン
+FALSE,,camerawork,cam-overExposure,overExposure,露出オーバー
+FALSE,,camerawork,cam-overlap,overlap,オーバーラップ
+FALSE,,camerawork,cam-pan,pan,PAN
+FALSE,,camerawork,cam-panDown,panDown,PAN-DOWN
+FALSE,,camerawork,cam-panTB,panTB,PAN-TB
+FALSE,,camerawork,cam-panTU,panTU,PAN-TU
+FALSE,,camerawork,cam-panUp,panUp,PAN-UP
+FALSE,,camerawork,cam-perspectiveTransform,perspectiveTransform,パース変形
+FALSE,,camerawork,cam-quickPAN,quickPAN,Q-PAN
+FALSE,,camerawork,cam-quickTB,quickTB,Q-TB
+FALSE,,camerawork,cam-quickTU,quickTU,Q-TU
+FALSE,,camerawork,cam-rackFocus,rackFocus,ピン送り
+FALSE,,camerawork,cam-rateteTB,rateteTB,回転TB
+FALSE,,camerawork,cam-rolling,rolling,ローリング
+FALSE,,camerawork,cam-rotatePan,rotatePan,回転PAN
+FALSE,,camerawork,cam-rotateTU,rotateTU,回転TU
+FALSE,,camerawork,cam-rotation,rotation,ローテーション
+FALSE,,camerawork,cam-roteteSlide,roteteSlide,回転SL
+FALSE,,camerawork,cam-shirokoma,shirokoma,白コマ
+FALSE,,camerawork,cam-slide,slide,SL
+FALSE,,camerawork,cam-strobo,strobo,ストロボ
+FALSE,,camerawork,cam-stroboEvn,stroboEvn,ストロボ2
+FALSE,,camerawork,cam-stroboOdd,stroboOdd,ストロボ1
+FALSE,,camerawork,cam-sublina,sublina,サブリナ
+FALSE,,camerawork,cam-tilt,tilt,TILT
+FALSE,,camerawork,cam-tiltDown,tiltDown,TILT-DOWN
+FALSE,,camerawork,cam-tiltUp,tiltUp,TILT-UP
+FALSE,,camerawork,cam-trackBack,trackBack,TB
+FALSE,,camerawork,cam-trackUp,trackUp,TU
+FALSE,,camerawork,cam-transition,transition,トランジション
+FALSE,,camerawork,cam-underExposure,underExposure,露出アンダー
+FALSE,,camerawork,cam-unknown,unknown,未登録
+FALSE,,camerawork,cam-upShot,upShot,アップショット
+FALSE,,camerawork,cam-waveGlass,waveGlass,波ガラス
+FALSE,,camerawork,cam-waveGlassL,waveGlassL,波ガラス(強)
+FALSE,,camerawork,cam-waveGlassS,waveGlassS,波ガラス(弱)
+FALSE,,camerawork,cam-westShot,westShot,ウエストショット
+FALSE,,camerawork,cam-whiteIn,whiteIn,WI
+FALSE,,camerawork,cam-whiteOut,whiteOut,WO
+FALSE,,camerawork,cam-wipe,wipe,WIPE
+FALSE,,camerawork,cam-wipeIn,wipeIn,ワイプイン
+FALSE,,camerawork,cam-wipeOut,wipeOut,ワイプアウト
+FALSE,,camerawork,cam-zoomIn,zoomIn,ズームイン
+FALSE,,camerawork,cam-zoomOut,zoomOut,ズームアウト
+FALSE,,term,abort,Abort,欠番
+FALSE,,term,animationdrawing,animationDrawing,動画
+FALSE,,term,baseresolution,BaseResolution,基準解像度
+FALSE,,term,bg,BG,背景
+FALSE,,term,book,MG/FG,BOOK
+FALSE,,term,cell,Cell,セル
+FALSE,,term,diff,show difference,差分表示機能
+FALSE,,term,duration,duration,DURATION
+FALSE,,term,duration,duration,DURATION
+FALSE,,term,footageframerate,footage framerate,フーテージのフレームレート
+FALSE,,term,frame,frame,フレーム
+FALSE,,term,framerate,framrate,フレームレート
+FALSE,,term,inputmedia,input medium,入力メディア
+FALSE,,term,inputmedia,input medium,入力メディア
+FALSE,,term,keydrawing,KeyDrawing,原画
+FALSE,,term,layout,Layout,レイアウト
+FALSE,,term,opus,Opus,制作番号
+FALSE,,term,outputmedia,output medium,出力メディア
+FALSE,,term,outputmedia,output medium,出力メディア
+FALSE,,term,peg,peg,タップ
+FALSE,,term,scene,Scene,シーン
+FALSE,,term,scenecut,S-C,S-C
+FALSE,,term,sec,sec.,秒
+FALSE,,term,sheetlength,sheet duration,1枚の秒数
+FALSE,,term,timelinetrack,timeline track,タイムライントラック
+FALSE,,term,timeshift,auto correction,取り込み自動補正
+FALSE,,term,title,title,題名
+FALSE,,term,track,track,トラック
+FALSE,,term,trackelement,element,セル
+FALSE,,term,transition,transition,トランジション
+FALSE,,term,vbar,vertical bar,縦線
+FALSE,,term,wbar,vertical wave,波線
+FALSE,,term,xsheet,xSheet,タイムシート
+FALSE,139,term,activate,activate,作業再開
+FALSE,530,term,apply,apply,設定反映
+FALSE,588,term,assignmessage,assign : message,指名:申し送り
+FALSE,545,term,autoscroll,auto scroll,自動スクロール
+FALSE,236,term,branch,branch,ライン分岐
+FALSE,140,term,checkin,check in,作業開始
+FALSE,141,term,checkout,check out,作業終了
+FALSE,455,trem,clear,clear,消去
+FALSE,34,term,common,Common,一般
+FALSE,554,term,convertmanually,Convert manually,手動変換
+FALSE,152,term,currentjob,curent job,現在の作業
+FALSE,146,term,currentline,current line,現在のライン
+FALSE,149,term,currentstage,current stage,現在の工程
+FALSE,543,term,cursorloop,cursor,カーソル
+FALSE,452,trem,dataload,load,取込
+FALSE,142,term,deactivate,deactivate,作業保留
+FALSE,540,term,diff,show difference,差分表示機能
+FALSE,229,term,discard,discard,編集破棄
+FALSE,51,term,documents,Documents,ドキュメント設定
+FALSE,556,term,drawing,drawing,描画
+FALSE,55,term,edit,Edit,編集
+FALSE,57,term,export,Export,書出
+FALSE,541,term,fcttype,FCT type,カウンタのタイプ
+FALSE,59,term,file,File,ファイル
+FALSE,60,term,filename,file name,ファイル名
+FALSE,61,term,filter,Filter,フィルタ
+FALSE,592,term,fix,fix,確定
+FALSE,535,term,footageframerate,footage framerate,フーテージのフレームレート
+FALSE,389,term,footstamp,diff,差分機能
+FALSE,487,term,item,items,よく使う文字
+FALSE,151,term,job,job,作業
+FALSE,586,term,jobselector,job selector,作業セレクタ
+FALSE,145,term,line,line,ライン
+FALSE,520,term,linefeed,line feed,改行
+FALSE,575,term,loginpnl,loginPanel,ログインパネル
+FALSE,542,term,loop,loop action,ループアクション
+FALSE,591,term,mailaddress,mail address,メールアドレス
+FALSE,238,term,merge,merge,ライン検収
+FALSE,429,term,newentry,new entry,新規登録
+FALSE,563,term,newentry,new entry,新規登録
+FALSE,153,term,newjob,new job,新規作業
+FALSE,147,term,newline,new line,新規ライン
+FALSE,150,term,newstage,new stage,新規工程
+FALSE,584,term,nodechart,node chart,ノードチャート
+FALSE,553,term,ok,OK,ＯＫ
+FALSE,522,term,pageview,page view,ページ表示
+FALSE,533,term,pageview,page view,タイムシートワープロ
+FALSE,590,term,password,password,パスワード
+FALSE,143,term,receipt,receipt,作業検収
+FALSE,411,term,redo,Redo,Redo
+FALSE,311,term,ref,Ref..,参照
+FALSE,580,term,reference,reference,参照
+FALSE,372,term,referencearea,reference area,参照欄
+FALSE,464,term,register,register,登録
+FALSE,454,term,reset,reset,リセット
+FALSE,552,term,restore,Restore,元に戻す
+FALSE,329,term,restrictionmode,[restriction],[制限モード]
+FALSE,110,term,save,Save,作業保存
+FALSE,333,term,screenmode,[view mode],[表示モード]
+FALSE,523,term,scrollview,scroll view,スクロール表示
+FALSE,534,term,scrollview,scroll view,コンパクトエディタ
+FALSE,538,term,sec,sec.,秒
+FALSE,453,selection,selection-all,select all,全選択
+FALSE,401,selection,selection-apply,apply {{%1}} to the selection ,選択範囲を{{%1}}に
+FALSE,395,selection,selection-copy,Copy,Copy
+FALSE,36,selection,selection-cut,Cut,Cut
+FALSE,37,selection,selection-delete,Delete,削除
+FALSE,407,selection,selection-paste,Paste,貼り付け
+FALSE,537,term,sheetlength,sheet duration,1枚の秒数
+FALSE,544,term,slooploop,spin,スピン
+FALSE,148,term,stage,stage,工程
+FALSE,576,term,stw,StopWatch,ストップウォッチ
+FALSE,519,term,tab,TAB,TAB
+FALSE,546,term,tabspin,spin with TAB,TABで確定
+FALSE,124,term,time,time,TIME
+FALSE,536,term,timeshift,auto correction,取り込み自動補正
+FALSE,578,term,trackelement,element,セル
+FALSE,414,term,undo,Undo,Undo
+FALSE,557,term,uninstall,uninstall,アンインストール
+FALSE,416,term,vbar,vertical bar,縦線
+FALSE,418,term,wbar,vertical wave,波線
+FALSE,,term,nop,NOP,NOP
+FALSE,,term,reload,reload,再読込
+FALSE,,term,search,search,検索
+FALSE,3,term,abort,Abort,欠番
+FALSE,18,term,animationdrawing,animationDrawing,動画
+FALSE,27,term,baseresolution,BaseResolution,基準解像度
+FALSE,28,term,bg,BG,背景
+FALSE,29,term,book,MG/FG,BOOK
+FALSE,30,term,cancel,Cancel,取消
+FALSE,31,term,cell,Cell,セル
+FALSE,32,term,change,Change,変更
+FALSE,33,term,close,Close,閉じる
+FALSE,34,term,common,Common,一般
+FALSE,38,term,destruction,Destruction,破棄
+FALSE,39,term,document,document,ドキュメント
+FALSE,51,term,documents,Documents,ドキュメント設定
+FALSE,55,term,edit,Edit,編集
+FALSE,57,term,export,Export,書出
+FALSE,59,term,file,File,ファイル
+FALSE,60,term,filename,file name,ファイル名
+FALSE,61,term,filter,Filter,フィルタ
+FALSE,62,term,frame,frame,フレーム
+FALSE,63,term,framerate,framrate,フレームレート
+FALSE,65,term,import,Import,読出
+FALSE,69,term,keydrawing,KeyDrawing,原画
+FALSE,73,term,layout,Layout,レイアウト
+FALSE,74,term,load,Load,読込
+FALSE,89,term,open,Open,開く
+FALSE,90,term,opus,Opus,制作番号
+FALSE,91,term,othet,other,その他
+FALSE,95,term,peg,peg,タップ
+FALSE,96,term,preference,Preference,各種設定
+FALSE,110,term,save,Save,作業保存
+FALSE,118,term,scene,Scene,シーン
+FALSE,119,term,scenecut,S-C,S-C
+FALSE,124,term,time,time,TIME
+FALSE,125,term,title,title,題名
+FALSE,126,term,transition,transition,トランジション
+FALSE,127,term,timelinetrack,timeline track,タイムライントラック
+FALSE,130,term,update,Update,更新
+FALSE,132,term,username,name,名前
+FALSE,137,term,xsheet,xSheet,タイムシート
+FALSE,139,term,activate,activate,作業再開
+FALSE,140,term,checkin,check in,作業開始
+FALSE,141,term,checkout,check out,作業終了
+FALSE,142,term,deactivate,deactivate,作業保留
+FALSE,143,term,receipt,receipt,作業検収
+FALSE,144,term,inuse,in use,作業中
+FALSE,145,term,line,line,ライン
+FALSE,146,term,currentline,current line,現在のライン
+FALSE,147,term,newline,new line,新規ライン
+FALSE,148,term,stage,stage,工程
+FALSE,149,term,currentstage,current stage,現在の工程
+FALSE,150,term,newstage,new stage,新規工程
+FALSE,151,term,job,job,作業
+FALSE,152,term,currentjob,curent job,現在の作業
+FALSE,153,term,newjob,new job,新規作業
+FALSE,229,term,discard,discard,編集破棄
+FALSE,236,term,branch,branch,ライン分岐
+FALSE,238,term,merge,merge,ライン検収
+FALSE,311,term,ref,Ref..,参照
+FALSE,320,term,tools,Tools,ツール
+FALSE,328,term,show,Show,表示
+FALSE,329,term,restrictionmode,restriction,制限モード
+FALSE,333,term,screenmode,view mode,表示モード
+FALSE,372,term,referencearea,reference area,参照欄
+FALSE,389,term,footstamp,diff,差分機能
+FALSE,411,term,redo,Redo,Redo
+FALSE,414,term,undo,Undo,Undo
+FALSE,429,term,newentry,new entry,新規登録
+FALSE,454,term,reset,reset,リセット
+FALSE,464,term,register,register,登録
+FALSE,487,term,item,items,よく使う文字
+FALSE,519,term,tab,TAB,TAB
+FALSE,520,term,linefeed,line feed,改行
+FALSE,522,term,pageview,page view,ページ表示
+FALSE,523,term,scrollview,scroll view,スクロール表示
+FALSE,530,term,apply,apply,設定反映
+FALSE,541,term,fcttype,FCT type,カウンタのタイプ
+FALSE,542,term,loop,loop action,ループアクション
+FALSE,543,term,cursorloop,cursor,カーソル
+FALSE,544,term,slooploop,spin,スピン
+FALSE,545,term,autoscroll,auto scroll,自動スクロール
+FALSE,546,term,tabspin,spin with TAB,TABで確定
+FALSE,552,term,restore,Restore,元に戻す
+FALSE,553,term,ok,OK,ＯＫ
+FALSE,554,term,convertmanually,Convert manually,手動変換
+FALSE,556,term,drawing,drawing,描画
+FALSE,557,term,uninstall,uninstall,アンインストール
+FALSE,563,term,newentry,new entry,新規登録
+FALSE,575,term,loginpnl,loginPanel,ログインパネル
+FALSE,576,term,stw,StopWatch,ストップウォッチ
+FALSE,580,term,reference,reference,参照
+FALSE,584,term,nodechart,node chart,ノードチャート
+FALSE,586,term,jobselector,job selector,作業セレクタ
+FALSE,588,term,assignmessage,assign : message,指名:申し送り
+FALSE,590,term,password,password,パスワード
+FALSE,591,term,mailaddress,mail address,メールアドレス
+FALSE,592,term,fix,fix,確定
+FALSE,452,trem,dataload,load,取込
+FALSE,455,trem,clear,clear,消去
+FALSE,9,alert,alert-abnomalprcs,[！！Caution！！] Abnormal processing,[！！注意！！] 異常処理です
+FALSE,10,alert,alert-cutconflict,The same scene has already been entered.<br>This scene can not be entered,既に同じカットが登録されています<br>このカットの登録はできません
+FALSE,11,alert,alert-cutillegal,Scene name is invalid  nThis scene can not be entered,カット番号が不正です<br>このカットの登録はできません
+FALSE,12,alert,alert-durationchange,the duration of document is changed.,カットの継続時間が変更されます。
+FALSE,13,alert,alert-discardframes,contents of the erased frame are discarded.,消去されるフレームの内容は破棄されます。
+FALSE,14,alert,alert-trackschange,layer counts of document is changed.,カットのレイヤ数が変更されます。
+FALSE,15,alert,alert-discardtracks,contents of the erased track are discarded.,消去されるトラックの内容は破棄されます。
+FALSE,16,alert,alert-discardedit,Current edits are discarded.,現在の編集内容は破棄されます。
+FALSE,17,alert,alert-newdocumet,Create a new document,新規ドキュメントを作成します
+FALSE,22,confirm,confirm-edit,(You can edit the contents of the text box.),(テキストボックスの内容を編集できます)
+FALSE,23,confirm,confirm-ok,Is it OK?,よろしいですか？
+FALSE,24,confirm,confirm-execute,Do you want to run it?,実行してよろしいですか?
+FALSE,25,confirm,confirm-callecho,Save the document in the download folder with the following name.,次の名前でダウンロードフォルダに書類を保存します。
+FALSE,26,confirm,confirm-callechoswap,Save {{%1}} in the download folder with the following name.,次の名前でダウンロードフォルダに {{%1}} を保存します。
+FALSE,35,confirm,confirm-layername,confirm layer name,レイヤ名を確認して下さい
+FALSE,174,confirm,dm-006,Drop the selected entry. Are you sure?,選択されたエントリを削除します。よろしいですか？
+FALSE,176,confirm,dm-008,You can not cancel. Are you sure?,取消はできません。よろしいですか？
+FALSE,177,confirm,dm-preferenceconfirmsave,Save the configuration to the directory [ {{%1}} ].<br>The previous file is overwritten. Are you sure?,設定を[ {{%1}} ]以下に保存します。<br>以前のファイルは上書きされます。よろしいですか？
+FALSE,183,confirm,dm-prefconfirmsave,The setting has been changed. Do you want to apply it?,設定が変更されています。反映させますか?
+FALSE,184,confirm,dm-documentnosave,Document has not been saved. Do you want to save?,ドキュメントは保存されていません。保存しますか？
+FALSE,185,confirm,dm-documentnosaveexport,Document has not been saved. Do you want to export?,ドキュメントは保存されていません。書出しますか？
+FALSE,186,confirm,dm-documentconfirmokcancel,OK:save / Cancel:coninue without saveing,OK:保存する / Cancel:保存せずに続行
+FALSE,187,confirm,dm-documentconfirmync,Yes:save / No: update without saving / Cancel:cancel processing,Yes:保存する / No:保存しないで更新 / Cancel:処理をキャンセル
+FALSE,188,confirm,dm-documentconfirmoverwrite,There is already a file with the same name.<br>Are you sure you want to overwrite?,同名のファイルがすでにあります.<br>上書きしてよろしいですか?
+FALSE,189,confirm,dm-018,It has already been started.<br>Double start since receiving the console output is prohibited.<br>Do you want to reset.,すでに起動されています。<br>コンソール出力を受信するので二重起動は禁止されています<br>リセットしますか
+FALSE,193,confirm,dm-023,"All the recorded information to the individual area to clear.<br>but it does clear the information of all the applications that use the nas library, please particular attention to those who are using the nas library in AE ,PS and others.<br>It is may be clear?",個人領域に記録した情報をすべてクリアします。<br>nasライブラリを使用するすべてのアプリケーションの情報をクリアしますので、AEとPSでnasライブラリを使用している方は特にご注意ください。<br>クリアして良いですか？
+FALSE,197,confirm,dm-027,:<br> You will import the settings of the folder above.<br>The same name of the setting can not undo been overwritten.<br>Are you sure you want to run?,:<br> 上のフォルダの設定をインポートします。<br>同名の設定は上書きされて取り消しはできません。<br>実行してよろしいですか？
+FALSE,198,confirm,dm-028,:<br>It will export the settings to a folder of the above.<br>We recommend the free folder.<br>Are you sure you want to run?,:<br>上のフォルダに設定をエクスポートします。<br>空きフォルダ推奨します<br>実行してよろしいですか？
+FALSE,199,confirm,dm-backupconfirm,Load the backup data on the sheet. Current data will be lost. Is it OK?,バックアップデータをシートに読み込みます。<br>現在のデータは失われます。<br>よろしいですか？
+FALSE,204,confirm,dm-confirmclosepmenu,are you sure you want to hide the drop down menu?,ドロップダウンメニューを非表示にしてよろしいですか？
+FALSE,215,confirm,dm-comfirmnewxsheetprop,Set a new xSheet with the default value.<br> Is it OK?,デフォルトの値で新規にシートを設定します。<br>	よろしいですか?
+FALSE,216,confirm,dm-alertnoentry,There are no match-entry in this repository.<br>Please make sure the target repository is selected.<br>You can temporarily store it to LocalRepository or write it externally to protect the data.,リポジトリにこのカットがありません<br>正しいリポジトリか確認してください<br>ローカルリポジトリに一時的に保存するか又は外部に書出してデータを保護することができます
+FALSE,217,confirm,dm-pmrecoverlostsession,This data is currently being edited in your account.<br>Please check that the document is not open in other environment.<br>Press OK to resume work from the current data.,このデータは現在あなたのアカウントで編集中です<br>他の環境でドキュメントを開きっぱなしになっていないか確認してください<br>OKを押すと、現在のデータから作業を再開できます<br>
+FALSE,222,confirm,dm-removethismessage,"Thereafter, do not display this message.",以後、このメッセージを表示しない。
+FALSE,549,confirm,dm-scimsg,"The selected document was read into the conversion area.<br><br>It can be read into the dope sheet by automatic conversion as it is.<br>To convert manually, click button [Directly load]<br>",選択したドキュメントを変換領域に読込みました<br><br>このまま自動変換でタイムシートに読み込む事ができます<br>手動で変換する場合は[OK]ボタンをクリック<br>
+FALSE,99,dm,dm-input_disabled,The input operation is currently invalid.<br>To change the document please check in and start your job.,現在、入力操作は無効です。<br>ドキュメントの編集を行う場合は、作業にチェックインしてください。
+FALSE,158,dm,dm-newdocument,I will create a new document.<br>Please enter scene number/duration and confirm with OK button.,新規カットを作成します。<br>カット番号/継続時間を入力して[OK]ボタンで確定してください。
+FALSE,159,dm,dm-newitemswap,"Start new {{%1}}.<br>Please enter a new %1 name. <br>If it is not on the list, please enter it with the keyboard.",新規 {{%1}} を開始します。<br>新しい %1 名を入力してください。<br>リストにない場合は、キーボードで入力してください。
+FALSE,160,dm,dm-newstage,"Close the current stage and open the next stage.<br>Please enter a new stage name.<br>If it is not on the list, please enter it with the keyboard.",現在の工程を閉じて次の工程を開きます。<br>新しい工程名を入力してください。<br>リストにない場合は、工程名を入力してください。
+FALSE,161,dm,dm-newassign,We finish the job for {{%1}} and make it editable by other users.<br>It is possible to assign the next user.<br>To assign please choose a name from the list or enter the user name directly.<br>Please input if there is a message to send.,カット{{%1}}の作業を終了して、他のユーザが編集可能な状態にします。<br>次の担当者を指名することが可能です。<br>指名する場合はリストから名前を選ぶか、または直接ユーザ名を入力してください。<br>申し送りメッセージがあれば、入力してください。
+FALSE,168,dm,dm-000,"nas- library is required.<br>Please run the ""nasStartup.jsx"".",nasライブラリが必要です。<br>nasStartup.jsx を実行してください。
+FALSE,169,dm,dm-001,"The effect is limited to the session.<br> If you need record, please click Save button below.",このパネルの変更はセッション限りです。記録が必要な場合は下のボタンで保存してください。
+FALSE,170,dm,dm-002,Switching the active layer with the movement of animation frames<br>(only valid when using psAxe),フレーム移動時にアクティブレイヤの移動をする<br>(エクステンション使用時のみ有効)
+FALSE,171,dm,dm-003,Dialog to create a new file,新規ファイル作成ダイアログ
+FALSE,172,dm,dm-004,PsAxe use the advanced features when you create a new document,新規ドキュメント作成時にアニメ拡張機能を使う
+FALSE,173,dm,dm-005,Can not drop to zero because the number of entries.,エントリ数が0になるので削除できません。
+FALSE,175,dm,dm-007,Load the saved settings. Current settings will be overwritten.,保存中の設定を読み込みます。現在の設定は上書きされます。
+FALSE,178,dm,dm-010,Use the opacity key to the head movement (timeline),ヘッド移動に不透明度キーを使用(timeline)
+FALSE,179,dm,dm-011,frame skip (timeline),フレームスキップ(timeline)
+FALSE,180,dm,dm-013,use difference mode when peg image placement,タップ画像配置時に差の絶対値にする
+FALSE,181,dm,dm-014,use semi-transparent when picture-frame arrangement,フレーム画像配置時に半透明にする
+FALSE,182,dm,dm-015,There is the same name of the layer.<br> Layer after the second will not be subject to the sort.,同名のレイヤがあります。<br>二つ目以降のレイヤは並び替えの対象になりません。
+FALSE,190,dm,dm-019,specify the file name for export,書き出しのファイル名を指定してください
+FALSE,191,dm,dm-020,choose eXposure sheet to read,読み込むタイムシートを選んでください
+FALSE,192,dm,dm-021,Please select eXposure sheet file.,タイムシートファイルを選択してください。
+FALSE,194,dm,dm-024,"Information was recorded in the personal area : {{%1}} pieces of data has been cleared.<br>The current information is located on the memory.<br>Data is initialized at the time of application restart.<br>If you want to initialize, please restart the application without saving.",個人領域に記録した情報 :{{%1}} 個のデータをクリアしました。<br>現在の情報は、メモリ上にあります。<br>データはアプリケーション再起動の際に初期化されます。<br>初期化を希望する場合は、保存せずにアプリケーションを再起動してください。
+FALSE,195,dm,dm-025,please choose Folder to import.,読み込むフォルダを指定してください
+FALSE,196,dm,dm-026,please choose Folder to export,書き出しフォルダを指定してください
+FALSE,200,dm,dm-backupdone,current data has been saved in the backup area,バックアップ領域に現在のデータを退避しました
+FALSE,201,dm,dm-backupnodata,no data in the backup area,バックアップ領域にデータがありません
+FALSE,202,dm,dm-backupclear,Cleared backup area,バックアップ領域をクリアしました
+FALSE,203,dm,dm-unimplemented,this feature has not been implemented yet,この機能はまだ実装されていません
+FALSE,205,dm,dm-askuserinfo,please enter user name and e-mail address.,ユーザ名とメールアドレスを入力してください。
+FALSE,206,dm,dm-cookieremoved,"I deleted the cookie. <br>In order to reset the value, reloading the page is necessary.<br>It will be reloaded with [OK].",クッキーを削除しました。<br>値をリセットするには、ページの再読込みが必要です。<br>[OK]で再読込みします。
+FALSE,207,dm,dm-alertmenytracks,The number of specified tracks is very large.<br>Automatic generation of track name is up to 'Z'.,止めないけど…そんなにレイヤが多いとツライよ<br>レイヤ名を自動でつけるのは「Z」までなので<br>その先は自分でつけてね。
+FALSE,208,dm,dm-alertcheckinfail,Check-in failed.<br>please check the status of document,作業開始に失敗しました<br>ドキュメントの状態を確認してください
+FALSE,209,dm,dm-alertcheckoutfail,Check-out failed.<br>please check the status of document,作業終了に失敗しました<br>ドキュメントの状態を確認してください
+FALSE,210,dm,dm-alertdatabusy,undefined,他のユーザが作業中です<br>このカットを作業することはできません
+FALSE,211,dm,dm-alertcantactivate,You can not work on this data. <br>Please try Check-in procedure,このデータで作業する事はできません。<br>作業開始手続を試してみてください
+FALSE,212,dm,dm-alertcantdeactivate,Work cannot deactivate.<br>This is not active data,作業保留できません<br>これは作業中のデータではありません
+FALSE,213,dm,dm-alertcantcheckout,Work cannot Chack-out.<br>This is not active data,作業終了できません<br>これは作業中のデータではありません
+FALSE,214,dm,dm-alertfailauthorize,Server authentication failed.<br>Please check ID and password,サーバ認証に失敗しました<br>IDとパスワードを確認してください
+FALSE,218,dm,dm-tllabelrename,Change timeline label.,タイムラインラベルを変更します。
+FALSE,219,dm,dm-renamelabels,"Please specify a new label name set. <br>The shortfall, excess will be ignored.",新しいラベル名セットを指定してください。<br>不足分、超過分は無視されます。
+FALSE,220,dm,dm-renamelabel,Please specify a new label.,新しいラベルを指定してください。
+FALSE,221,dm,dm-readonly,You can not edit this document at the moment.<br>To change the document please check in and start your job.,現在ドキュメントは編集できません。<br>ドキュメントを変更するためにはチェックインしてジョブを開始してください。
+FALSE,223,dm,dm-tltagedit,Edit the note text of the track.,トラックの注釈を編集します。
+FALSE,40,fileformat,documenthtml,HTML document,HTML書類
+FALSE,41,fileformat,documentxmap,xMap document,xMap書類
+FALSE,42,fileformat,documentxps,Xps document,Xps書類
+FALSE,43,fileformat,documenttdts,Tdts document,TDTS書類
+FALSE,44,fileformat,documentxdts,Xdts document,XDTS書類
+FALSE,45,fileformat,documentard,ARD document,ARD書類
+FALSE,46,fileformat,documentardj,ARDJ document,ARDJ書類
+FALSE,47,fileformat,documentcsv,Stylos-CSV document,Stylos-CSV書類
+FALSE,48,fileformat,documentsts,STS document,STS書類
+FALSE,49,fileformat,documenttsheet,t-Sheet document,t-Sheet書類
+FALSE,50,fileformat,documenttvp,TVP-csv document,TVPaint-csv書類
+FALSE,241,panel,importdata,import data,ローカルドキュメントを開く
+FALSE,242,panel,importdataformlocalfs,import from localFS,ローカルドキュメントを開く(ファイル)
+FALSE,243,panel,exportfs_description,export to localFS,保存（ファイル）
+FALSE,245,panel,callecho,Save via CGI,ダウンロード保存
+FALSE,246,panel,callecho_description,download exported data,CGI経由でローカルに保存（要CGI設定）
+FALSE,252,panel,importexport,Import/Export,読込/書出
+FALSE,253,panel,importexport_description,open date Import/Export panel,読み込み書き出しパネルを開く
+FALSE,254,panel,docinfo,Document prop,シート情報
+FALSE,259,panel,authpnl,auth panel,認証パネル
+FALSE,260,panel,authpnl_description,authorize panel ON/OFF,認証パネルを開く/閉じる
+FALSE,321,panel,pref,Pref,環境設定
+FALSE,322,panel,pref_description,preferences,各種環境設定
+FALSE,323,panel,repositoryinfo,share information,共有情報
+FALSE,324,panel,repositoryinfo_description,show repository information,リポジトリ情報を見る
+FALSE,325,panel,memoedit,edit note,メモ編集
+FALSE,344,panel,soundpnl,sound,音声編集
+FALSE,345,panel,soundpnl_description,Snd,音響パネル開/閉
+FALSE,346,panel,filepnl,filePanel,ドキュメントセレクタ
+FALSE,347,panel,filepnl_description,selector ON/OFF,セレクタ開/閉
+FALSE,350,panel,pmenu,pulldown menu,メインメニュー
+FALSE,351,panel,pmenu_description,Show/hide the main menu,メインメニュー表示/非表示
+FALSE,352,panel,accountbox,service account,サービスアカウント
+FALSE,353,panel,accountbox_description,service account show/hide,サービスアカウント表示/非表示
+FALSE,356,panel,toolbar,toolbarHeader,ツールバー
+FALSE,357,panel,toolbar_description,ツールバー表示/非表示,ツールバー表示/非表示
+FALSE,360,panel,pmcontrol,product control bar,制作管理バー
+FALSE,361,panel,pmcontrol_description,product control bar show/hide,制作管理バー表示/非表示
+FALSE,362,panel,tccontrol,time counter,カウンター
+FALSE,363,panel,tccontrol_description,time counter show/hide,カウンター表示/非表示
+FALSE,364,panel,inputcontrol,input box,入力ボックス
+FALSE,365,panel,inputcontrol_description,input box show/hide,入力ボックス表示/非表示
+FALSE,366,panel,sheetheader,sheetHeaderTable,シートヘッダ
+FALSE,367,panel,sheetheader_description,Show/hide sheet header,シートヘッダ表示/非表示
+FALSE,374,panel,dbgcons,debugConsole,デバッグコンソール
+FALSE,375,panel,dbgcons_description,debug_ON,デバッグコンソールON/OFF
+FALSE,379,panel,viewsource,sourceViewer,ソース
+FALSE,380,panel,viewsource_description,view source,ソース閲覧
+FALSE,524,panel,xsheetprperties,xSheet properties,タイムシート情報
+FALSE,354,skb,skb,softwareKB,ソフトウェアキーボード
+FALSE,355,skb,skb_description,software keyboard OPEN/CLOSE,ソフトウェアキーボード開/閉
+FALSE,482,skb,skb-home_description,to top,先頭へ
+FALSE,483,skb,skb-home,HOME,HOME
+FALSE,484,skb,skb-end_description,to end,カット尻へ
+FALSE,485,skb,skb-end,END,END
+FALSE,488,skb,skb-12_description,esc,esc
+FALSE,489,skb,skb-13_description,undo,undo
+FALSE,490,skb,skb-14_description,redo,redo
+FALSE,491,skb,skb-15_description,bs,bs
+FALSE,492,skb,skb-07_description,7,7
+FALSE,493,skb,skb-08_description,8,8
+FALSE,494,skb,skb-09_description,9,9
+FALSE,495,skb,skb-04_description,4,4
+FALSE,496,skb,skb-05_description,5,5
+FALSE,497,skb,skb-06_description,6,6
+FALSE,498,skb,skb-01_description,1,1
+FALSE,499,skb,skb-02_description,2,2
+FALSE,500,skb,skb-03_description,3,3
+FALSE,501,skb,skb-00_description,0,0
+FALSE,502,skb,skb-10_description,openPln,openPln
+FALSE,503,skb,skb-11_description,closePln,closePln
+FALSE,504,skb,skb-pgup_description,page back,１ページもどる
+FALSE,505,skb,skb-pgup,Pgup,Pgup
+FALSE,506,skb,skb-pgdn_description,page fwd,１ページ進む
+FALSE,507,skb,skb-pgdn,Pgdn,Pgdn
+FALSE,508,skb,skb-up_description,UP,UP
+FALSE,509,skb,skb-up,△,△
+FALSE,510,skb,skb-right,>>,>>
+FALSE,511,skb,skb-down,▽,▽
+FALSE,512,skb,skb-spinbwd,↑spin↑,↑spin↑
+FALSE,513,skb,skb-spinfwd,↓spin↓,↓spin↓
+FALSE,514,sndpnl,soundpnlincrframe,▲,▲
+FALSE,515,sndpnl,soundpnldecrframe,▼,▼
+FALSE,516,sndpnl,soundpnlget,↑：get,↑：取込
+FALSE,517,sndpnl,soundpnlput,↓：put,↓：適用
+FALSE,518,sndpnl,soundpnlfix,fix,確定
+FALSE,1,,about,about Remaping,りまぴんについて
+FALSE,2,,aboutof,about {{%1}},{{%1}} について
+FALSE,4,,aborted,process aborted.,処理を中断しました
+FALSE,5,,action,Action,動作設定
+FALSE,6,,activateupperlayer,activate upper layer,上位レイヤをアクティブ
+FALSE,19,,animationframeselectall,animation frame selectAll,アニメフレーム全選択
+FALSE,20,,atcreatenewlayer,to Create a new Layer,新規レイヤ作成時に
+FALSE,21,,backgroundcolor,background color,背景色
+FALSE,52,,drawingfunctions,drawingFunctions,作画機能設定
+FALSE,53,,drawsettings,DrawSettings,作画設定
+FALSE,54,,duplicateanimationframe,duplicate animation frame,アニメフレームを複製
+FALSE,56,,elementsfilter,footages,素材フィルタ
+FALSE,58,,failed,Processing failed,処理できませんでした
+FALSE,64,,imedit,ImputMedias,入力メディア編集
+FALSE,66,,imset,resist imputmedia,入力メディア登録
+FALSE,67,,inputdocname,Specify the document name,ドキュメントの名前を入力
+FALSE,68,,install,install,インストール
+FALSE,70,,layerclassify,layerClassify,レイヤ仕分
+FALSE,71,,layercontrol,layerControl,レイヤコントロール
+FALSE,72,,layerrename,layer rename,レイヤ名変更
+FALSE,75,,makenewxps,make new eXposureSheet,新規タイムシートを作成します
+FALSE,76,,modechange,mode change,モード切替
+FALSE,77,,medias,Medias,メディア設定
+FALSE,78,,newlayerbgcolor,bgColor of new layer,新規レイヤの背景色
+FALSE,79,,newxps,new eXposureSheet,新規タイムシート
+FALSE,80,,noanimationframes,no Animation Frames,アニメーションフレームがありません
+FALSE,81,,nodocument,no document,ドキュメントがありません
+FALSE,82,,nolayers,no layer for deploying,展開するレイヤがありません
+FALSE,83,,noremovedata,no data to remove.,削除するデータがありません
+FALSE,84,,nosvaedata,no data to save.,保存するデータがありません
+FALSE,85,,notarget,no target items,対象アイテムがありません
+FALSE,86,,nosigninservice,(You are not signed in to the service),(サービスにサインインしていません)
+FALSE,87,,omedit,OutputMedias,出力メディア編集
+FALSE,88,,omset,resist outputmadia,出力メディア登録
+FALSE,92,,overlaybgcolor,bgColor of overlay,修正レイヤの背景色
+FALSE,93,,overridealpha,overrideAlpha,アルファチャンネル優先
+FALSE,94,,overridecolorkey,overrideColorKey,カラーキー優先
+FALSE,97,,previewcontrol,preview Control,プレビューコントロール
+FALSE,98,,processing,proscessing…,処理中…
+FALSE,101,,removeanimationframe,remove animation frame,アニメフレームを削除
+FALSE,102,,resetsmartobj,reset smartObj,スマートオブジェクトをリセット
+FALSE,103,,reverseanimationframe,reverse animation frame,アニメフレームを反転
+FALSE,104,,requiresnumber,Please specify a numerical value,数値を指定してください
+FALSE,105,,requirespositiveinteger,Please specify a positive value,正の数がいいなぁ…
+FALSE,106,,requiresstrings,Please specify String value,文字列で指定してほしいのですョ!
+FALSE,107,,statusedit,editting,編集中
+FALSE,108,,statusview,readonly,閲覧
+FALSE,109,,productmanagement,management,制作管理
+FALSE,111,,saveandclose,save and close,保存して閉じる
+FALSE,112,,savepsdplease,Please save the document in psd format.,ドキュメントをpsd形式で保存してください。
+FALSE,113,,savetodonloadfolder,save to download folder,ダウンロードフォルダに保存
+FALSE,114,,savetodonloadfolderswap,Save {{%1}} to the download folder,ダウンロードフォルダに {{%1}} を保存
+FALSE,115,,servicenode,service node,共有サーバ
+FALSE,116,,repositoryname,share name,共有名
+FALSE,117,,repositoryowner,share owner,共有オーナー
+FALSE,120,,setguidelayer,setGuideLayer,ガイドレイヤにする
+FALSE,121,,sheetlength,xSheetLength,シート１枚の長さ
+FALSE,122,,shortcutkey,shartcut key scripts,ショートカットツール
+FALSE,123,,sounds,Sounds,サウンド編集
+FALSE,128,,timelinerename,timeline rename,タイムライン名変更
+FALSE,129,,tagedit,timeline tag edit,タイムラインタグ編集
+FALSE,131,,userinfo,userInfo,作業者の情報
+FALSE,133,,withcolorkey,withColorKey,カラーキーで白を透過
+FALSE,134,,withsmoothing,withSmoothing,スムージングする
+FALSE,135,,withtransparent,with transparent,透過させる
+FALSE,136,,worktitles,workTitles,作品タイトル登録
+FALSE,138,,xsheetinfo,xSheet information,タイムシート情報
+FALSE,154,,addnewscene,add new scene,新規カット追加
+FALSE,155,,reseiptstage,check out job/check in new stage,作業検収/新規工程
+FALSE,156,,toprefix,to:,
+FALSE,157,,topostfix,,様へ
+FALSE,225,,newdoc,new document,新規書類
+FALSE,226,,newdoc_description,add new document,新規ドキュメントを作成
+FALSE,227,,browse,selector,書類選択
+FALSE,228,,browse_description,select document,ドキュメントを選択
+FALSE,230,,discard_description,discard job,編集を破棄してドキュメントを閉じる
+FALSE,235,,abort_description,abort production entry,制作を中断する
+FALSE,237,,branch_description,branch production-line,制作ラインを分岐
+FALSE,244,,exportfsps,export as,別名で保存（ファイル）
+FALSE,247,,downloadxps_description,download exported data(XPS),ローカルに保存（XPS）
+FALSE,248,,downloadtdts,download Tdts,ダウンロード保存(TDTS)
+FALSE,249,,downloadtdts_description,download exported data(TDTS),ローカルに保存（TDTS）
+FALSE,250,,downloadxdts,download Xtds,ダウンロード保存(XDTS)
+FALSE,251,,downloadxdts_description,download exported data(XTDS)）,ローカルに保存（XTDS）
+FALSE,257,,downloadhtml,download HTML,ダウンロード保存(HTML)
+FALSE,258,,downloadeps,download Eps,eps画像ダウンロード
+FALSE,261,,authorize,Authorize,認証
+FALSE,262,,authorize_description,sign in/out,サインイン/アウト
+FALSE,263,,menuroot,top page,トップページ
+FALSE,264,,menuroot_description,back to title list,作品一覧へ戻る
+FALSE,265,,menuproducts,episode,エピソード
+FALSE,266,,menuproducts_description,back to opus list,制作話数一覧へ戻る
+FALSE,267,,documentlist,document list,カット一覧
+FALSE,268,,documentlist_description,back to document list,カット一覧へ戻る
+FALSE,270,,selectall_description,select all frames in a track,トラックを全フレーム選択
+FALSE,271,,renametlt,renameTLT,ラベル変更
+FALSE,272,,renametlt_description,rename timeline label,タイムラインの名前変更
+FALSE,273,,edittn,edit track tag,タグ編集
+FALSE,274,,cleartlt,clearTLT,一列クリア
+FALSE,275,,clearsheet,clear all,シートクリア
+FALSE,276,,clearsheet_description,clear xSheet,シートをクリア
+FALSE,277,,insertblank,insert blank,カラコマ挿入
+FALSE,278,,insertblank_description,insert blank cells,空白データを挿入して以降後送
+FALSE,279,,blockremove,block delete,ブロック削除
+FALSE,280,,blockremove_description,block delete contents,選択範囲を削除して間を詰める
+FALSE,281,,addsoundtrack,add soundtrack,音声トラック追加
+FALSE,282,,addsoundtrack_description,add soundtrack timeline,右に音声トラックを追加
+FALSE,283,,addstiltl,addStilTL,静止画を追加
+FALSE,284,,addstiltl_description,add still-image timeline,右に静止画トラックを追加
+FALSE,285,,addreplacementtl,add cell TL,セルを追加
+FALSE,286,,addreplacementtl_description,add replacement timeline right,右側にタイムライン追加
+FALSE,287,,addcameratl,add cameraTL,カメラを追加
+FALSE,288,,addcameratl_description,add camera timeline,右にカメラトラックを追加
+FALSE,289,,addgeometrytl,add stagework TL,ステージワークを追加
+FALSE,290,,addgeometrytl_description,add stagework timeline right,右にステージワークを追加
+FALSE,291,,addsfxtl,add sfx TL,効果を追加
+FALSE,292,,addsfxtl_description,add sfx timeline right,右に効果トラックを追加
+FALSE,293,,inserttl,insert TL,トラック挿入
+FALSE,294,,inserttl_description,insert timelines left,左にタイムラインを挿入
+FALSE,295,,deletetl,delete TL,トラック削除
+FALSE,296,,deletetl_description,remove timelines,指定のタイムラインを削除
+FALSE,297,,reformattl,reformat TLT,タイムライン整形
+FALSE,298,,reformattl_description,reformat timelines,タイムラインを１列整形
+FALSE,299,,reformatxsheet,reformat xSheet,シート整形
+FALSE,300,,reformatxsheet_description,reformat xSheet,シートを整形
+FALSE,301,,simplifytl,simplify TL,トラック単純化
+FALSE,302,,simplifytl_description,simplify timelines,タイムラインの整形解除
+FALSE,303,,simplifysheet,simplify xSheet,シート単純化
+FALSE,304,,simplifysheet_description,simplify the entire timesheet,タイムシート全体の整形を解除
+FALSE,305,,pushbackup,push to backup,バックアップ更新
+FALSE,306,,pushbackup_description,push current data to backup regian,バックアップエリアにデータを退避
+FALSE,307,,restorebackup,restoreBackup,バックアップ復帰
+FALSE,308,,restorebackup_description,restore from backup region,バックアップエリアからデータを復帰
+FALSE,309,,clearbackup,clearBackup,バックアップ削除
+FALSE,310,,clearbackup_description,clear backup region,バックアップエリアをクリア
+FALSE,312,,importreference_description,import to referenece area,参照エリアにデータ読込
+FALSE,313,,copytoreference,copy to Ref,参照エリアへ
+FALSE,314,,copytoreference_description,copy to referenece area,参照エリアへ転記
+FALSE,315,,copyfromreference_description,copy from reference area,参照エリアから転記
+FALSE,316,,clearreference,clear Ref,参照クリア
+FALSE,317,,clearreference_description,clear reference area,参照エリア消去
+FALSE,318,,buildactionsheet,make action-sheet,アクションシート作成
+FALSE,319,,buildactionsheet_description,make old-style Action-sheet,原画アクションシートを作成
+FALSE,326,,reload_description,application reload,アプリケーションを再読込
+FALSE,327,,previousver,previous ver,前バージョン
+FALSE,330,,restrictionmode_description,change input restriction mode,入力制限モード切り替え
+FALSE,331,,managementmode,management mode,管理モード
+FALSE,332,,managementmode_description,chamge management mode,管理モード切り替え
+FALSE,334,,editmode_description,change view mode page/scroll,ページ/スクロール切り替え
+FALSE,335,,columns,columns,段組
+FALSE,336,,columns_description,single|doble column,一|二段組
+FALSE,337,,chgloacle,change locale,言語切替
+FALSE,338,,chgloacle_description,change language resource,言語リソース切替
+FALSE,339,,zoom,zoom,ズーム
+FALSE,340,,zoom_description,zoomChange,ズーム切替
+FALSE,341,,unzoom,100%,100%
+FALSE,342,,unzoom_description,zoom100%,ズーム解除
+FALSE,370,,memoarea,memo,メモ欄
+FALSE,371,,memoarea_description,memo area show/hide,メモ欄表示/非表示
+FALSE,373,,referencearea_description,reference area show/hide,参照欄表示/非表示
+FALSE,376,,dbgmode,dbg ON/OFF,デバッグON/OFF
+FALSE,377,,dbgmode_description,change debug mode,デバッグモード切り替え
+FALSE,381,,addangles,△,△
+FALSE,382,,addangles_description,add Angleblackets,矢囲い
+FALSE,383,,addbrackets,□,□
+FALSE,384,,addbrackets_description,add Brackets,角括弧
+FALSE,385,,addcircle,◯,◯
+FALSE,386,,addcircle_description,add Circle,丸囲い
+FALSE,387,,camera,camerawork,カメラワーク
+FALSE,388,,camera_description,選択範囲をカメラワークに,選択範囲をカメラワークに
+FALSE,390,,footstamp_description,diff ON/OFF,差分機能ON/OFF
+FALSE,391,,paintfs,paint diff,差分表示
+FALSE,392,,paintfs_description,paint diff cell background,参照エリアとの差分を表示
+FALSE,393,,clearfs,diff clear,差分クリア
+FALSE,394,,clearfs_description,erace cell diff,差分表示をクリア
+FALSE,398,,decrementnum,--,--
+FALSE,399,,decrementnum_description,decrement number,セルを繰り下げる
+FALSE,404,,incrementnum,++,++
+FALSE,405,,incrementnum_description,incremant number,セルを繰り上げる
+FALSE,406,,interpsign,interporation sign,補間記号
+FALSE,409,,printhtml,page for printout,印刷ページ
+FALSE,410,,printhtml_description,open new page for printout,印刷用ページを開く
+FALSE,412,,redo_description,redo,やり直しのやり直し
+FALSE,413,,transition_description,Selections to transitions,選択範囲をトランジションに
+FALSE,415,,undo_description,undo,やり直し
+FALSE,417,,vbar_description,set vertical bar,選択範囲に縦線
+FALSE,419,,wbar_description,set vertical wave,選択範囲に波線
+FALSE,420,,loginstatus_button_description,change user,ユーザ切り替え
+FALSE,421,,activelvl_description,convert AEkey,AEキー変換
+FALSE,423,,fct_description,jump to specified frame,変更するとジャンプ 数字だけはコマ数
+FALSE,424,,spin_v_description,spin-value,スピン値
+FALSE,425,,v_up_description,spin-value up,SPIN増
+FALSE,426,,v_dn_description,spin-value down,SPIN減
+FALSE,427,,spincklb_description,set spin-value selection,選択範囲をスピン指定にする
+FALSE,428,,inputbox_description,input data,シートにデータを入力します。
+FALSE,430,,newentry_description,Register the current document in the repository.,現在のタイムシートを共有に登録
+FALSE,431,,checkin_description,check in job,作業開始
+FALSE,433,,checkout_description,checkout,作業の終了
+FALSE,437,,receipt_description,Close the finished stage and start the next stage.,作業終了した工程を閉じて次の工程を開始
+FALSE,442,,merge_description,merge prpduction-line,分岐したラインを収束
+FALSE,443,,datapnl,データ入出力,データ入出力
+FALSE,444,,datapnlcaption,(Copy and paste the data into this well),(このウェルにデータをコピーペーストします)
+FALSE,445,,exportxpswindow,write out in a separate window,別ウィンドウに書き出し
+FALSE,446,,exportxpswindow_description,for saving,保存用に書き出し
+FALSE,447,,exporthtmlwindow,Export in HTML in a separate window,別ウィンドウにHTMLで書き出し
+FALSE,448,,exporthtmlwindow_description,export HTML,HTML書き出し
+FALSE,449,,sampleloaderselect,select sample data,サンプル読み込み
+FALSE,450,,dataloaderimport,read+import,読込＋取込
+FALSE,451,,dataloaderref,set reference,参照取込
+FALSE,456,,downloadardj,download Ardj,ダウンロード保存(ARDJ)
+FALSE,458,,downloadard,download Ard,ダウンロード保存(ARD)
+FALSE,459,,downloadtsheet,download exported data(TSheet),TSheet
+FALSE,460,,downloadardj,download exported data(ARDJ),ローカルに保存（ARDJ）
+FALSE,461,,downloadstyloscsv,download exported data(Stylos-csv),ダウンロード保存(Stylos-csv)
+FALSE,463,,addnewobject,add new {{%1}},新規{{%1}}作成
+FALSE,465,,register_description,Register the current document in the repository,現在のドキュメントをリポジトリに登録します
+FALSE,467,,scnnew,new,作成
+FALSE,525,,scnlayers_description,layer counts,重ね数の変更を行います
+FALSE,526,,scnlayerslbls_description,label informations,ラベルを指定します
+FALSE,527,,scnlayerupdate_description,track preference,セルの詳細を編集します
+FALSE,529,,refresh_description,Update list with latest information,リストを最新の情報に更新
+FALSE,531,,savesetting,save setting,設定を保存
+FALSE,532,,deletesetting,remove setting,設定を削除
+FALSE,539,,selectcolums,2 columns/page,1ページ2列
+FALSE,550,,updatescitarget,Directly load,タイムシートへ読込
+FALSE,551,,updatescitarget_description,load into dope sheet.,直接タイムシートへ
+FALSE,555,,forgetwarning,Do not show this dialog in the future.,今後このダイアログを表示しない
+FALSE,559,,save_description,data save to repository,リポジトリにデータを保存
+FALSE,561,,activate_description,resume the job.,休止中の作業を再開
+FALSE,562,,deactivate_description,deactivate job,作業休止
+FALSE,564,,exportfsps_description,export to localFS other format,名前をつけて保存
+FALSE,565,,downloadxps,download Xps,タイムシートをダウンロード
+FALSE,566,,docinfo_description,show document properties,書類の情報をみる
+FALSE,569,,downloadhtml_description,download exported data(HTML),ローカルに保存(HTML)
+FALSE,570,,downloadeps_description,download exported data(EPS),ローカルに保存(EPS)
+FALSE,571,,editltn_description,edit timeline tag,タイムライントラックタグ編集
+FALSE,572,,cleartlt_description,clear timeline track,トラックを消去
+FALSE,573,,copyfromreference,copy from Ref,参照エリアから複写
+FALSE,577,,stw_description,open stopwatch,ストップウォッチ機能を開く
+FALSE,581,,pageinfo,page info,ページ情報
+FALSE,582,,frompostfix,,より
+FALSE,583,,fromprefix,form:,
+FALSE,585,,nodechart_description,open node chart,ノードチャートを開く
+FALSE,587,,jobselector_description,select job,ジョブを選択
+FALSE,589,,assignmessage_description,open assign:message,指名:申し送りパネルを開く
+FALSE,,,chgrepository,Change repositories,リポジトリ変更
+FALSE,,,chgrepository_description,Switch repositories,リポジトリを切り替えます
+FALSE,,,repositorysearch_description,Searching for documents in the repository,リポジトリ内でドキュメントを検索
+FALSE,,,windowclose_description,Close this window. ,このウインドウを閉じる
+FALSE,,,xpstbackgroundcolor_description,Set timesheet background color.,タイムシート背景色を指定`;
+var dat = csvSimple.parse(source);
+var resJA={};
+var resEN={};
+var currentPrefix = '';
+for (var i = 0; i< dat.length;i++){
+	if(currentPrefix != dat[i][2]){
+		resJA['######'+i]=dat[i][2];
+		resEN['######'+i]=dat[i][2];
+		currentPrefix = dat[i][2];
+	}
+	resJA[dat[i][3]]=dat[i][5];
+	resEN[dat[i][3]]=dat[i][4];
+}
+console.log(JSON.stringify(resJA,false,2));
+console.log(JSON.stringify(resEN,false,2));

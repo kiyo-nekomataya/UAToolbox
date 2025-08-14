@@ -1,0 +1,60 @@
+﻿/*sbdConvert | sbdEditor*/
+applicationMenu
+
+navigationMenu
+	pgMove
+	reloadSbd
+	goHead
+	bwd10
+	bwd
+	fwd
+	fwd10
+	goTail
+	bookmarkSbd
+
+document
+	openDocumentStbd
+	sbde_setImege
+	sbde_saveAs
+	sbde_recentFiles
+	sbde_reloadDocument
+
+editMenu
+	sbde_selectColumn
+	sbde_selectShot
+	sbde_cut
+	sbde_copy
+	sbde_paste
+	--------
+	sbde_preference
+
+showMenu
+	sbde_player
+	sbde_page
+	
+	sbde_console
+
+sbde_tools
+	sbde_navigationPost
+	sbde_toolBarMenu
+	
+
+sbde_options
+	
+	
+	
+	
+	
+
+playerMenu
+	sbde_play_stop
+	sbde_setWorkAreaStart
+	sbde_setWorkAreaEnd
+	sbde_resetWorkArea
+	
+	
+	
+	
+	
+sbde_bookmarks
+	

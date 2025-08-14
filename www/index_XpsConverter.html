@@ -1,0 +1,378 @@
+﻿<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xps data convert</title>
+
+<!-- スタイルシート　アプリ本体準拠-->
+<link href="template/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="template/remaping.css" type="text/css" rel=stylesheet>
+
+<!--  外部ライブラリ -->
+<script src=./nas/ext-lib/jquery-3.6.0.min.js></script>
+<script src=./nas/ext-lib/jquery-ui-1.13.1.custom/jquery-ui.min.js></script>
+<script src=./nas/ext-lib/ecl/ecl.js></script>
+
+<!-- システム汎用ライブラリ remaping.jsよりも前方でロードする必要あり -->
+<script src=./nas/lib/config.js></script>
+<script src=./nas/lib/nas_common.js></script>
+<script src=./nas/lib/nas_AnimationValues.js></script>
+<script src=./nas/lib/pmio.js></script>
+<script src=./nas/lib/storyboard.js></script>
+<script src=./nas/lib/mapio.js></script>
+<script src=./nas/lib/xpsio.js></script>
+<script src=./nas/lib/cameraworkDescriptionDB.js></script>
+
+<script src=./nas/lib/etc/_pmdb_/configPMDB.js></script>
+
+<!--     汎用ライブラリのためソース分離 一括マージ可能      -->
+<script src=./nas/lib/postscriptConvert.js></script>
+<script src=./nas/lib/lib_AEK.js></script>
+<script src=./nas/lib/lib_STS.js></script>
+<script src=./nas/lib/lib_TVP.js></script>
+<script src=./nas/lib/lib_stylosCSV.js></script>
+<script src=./nas/lib/lib_TSH.js></script>
+<script src=./nas/lib/lib_ARD.js></script>
+<script src=./nas/lib/lib_ARDJ.js></script>
+<script src=./nas/lib/lib_TSX.js></script>
+<script src=./nas/lib/lib_TDTS.js></script>
+
+<script src=./nas/lib/jquery-addon.js></script>
+<script src=./nas/lib/nas_common_HTML.js></script>
+
+
+
+
+<script src=./nas/scripts/xpsConverter/XpsConverter.js></script>
+<script>
+ $(function() {
+        var localFileLoader = $("#localFileLoader");
+        // File API が使用できない場合は諦めます.
+        if(!window.FileReader) {
+          alert("File API がサポートされていません。");
+          return false;
+        }
+        // イベントをキャンセルするハンドラです.
+        var cancelEvent = function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        }
+        // dragenter, dragover イベントのデフォルト処理をキャンセルします.
+        localFileLoader.bind("dragenter", cancelEvent);
+        localFileLoader.bind("dragover", cancelEvent);
+        // ドロップ時のイベントハンドラを設定します.
+        var handleDroppedFile = function(event) {
+          // ドロップされたファイル配列を取得してファイルセレクタへ送る
+          // 同時にonChangeを打つ
+          document.getElementById('myCurrentFile').files = event.originalEvent.dataTransfer.files;
+          // デフォルトの処理をキャンセルします.
+          cancelEvent(event);
+          return false;
+        }
+        // ドロップ時のイベントハンドラを設定します.
+        localFileLoader.bind("drop", handleDroppedFile);
+});
+</script>
+</head>
+<body
+onLoad="initConverter({});"
+>
+
+/**
+    データコンバータ
+    XPSオブジェクトのコンバータ機能を抜き出して作成
+
+include nas_common.js
+include 
+include 
+include 
+*/
+<!--	シート取り込み	-->
+<div class=optionPanel- id=optionPanelData->
+<strong id=dataPnl>データ入出力</strong> <span id=dataPnlcaption>(このウェルにデータをコピーペーストします)</span>
+<hr>
+<div><form name=cgiSample id=cgiSample> Sample data :
+<select name=sampleSelect id=sampleSelect　>
+
+ <option value=1>XPS
+ <option value=2>XPS-修飾メモ付き
+ <option value=3>AEキー
+ <option value=4>AERemap
+ <option value=7>cellRemap
+ <option value=5>T-Sheet
+ <option value=6>Stylos-csv
+ <option value=8>TVP-csv1.0
+ <option value=9>TVP-csv1.1
+</select>
+<button
+    id=sampleLoaderSelect
+    onClick='getSample(1*(document.cgiSample.sampleSelect.value));return false;'
+>サンプル読み込み</button>
+<!-- <a href="javascript:void(0);" onClick="getSample(1)" id=sample1 title="xps">XPS-1</a> |
+ <a href="javascript:void(0);" onClick="getSample(2)" id=sample2 title="xps(修飾メモ付き)">XPS-2</a> |
+ <a href="javascript:void(0);" onClick="getSample(3)" id=sample3 title="AE-Key">AE-Key</a> |
+ <a href="javascript:void(0);" onClick="getSample(4)" id=sample4 title="AE-Remap">AERemap</a> |
+ <a href="javascript:void(0);" onClick="getSample(7)" id=sample7 title="cell-Remap">cellRemap</a> |
+ <a href="javascript:void(0);" onClick="getSample(5)" id=sample5 title="T-Sheet">TSheet</a> |
+ <a href="javascript:void(0);" onClick="getSample(6)" id=sample6 title="RETAS-Stylos-csv">Stylos-csv</a>
+-->
+</form>
+</div>
+<hr>
+<div align=right></div>
+<span style="text-align:center">
+
+<div id=localFileLoader style='border-style:solid'><br><form id="dataLoader" name="dataLoader" method="post" action="javascript:void(0);" enctype="multipart/form-data"><br>
+<input type=file multiple="multiple" id=myCurrentFile name=XPSBody size=100 >
+</form><br></div>
+
+<form name=exportXps action="void(0);">
+<input type=button
+    id=dataLoaderSelectAll value="全選択" style="width:10%"
+	onClick="xUI.data_well.select()"
+><input	type=reset
+    id=dataLoaderReset value="リセット" style="width:10%"
+><input type=button
+	id=dataLoaderClear value="消去" style="width:10%"
+	onClick="xUI.data_well.value=''"
+><br />
+
+<textarea name=XPSBody id=data_well style="width:80%;height:128px"
+><1> </textarea> </textarea>
+
+<br>
+</form>
+<!--	シート取り込み	-->
+<script>
+<!--//test
+var overwriteTest={
+    "title"      :"たいとる"
+    ,"episode"    :"えぴそど"
+    ,"description":"さぶたいとる"
+    ,"create_user":"kiyo@nekomataya.info"
+    ,"update_user":"kiyo@nekomataya.info"
+};
+//    ,"cut"　　　　:"かっと"
+//    ,"time"　　　 :"2+21"
+function tes(){
+    xUI.importBox.read(document.getElementById('myCurrentFile').files,function(){
+        ;
+        alert('callback');
+//        コンバート済みデータが格納されている配列はxUI.importBox.selectedContents
+            for(var dix=0;dix<xUI.importBox.selectedContents.length;dix++){        
+                document.getElementById("xpsResult").innerHTML += '\t'+xUI.importBox.selectedContents[dix].getIdentifier() +'\n';
+                document.getElementById("xpsResult").innerHTML += xUI.importBox.selectedContents[dix].toString();
+                document.getElementById("xpsResult").innerHTML += '\n\n';
+            }
+    });
+}
+/**
+    処理関数
+    xUI.importBox.readに引数として与える処理関数のサンプル
+    以下のプロパティにアクセス可能
+        .targetContents:Array  [array of convert target Objects]
+            変換元データをまとめたオブジェクトの配列
+            name:ファイル名,
+            content:データソース,
+            xps:一次変換済み Object Xps
+        .selectedContents:Array [array of coverted Xps]
+            変換後のXpsオブジェクトの配列
+        .overwriteProps:Object {overwrite properties trailer object}
+            オプション・変換時に参照されるプロパティトレーラー    
+*/
+var userFunction=function(){
+    alert('user function');
+    console.log(xUI.importBox);
+    
+}
+-->
+</script>
+<div align=center>
+<button onClick="tes();" >
+⇓   キャッシュから再処理   ⇓
+</button><br>
+<textarea id="xpsResult" style="width:80%;height:256px"></textarea>
+</div>
+<div>
+<pre>
+          xUI.importBox.read(files,callback)
+        ファイルオブジェクトの配列を引数にしてインポートメソッドを呼び出す
+        読み出し成功したデータは、自動処理でコンバートが行われて　Xpsに変換後　targetContents[index].xps　として格納される
+        読み出しに失敗したファイルは、対応するtargetContents.xpsの内容がfalseでセットされるので、後ほどでも処理可能
+        
+        importBox.readメソッドで　ユーザ確認ダイアログが表示され、データの一括簡易編集が行われる
+
+        終了時に実行するコールバック関数を第二引数で渡す
+
+変換結果は xUI.importBox.selectedContents に変換済のXpsオブジェクトの配列として格納される。
+
+
+インポート可能なデータは以下のフォーマット
+各フォーマットごとに所定のライブラリを必要とする
+
+AEキーフレームテキスト  ./nas/lib/lib_AEK.js
+AERemap    ./nas/lib/lib_ARD.js
+cellRemap./nas/lib/lib_ARDJ.js
+T-Sheet./nas/lib/lib_TSH.js
+Stylos(ClipStudio)-csv ./nas/lib/lib_stylosCSV.js
+TVP-csv1.0/1.1 ./nas/lib/lib_TVP.js
+------
+
+ダイアログが表示されてユーザによる確認と編集が可能
+
+編集可能なプロパティは
+
+タイトル myXps.title
+エピソード myXps.opus , myXps.subtitle
+カット番号　myXps.scene , myXps.cut (UATの場合は　scene='';cut=カット番号;として扱って可)
+
+セルシスのCSVフォーマットは、トラック情報のみで　タイトル,エピソード、カット番号等の情報が含まれない
+サーバ上でインポートする場合は、必ずこれらの情報を補う必要がある。
+
+＊カットブラウズ画面にドラグした場合は、同エピソードでカット番号のみユーザに編集を許可する
+
+        以下は　ACTF2108では実装不要
+＊エピソードブラウザにドラグした場合は、同タイトルでエピソードとカット番号を要求
+＊ダッシュボードやタイトルブラウザにドラグした場合は　タイトル、エピソード、カット番号を要求する
+
+        以下本体アプリケーションの組み込みは未処理
+＊タイムシート編集画面にドラッグした場合は、タイムシートのトラックを置換する　ドラッグのターゲットを定める
+
+メモ：
+新規のタイトル、エピソード、カットが指定された場合はダイアログを表示。
+既存のタイトルをリストして、新規タイトルの登録を希望するか否かを確認する。
+ユーザのタイプミス等の可能性があるので、新規の登録を無条件で行ってはならない。
+また、新規のエレメントとしてサーバにエントリを行うためには、制作管理権限または　リポジトリのオーナー権限が必要
+
+
+   以下形式のオブジェクトで　overwriteProps を与えると固定プロパティの指定が可能
+    {
+        "title":"タイトル文字列",
+        "epispde":"エピソード文字列",
+        "description":" エピソードサブタイトル文字列",
+        "cut":"カット番号文字列",
+        "time":"カット尺文字列　フレーム数またはTC"
+    }
+    いずれのプロパテイも省略可能
+
+ initConverter(overwriteProps);
+</pre>
+
+
+
+</div>
+
+
+<!-- optionPanelSCI 
+     この下側が登録内容の編集ダイアログです
+     ファイル名から以下の情報を取得するようにトライします
+     タイトル
+     エピソード
+     サブタイトル（エピソードの　description）
+     カット番号（名称）
+     
+     分解不能な場合は、拡張子を除くファイル名全体がカット番号として認識されます。
+     
+     サーバでの使用時に、タイトル・エピソード・サブタイトルを固定する場合は、
+     convertXps()
+-->
+<div class=optionPanel id=optionPanelSCI >
+確認内容<br><br>
+
+<span class=titleInputLB >TITLE:</span>
+    <input class=SCiInput id=optionPanelSCI_title type=text
+        onChange='xUI.importBox.checkValue(this)'
+    >
+<span class=opusInputLB >#:</span>
+    <input class=SCiInput id=optionPanelSCI_opus type=text
+        onChange='xUI.importBox.checkValue(this)'
+    >
+<hr class=dialog_border>
+<span class=titleInputLB >SUBTITLE:</span>
+    [<input class=SCiInput id=optionPanelSCI_subtitle type=text
+        onChange='xUI.importBox.checkValue(this)'
+    >]
+<hr class=dialog_border>
+<div id=optionPanelSCIs></div>
+<!--
+ 以下カット別テンプレート
+
+　-->
+<div id=sciTemplate class=sciTemplate >
+<hr class=dialog_border>
+<input class=SCiImportCB id=optionPanelSCI_%ID%_imptCB type=checkbox title='このカットをインポートします' checked
+    onChange='xUI.importBox.checkValue(this);'
+>
+<span  class=SCiImportLB >S-C : </span>
+    <input  class='SCiInput SCiInput_Number' id=optionPanelSCI_%ID%_sc type=text value='###'
+        onChange='xUI.importBox.checkValue(this);'
+    >
+<!-- 時間編集UI -->
+<span class=timeInputUI >
+(
+<input
+    type = text
+    class=timeInputTC 
+    id = 'optionPanelSCI_%ID%_time'
+    value ='00+00 .'
+    onMouseDown = 'nas.sliderVALUE([event,this.id,"288","1","0",nas.FCT2Frm(this.value)]);'
+    onChange ='xUI.importBox.checkValue(this)'
+>
+)
+<span class=timeInputButtons>
+         <button
+    class='subControl subControl-incrS subControl-left-top'
+    onclick='nas.timeIncrement(this.parentNode.parentNode.childNodes[1],1000,3);'>
+</button><button
+    class='subControl subControl-decrS subControl-left-bottom'
+    onclick='nas.timeIncrement(this.parentNode.parentNode.childNodes[1],-1000,3);'>
+</button><button
+    class='subControl subControl-incr6 subControl-mid-top'
+    onclick='nas.timeIncrement(this.parentNode.parentNode.childNodes[1],"6",3);'> 
+</button><button
+    class='subControl subControl-decr6 subControl-mid-bottom'
+    onclick='nas.timeIncrement(this.parentNode.parentNode.childNodes[1],"-(6)",3);'>
+</button><button
+    class='subControl subControl-incr subControl-right-top'
+    onclick='nas.timeIncrement(this.parentNode.parentNode.childNodes[1],"1",3);'>
+</button><button
+    class='subControl subControl-decr subControl-right-bottom'
+    onclick='nas.timeIncrement(this.parentNode.parentNode.childNodes[1],"-(1)",3);'>
+</button>
+    </span>
+<br>
+
+</span>
+<!-- 時間編集UI -->
+</div>
+<!-- 以上カット別テンプレート -->
+
+<hr class=dialog_border>
+<button id=updateTarget
+    onclick='xUI.importBox.updateTarget();' 
+    style='width:400px'
+> カット登録 </button><br>
+<button id=resetTarget
+ onclick ='xUI.importBox.resetTarget(xUI.importBox.targetContents);'
+ style='width:198px'
+ > リセット </button>
+<button id=cancel
+ onclick ='$("#optionPanelSCI").dialog("close");'
+ style='width:198px'
+ > 閉じる </button>
+<!--
+S:<input type=text style="width:64px" value='###'>-C:<input type=text style="width:64px" value='###'>
+TIME:(<input type=text style="width:64px" value='##+##'>)
+<br>
+-->
+</span>
+</div>
+<!-- optionPanelSCI -->
+
+
+
+
+</div>
+<hr>
+Nekomataya/kiyo 2018 
+</body>
+</html>

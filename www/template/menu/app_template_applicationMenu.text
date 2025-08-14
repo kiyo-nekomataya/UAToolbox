@@ -1,0 +1,80 @@
+﻿/*
+ *	electron|pulldown Menu共用
+ */
+applicationMenu
+	about
+	========
+	services
+	========
+	hide
+	hideothers
+	unhide
+	========
+	quit
+
+document
+	openPMDB
+	openRepository
+	openTitle
+	openEpisode
+	========
+	exit
+
+editMenu
+	select|release
+	selectAll
+	undo
+	redo
+	======== 
+	cut
+	copy
+	paste
+	handleAll
+	releaseAll
+	sortItems
+	reverseItems
+	========
+	pasteAndMatchStyle
+	delete
+	selectAll
+	========
+	Speech
+	Speech_startSpeaking
+	Speech_stopSpeaking
+	========
+	selectAll
+
+Setting
+	preference
+	========
+	reload
+	forceReload
+	toggleDevTools
+	========
+	resetZoom
+	zoomIn
+	zoomOut
+	========
+	togglefullscreen
+
+Window
+	minimize
+	zoom
+	========
+	front
+	========
+	window
+	close
+
+Tools
+	calcurator
+	stopwatch
+	fieldTable
+
+help
+	usage
+	documentNamingRule
+	LearnMore
+	========
+	About
+[end]

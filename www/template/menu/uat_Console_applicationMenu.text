@@ -1,0 +1,89 @@
+﻿/*
+ *	electron|pulldown Menu共用 for uatConsole
+ */
+applicationMenu
+	about
+	========
+	services
+	========
+	hide
+	hideothers
+	unhide
+	========
+	quit
+
+document
+	openPMDB
+	openRepository
+	openTitle
+	openEpisode
+	========
+	exit
+
+editMenu
+	select|release
+	selectAll
+	undo
+	redo
+	======== 
+	cut
+	copy
+	paste
+	========
+	pasteAndMatchStyle
+	delete
+	selectAll
+	========
+	Speech
+	Speech_startSpeaking
+	Speech_stopSpeaking
+	========
+	selectAll
+
+SettingsView
+	userPreferens
+	========
+	renameDigits
+	renameDigits_0
+	renameDigits_00
+	renameDigits_000
+	renameDigits_0000
+	renameDigits_00000
+	========
+	reload
+	forceReload
+	toggleDevTools
+	========
+	resetZoom
+	zoomIn
+	zoomOut
+	========
+	togglefullscreen
+
+Window
+	app_reName
+	app_console
+	app_productManager
+	app_storyBoard
+	app_timeSheet
+	========
+	minimize
+	zoom
+	========
+	front
+	========
+	window
+	close
+
+Tools
+	calcurator
+	stopwatch
+	fieldTable
+
+help
+	usage
+	documentNamingRule
+	LearnMore
+	========
+	About
+[end]

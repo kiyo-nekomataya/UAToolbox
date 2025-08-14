@@ -1,0 +1,1110 @@
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="ja">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>絵コンテプレイヤ</title>
+
+<link rel ='shortcut icon' href='./icons/favicon.ico'>
+
+<link href='./nas/lib/nas_common_HTML.css' type ='text/css' rel = stylesheet media='screen,tv'>
+<link href='./template/remaping.css'	   type ='text/css' rel = stylesheet media='screen,tv'>
+<link href='./template/xmap.css'		   type ='text/css' rel = stylesheet >
+<link href='./template/printout.css'	   type ='text/css' rel =stylesheet media='print'>
+
+<link href='./template/jquery-ui.css' type='text/css' rel='stylesheet'>
+<link href='./nas/ext-lib/perfect-scrollbar/css/perfect-scrollbar.css' type='text/css' rel='stylesheet'>
+<!-- WEB FONT-->
+<link href='https://fonts.googleapis.com/css?family=M+PLUS+1p:700&display=swap' rel='stylesheet'>
+
+<link rel="stylesheet" type="text/css" href="./template/playerSbd.css"   media="screen,tv">
+<link rel="stylesheet" type="text/css" href="./template/printSbd.css"    media="print">
+<link rel="stylesheet" type="text/css" href="./template/paperDesign.css" media="all">
+
+<!-- AIRライブラリはすべて削除済み 2021 以降は使用されない -->
+<!-- 通常外部ライブラリ -->
+<script src ='./nas/ext-lib/jquery-3.6.0.min.js'></script>
+<script src ='./nas/ext-lib/ecl/ecl.js'></script>
+<script src ='./nas/ext-lib/encoding.js/encoding.min.js'></script>
+<script src ='./nas/ext-lib/csv/csvsimple.js'></script>
+<script src ='./nas/ext-lib/psd.js/dist/psd.min.js'></script>
+<script src ='./nas/ext-lib/tga-js/dist/umd/tga.js'></script>
+<!-- fabric.js  -->
+<script src ='./nas/ext-lib/fabric.js/dist/fabric.min.js'></script>
+
+<!-- nas基礎ライブラリ -->
+<script src ='./nas/lib/config.js'></script>
+<script src ='./nas/lib/nas_common.js'></script>
+
+<script src ='./nas/lib/nas_AnimationValues.js'></script>
+<script src ='./nas/lib/cameraworkDescriptionDB.js'></script>
+<script src ='./nas/lib/pmio.js'></script>
+<script src ='./nas/lib/storyboard.js'></script>
+<script src ='./nas/lib/mapio.js'></script>
+<script src ='./nas/lib/xpsio.js'></script>
+
+<script src ='./nas/lib/etc/_pmdb_/configPMDB.js'></script>
+
+
+<!--	 汎用ライブラリのためソース分離 一括マージ可能	  -->
+<script src ='./nas/lib/postscriptConvert.js'></script>
+<script src ='./nas/lib/lib_AEK.js'></script>
+<script src ='./nas/lib/lib_TVP.js'></script>
+<script src ='./nas/lib/lib_stylosCSV.js'></script>
+<script src ='./nas/lib/lib_TSH.js'></script>
+<script src ='./nas/lib/lib_ARD.js'></script>
+<script src ='./nas/lib/lib_ARDJ.js'></script>
+<script src ='./nas/lib/lib_STS.js'></script>
+<script src ='./nas/lib/lib_TSX.js'></script>
+<script src ='./nas/lib/lib_TDTS.js'></script>
+
+<!-- /* i18next */ -->
+<script src ='./nas/ext-lib/i18n/i18next.min.js'></script>
+<script src ='./nas/ext-lib/i18n/jquery-i18next.js'></script>
+<script src ='./nas/ext-lib/i18n/i18nextXHRBackend.js'></script>
+
+<!-- /*  AdobeExtension/Scripts 準互換 多言語化ライブラリ*/ -->
+<script src ='./nas/lib/nas_locale.js'></script>
+
+<!-- システム言語リソース -->
+<script src ='./nas/lib/messages.js'></script>
+
+<!-- アプリケーション言語リソース -->
+<script src ='./nas/scripts/remaping/messages.js'></script>
+
+
+<!-- アプリケーションUIライブラリ-->
+
+<!-- アプリケーション共用メニューライブラリ -->
+<script src ='./nas/lib/nas_menuItem.js'></script>
+
+<!-- JQライブラリ -->
+<script src ='./nas/ext-lib/jquery-ui-1.13.1.custom/jquery-ui.min.js'></script>
+<script src ='./nas/ext-lib/perfect-scrollbar/dist/perfect-scrollbar.min.js'></script>
+<script src ='./nas/lib/jquery-addon.js'></script>
+
+<!-- nas-HTML拡張ライブラリ -->
+<script src ='./nas/lib/nas_common_HTML.js'></script>
+
+<script src ='./nas/scripts/remaping/airUI.js'></script>
+<script src ='./nas/scripts/remaping/nodeUI.js'></script>
+<script src ='./nas/lib/docio.js'></script>
+<!-- アプリプロセス間通信 -->
+<script src=./nas/scripts/uat/uat_message_handler.js></script>
+
+<!-- nas-UATアプリケーションスクリプト -->
+
+    <script src="./nas/scripts/sbdConvert/map_lib_test.js"></script>
+    <script src="./nas/scripts/sbdConvert/sbdConfig.js"></script>
+    <script src="./nas/scripts/sbdConvert/sbeConvert.js"></script>
+    <script src="./nas/scripts/sbdConvert/sbdPlayer.js"></script>
+    <script src="./nas/scripts/sbdConvert/viewUtil.js"></script>
+    <script src="./nas/scripts/sbdConvert/startup.js"></script>
+
+
+<!-- /*  開発用テストコード   2016.07.16  追加*/ これらはすべてuat-middleware.jsへ統合予定-->
+<script src ='./nas/scripts/remaping/serviceAgent.js'></script>
+
+<script src ='./nas/scripts/remaping/serviceAgent.SessionControls.js'></script>
+<script src ='./nas/scripts/remaping/serverio_test.js'></script>
+<script src ='./nas/scripts/remaping/documentPanel.js'></script>
+<script src ='./nas/scripts/remaping/xUI.SessionControl.js'></script>
+<script src ='./nas/scripts/remaping/newTaskController.js'></script>
+
+
+<script language="javascript">
+function doClick(evt){
+console.log(evt);
+	if((evt.target.id)&&(evt.target.id.indexOf("_")>=0)){
+var columnNode=evt.target.id.split("_");
+var columnId=(columnNode[0]*5)+(columnNode[1]*1);
+var dataIndex=document.getElementById([columnNode[0],columnNode[1],"cl"].join("_")).getAttribute("rcidx")*1;
+var currentValue="";//mySB.table[columnId].;
+
+switch(columnNode[2]){
+case	"cl":;
+	currentValue=mySB.table[dataIndex].cut;
+		nas.HTML.editTableCell(evt.target,"textarea",currentValue,function(){mySB.table[dataIndex].cut=evt.target.innerHTML;evt.target.innerHTML=mySB.table[dataIndex].cut;});
+break;
+case	"ctt":;
+	currentValue=mySB.table[dataIndex].desc;
+		nas.HTML.editTableCell(evt.target,"textarea",currentValue,function(){mySB.table[dataIndex].desc=evt.target.innerHTML;evt.target.innerHTML=replaceStr(mySB.table[dataIndex].desc).replace(/&lt;break&gt;/g,"")});
+break;
+case	"wrd":;
+	currentValue=mySB.table[dataIndex].words;
+		nas.HTML.editTableCell(evt.target,"textarea",currentValue,function(){mySB.table[dataIndex].words=evt.target.innerHTML;evt.target.innerHTML=replaceStr(mySB.table[dataIndex].words)});
+break;
+case	"tc":;
+	currentValue=mySB.table[dataIndex].sec;
+		nas.HTML.editTableCell(evt.target,"textarea",currentValue,function(){mySB.table[dataIndex].sec=evt.target.innerHTML;evt.target.innerHTML=replaceStr(mySB.table[dataIndex].sec2Tc())});
+break;
+default:
+	alert(columnNode[2]);
+}
+	}else{return true}
+}
+<!--
+showMsg=function(msg){
+if($("#msg_well").isVisible()){
+    document.getElementById("msg_well").value+=msg+"\n";
+}else{
+    xUI.printStatus(msg)
+}
+}
+//-->
+</script>
+<!--
+queueBox=makeQueue(mySB);
+timeSlider.init();nas_Action_Startup();
+onMouseDown	= "nas_Mouse(event.which,event.target)"
+onMouseUp	= "return false"
+onContextMenu	= "return false"
+
+-->
+</head>
+<body
+onKeyDown	= "return nas_Input(event.keyCode)"
+
+	onload        = 'windowInit();console.log("startup-sbdedit");nas.LangPack.chgLocale("ja");'
+	onContextMenu = 'return false;'
+	onMouseDown	  = 'return xUI.flipContextMenu(event);'
+	ontouchstart  = 'return xUI.Touch(event);'
+	ontouchmove	  = 'return xUI.Touch(event);'
+	ontouchend    = 'return xUI.Touch(event);'
+	onfocus       = 'if(uat) uat.MH.appchange();'
+>
+
+
+
+
+
+
+
+<!-- 絵コンテナビゲーションバー　StoryBord Navigation Post-->
+<!--
+<div id=navigationPost style="display:inline;">
+<div class="indexBar" id="fixed"><img src="./template/images/sbd-ui/left.png">
+<span id=callSV>
+		<form	name=saveXps
+			id=saveXps
+			method=POST
+			encode=UTF-8
+			enctype="application/x-www-form-urlencoded"
+			action="javascript:void(0);"
+		>
+			<input	type=hidden
+				id=COMMAND
+				name=COMMAND
+				value=save
+			>
+			<input	type=hidden
+				id=encode
+				name=encode
+				value=utf8
+			>
+			<input	type=hidden
+				id=XPSFilename
+				name=XPSFilename
+			>
+			<input
+				type=hidden
+				id=XPSBody
+				name=XPSBody
+			>
+		</form>
+</span>
+	<div>
+<button
+	class=toolButton
+	onClick="goScroll(0)";
+	title="メニューへ"
+>TOP</button><br/><input
+	id="pgCounter"
+	type="text"
+	value="000"
+	onChange="pageJump(this.value,7);" 
+><br/><button
+	class=toolButton
+	title="現在のファイルをリロード"
+	onClick="reloadCurrent();try{startupQueue()}catch(err){document.getElementById('msg_well').value+=err;};"
+><img src=./template/images/sbd-ui/reload.png></button>
+	</div>
+<br/><button
+	class=toolButton
+	onClick="pageJump(0,0)"
+	title="最初のページへ"
+><img src=./template/images/sbd-ui/STRT_v.png></button><br/><button
+	class=toolButton
+	onClick="pageJump(0,1)"
+	title="-10ページ"
+><img src=./template/images/sbd-ui/FBWD_v.png></button><br/><button
+	class=toolButton
+	onClick="pageJump(0,2)"
+	title="前へ"
+><img src=./template/images/sbd-ui/BWD_v.png></button><br/><button
+	class=toolButton
+	onClick="pageJump(0,4)"
+	title="次へ"
+><img src=./template/images/sbd-ui/FWD_v.png></button><br/><button
+	class=toolButton
+	onClick="pageJump(0,5)"
+	title="10ページ"
+><img src=./template/images/sbd-ui/FFWD_v.png></button><br/><button
+	class=toolButton
+	onClick="pageJump(0,6)"
+	title="最後のページへ"
+><img src=./template/images/sbd-ui/END_v.png></button><br/>
+		<div class="bookmarks" id="bookmarks">
+		</div>
+<hr>
+</div>
+</div>
+-->
+<!-- 絵コンテナビゲーションバー　StoryBord Navigation　Bar-->
+
+
+
+
+
+<!--//fixedHeader -->
+	<div id=fixedHeader class=fixed >
+<!-- //WEBプルダウンメニュー -->
+		<div id=pMenu ></div>
+<!--
+<ul id=oMenu>
+    <li><span id=pM00>document</span><ul>
+
+	<li><a	id=pM01
+		href="javascript:void(0);"
+		onclick='document.getElementById("fileSelect").click();'
+		title="ストーリボードを開く"
+	>Open</a>
+	<li><a	id=pM02
+		href="javascript:void(0)"
+		onclick='document.getElementById("imageSelect").click();'
+		title="画像を指定"
+	>SetImage</a>
+	<li><a	id=pM03
+		href="#"
+		onclick='downloadSTDB();'
+		title=""
+	>save As</a>
+	<li><a	id=pM04
+		href="javascript:void(0)"
+		onclick=''
+		title=""
+	>Recent files</a>
+	<li><br><hr>
+	<li><a	id=pM05
+		href="javascript:void(0)"
+		onClick="showMsg('ロード開始');myAjax=loadData();"
+		title="再読み込み"
+	>reload document</a>
+    </ul></li>
+    <li><span	id=pM10>edit</span><ul>
+	<li><a	id=pM11
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	>selectShot</a>
+	<li><a	id=pM12
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	>selectColumn</a>
+	<li><a	id=pM13
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	>Cut[X]</a>
+	<li><a	id=pM14
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	>Copy[C]</a>
+	<li><a	id=pM15
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	>Paste[V]</a><hr>
+	<li><a	id=pM16
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	>Preference</a>
+    </ul></li>
+    <li><span	id=pM20>show</span><ul>
+	<li><a	id=pM21
+		href="javascript:void(0)"
+		onClick='switchScreen("player");'
+		title="プレイヤーに切り替え"
+	>player</a>
+	<li><a	id=pM22
+		href="javascript:void(0)"
+		onClick='switchScreen("s-board");'
+		title="ページ表示に切り替え"
+	>page</a>
+	<li><br>
+	<hr></a>
+	<li><a	id=pM24
+		href="javascript:void(0)"
+		onClick="document.getElementById('toolHeader').style.display=(document.getElementById('toolHeader').style.display !='none')?'none':'block';this.innerHTML=(document.getElementById('toolHeader').style.display=='none')?'consoleON':'consoleOFF';"
+		title=""
+	>console</a>
+    </ul></li>
+    <li><span	id=pM30>tools</span><ul>
+	<li><a	id=pM31
+		href="javascript:void(0)"
+		onclick='chgPanel("navigationPost");'
+		title=""
+	>navigationPost</a>
+	<li><a	id=pM32
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	>toolBarMenu</a>
+	<li><a	id=pM33
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	></a>
+	<li><a	id=pM34
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	></a>
+    </ul></li>
+    <li><span	id=pM40>options</span><ul>
+	<li><a	id=pM41
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	></a>
+	<li><a	id=pM42
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	></a>
+	<li><a	id=pM43
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	></a>
+	<li><a	id=pM44
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	></a>
+    </ul></li>
+    <li><span	id=pm0>player</span><ul>
+	<li><a	id=pM
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	>play/stop</a>
+	<li><a	id=pM
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	>setWorkAreaStart</a>
+	<li><a	id=pM
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	>setWorkAreaEnd</a>
+	<li><a	id=pM
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	>resetWorkArea</a>
+	<li><a	id=pM
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	></a>
+	<li><a	id=pM
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	></a>
+	<li><a	id=pM
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	></a>
+	<li><a	id=pM
+		href="javascript:void(0)"
+		onclick=""
+		title=""
+	></a>
+    </ul></li>
+</ul>
+
+Bookmarks 
+
+<hr>
+-->
+<!-- WEBプルダウンメニュー//-->
+<!-- //新UI ヘッドバーメニュー-->
+		<div
+	id=applicationHeadbar
+	class='applicationHeadbar'
+	style='display:table;'
+>
+			<div
+	class='cornerBox'
+	style='display:table-cell;'
+  >
+	<button
+		id=menuIcon
+		class='boxButton iconButton-hamberger'
+		style='background-color:gray;'
+	></button>
+			</div>
+	<div
+		style='display:table-cell;vertical-align:middle;text-align:center;margin:auto;padding-left:8px;'
+	>
+		<span id=multiMenu>
+
+
+<!-- 管理IDコントロール UI -->
+<!-- //ドキュメントコントロール(制作管理)メニュー-->
+	<span id =pmcui class=pmcui>    <span id=pmfui class=pmfui>
+	</span>
+<!-- ドキュメントコントロール(制作管理)メニュー//-->
+
+
+<!-- //node selector-->
+	<span
+		id=pmsui
+		style='float:right;vertical-align:middle;color:#dddddd;'
+	>
+	<input
+		id=xmapstring
+		type=text
+		style="border-style:solid;border-width:1px;border-color:#4444dd;color:white;background-color:transparent;"
+		size=48
+		value="ABC#01__s-c000"
+		onchange = "var ipt = new nas.xMap(this.value); pman.reName.xmap = ipt ; this.value=ipt.getIdentifier('cut').replace(/\.xmap$/,'');"
+	>
+	    </span>
+  </div><!--  -->
+  <div id='repository-info'>
+    <div
+		id="serverurl"
+		data-i18n='nosigninservice;[title]_description'
+	>
+		serverurl
+    </div>
+    <div
+	id="loginuser"
+	>
+		username
+    </div>
+    <div
+		id="currentrepository"
+	>no-repository
+    </div>
+  </div>
+  <div
+	style='display:table-cell;width:75px;vertical-align:middle;text-align:right;padding-right:16px;'
+  >
+<!--<button id='loginstatus_button' onclick='xUI.sWitchPanel("Login");return false' title="ユーザ切り替え"> =OFFLINE= </button>-->
+	 <button
+	    id=loginstatus_button
+	    class='round-button round-button-offline'
+	    onclick='xUI.setCurrentUser();return false'
+	    title="ユーザ切り替え"
+		data-i18n='[title]loginstatus_button_description'
+		style="background-image: url(images/icons/avatar.png);background-position: -6px 0;"
+	></button>
+  </div>
+</div>
+<!-- 新UI ヘッドバーメニュー//-->
+<!--	//ポスト状ツールバー/toolbarPost	-->
+<div id=toolbarPost>
+	<div
+		class='cornerBox'
+		style='background-color:gray;'
+	>
+	<button
+		class='boxButton iconButton-hamberger'
+		style='background-color:gray;'
+		data-i18n='[title]pmenu_description'
+	></button>
+	</div>
+<!-- //ツールバー切り替えボタン	-->
+<span id='ibCP_' class=ibCPnav>
+	<button
+	id=ibCmenuSwitch
+		class='boxButton iconButton-menuFwd'
+		title='メニュー'
+	>
+	</button>
+</span>
+<!-- ツールバー切り替えボタン//	-->
+<!-- //アイコンポストメニューコンテント 初期化プロセスが生成する -->
+	<div id='ibContent'>
+	</div>
+<!--  アイコンポストメニューコンテント//		  -->
+</div>
+<!--	ポスト状ツールバー/toolbarPost//	-->
+
+
+
+
+
+<!--//コンテキストメニュー
+
+	regionの分類
+
+	onHeadline
+	onTimelineTrackLabel
+		onTimelineTrack
+		onSelection
+		onSection
+	onTimelineTrackHeader
+	onReferenece
+	onRefereneceHeader
+	outer
+
+	onAssetBrowser
+
+	管理モードによるメニュー切替はモード変更メソッド(xUI.setUImode)
+	表示モードによるメニュー抑制はリセッターメソッド(xUI.resetSheet)が
+	アプリケーションのホスト状態による遷移も同様に(xUI.resetSheet)で行う
+
+	操作中の編集モードによるON/OFFはflipcMメソッドが担当する。
+-->
+<!--	//コンテキストメニューUI		-->
+<div id ='contextMenu' class ='contextMenu optionPanelFloat'>
+</div>
+<!--	コンテキストメニューUI//		-->
+<!-- コンテキストメニュー//-->
+<!--旧管理UI-->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <input
+	type="file"
+	id="selectFile"
+	value=""
+	style="width:440px"
+	onChange="document.getElementById('targetURL').value=this.value;"
+>
+-->
+<!--<div id=headSpacer></div>-->
+
+<div id="urlHeader" class="toolHeader">
+<!-- <input
+	type="text"
+	id="targetURL"
+	value=""
+	onChange="url=this.value;"
+>--><input
+	type="file"
+	id = 'fileSelect'
+	class=textButtonW
+	title="ファイル指定"
+	accept = '.sbd ,.xml,.txt,.stbd,.csv,.storyboarder'
+	onChange='console.log(this.files);setURL(this.files[0]);'
+	style='width:320px'
+><input
+	type="file"
+	id = 'imageSelect'
+	class=textButtonW
+	title="ファイル指定"
+	accept = '.jpg ,.png,.gif'
+	multiple
+	onChange='mySB.setStackImage();//console.log(this.files);'
+	style='width:320px'
+><input
+	type="button"
+	id="hideBt"
+	class=textButtonW
+	value="＿"
+	title="コンソールを隠す/表示"
+	onClick="document.getElementById('toolHeader').style.display=(document.getElementById('toolHeader').style.display=='none')?'block':'none';this.src=(document.getElementById('toolHeader').style.display=='none')?'./template/images/sbd-ui/console_ON.png':'./template/images/sbd-ui/console_OFF.png';"
+><input
+	type="button"
+	id="hideSB"
+	class=textButtonW
+	value="▲"
+	alt = "絵コンテ/プレイヤ 切り換え"
+	title="絵コンテ/プレイヤ 切り換え"
+	onClick="switchScreen();"
+>
+	<div id="toolHeader">
+<textarea
+	id='data_well'
+	style="width:512px;height:96px"
+></textarea>
+<form action="void(0)">
+<textarea	
+	nema=msg_well
+	id=msg_well
+	style="width:512px;height:96px"
+></textarea><br /><input	type=button
+	id=selectAll
+	value="selectAll"
+	title="上ウェル全選択"
+	style="width:96px"
+	onClick="document.getElementById('msg_well').select()"
+><input	type=reset
+	id=reset
+	value="reset"
+	title="表示リセット"
+	style="width:96px"
+><input	type=button
+	id=delUpper
+	value=deleatMsg
+	title="消去 ↑"
+	style="width:96px"
+	onClick="document.getElementById('msg_well').value=''"
+><input	type=button
+	id=delLower
+	value="deleteLower"
+	title="消去 ↓"
+	style="width:96px"
+	onClick="document.getElementById('cmd').value=''"
+><input	type=button
+	id=loadData
+	value="load"
+	title="sbd/xml 読み込み"
+	style="width:96px"
+	onClick="showMsg('ロード開始');myAjax=loadData();"
+><br/><input	type=button
+	id="chgBorder"
+	value="hideBorder"
+	title="印刷の境界線切り換え"
+	style="width:96px"
+	onClick="if(this.value=='hideBorder'){printBorder('hide');this.value='showBorder';}else{printBorder('show');this.value='hideBorder';};"
+><input	type=button
+	id=convertHtml
+	value="HTML"
+	title="HTMLにコンバートして表示"
+	style="width:192px"
+	onClick="try{convertData()}catch(err){document.getElementById('msg_well').value+=err;};"
+><input	type=button
+	id=convertQueue
+	value="Queue"
+	title="再生用Queueをビルド"
+	style="width:192px"
+	onClick="try{startupQueue()}catch(err){document.getElementById('msg_well').value+=err;};"
+><br /><input	type=button
+	id=action
+	value=" eval "
+	title="Javascriptコマンド実行"
+	style="width:96px"
+	onClick="try{document.getElementById('msg_well').value+=(eval(document.getElementById('cmd').value)+'\n')}catch(err){document.getElementById('msg_well').value+=err;};"
+><input	type=button
+	id=saveDataSbd
+	value="SBD(Save)"
+	title="保存用SBDを出力"
+	style="width:96px"
+	onClick="try{document.getElementById('msg_well').value=mySB.toString('sbd');callEcho('sbd');}catch(err){document.getElementById('msg_well').value+=err;};"
+><input	type=button
+	id=saveDataHtml
+	value="HTML(Save)"
+	title="保存用HTMLを出力"
+	style="width:96px"
+	onClick="try{mySB.convert.isFileSave=true;document.getElementById('msg_well').value=mySB.toString('html');callEcho('html');mySB.convert.isFileSave=false;}catch(err){document.getElementById('msg_well').value+=err;};"
+><input	type=button
+	id=csv
+	value="csv(SVAE)"
+	title="CSVを出力"
+	style="width:96px"
+	onClick="try{document.getElementById('msg_well').value=mySB.toString('csv');callEcho('csv')}catch(err){document.getElementById('msg_well').value+=err;};"
+><input	type=button
+	id=readCSV
+	value="readCSV"
+	title="CSV読込"
+	style="width:96px"
+	onClick="try{mySB.readCSV(document.getElementById('msg_well').value);}catch(err){document.getElementById('msg_well').value+=err;};"
+><br />
+<textarea	
+	nema="cmd"
+	id="cmd"
+	style="width:512px;height:64px"
+>/* このウエルには、Javascriptコマンドを書くことができます。*/
+</textarea><br /></form>
+	</div>
+</div>
+<!--urlHeader//-->
+<!--ページ表示ヘッダ領域＋ナビゲーションツール-->
+<!--//page-header-->
+
+
+<!--page-header//-->
+
+
+<div id=app_status class=application_status>***<br></div>
+</div>
+<!--fixedHeader// -->
+
+<div id=ui_screen>
+    <div id=scrollSpaceHd></div>
+<!-- この下のエリアはプレイヤー画面です。カスタマイズを行う方は div#playerArea の中を書き換えてください -->
+<!--//playerArea-->
+<div id="playerArea">
+<!-- form -->
+<!--
+	カスタム変数です。ここを書き換えると初期状態が変わります。
+	ブラウザには表示されません。値のみを書き換えてください。
+-->
+<!--ラップの最大数です。ラップ欄と数を合わせておいて下さい。-->
+	<input type="hidden" id="MaxLap" value="8" >
+
+<!--初期　計測フレームレートです。-->
+	<input type="hidden" id="frameRATE" value="24FPS" >
+
+<!--
+絵コンテプレイヤでは、上記カスタム変数の書き換えは無効です。
+絵コンテデータの記録内容で上書きされます。
+また、idをもつ要素でid値を変更すると動作に支障が出る場合があります。
+ご注意ください。
+-->
+
+<table class="player">
+<tr><td id="playerField" >
+<!-- style="position:relative;width:655px;height:360px;text-align:left;vertical-align:middle;"	 -->
+<div
+	id="clipFrame"
+	style="	position:relative;
+		margin-left:5px;
+		width:480px;
+		height:270px;
+		overflow:hidden;
+		background-color:#333333;
+		text-align:left;"
+><img
+	id="mainScreen"
+	src="./template/images/sbd-ui/blank.gif"
+	style="	position:absolute;
+		top:0px;
+		left:0px;
+		z-index:auto;"
+><div
+	id="contentField_"
+	style="	position:absolute;
+		left:0px;
+		top:20pt;
+		width:320px;
+		height:180px;
+		overflow:hidden;
+		font-size:14pt;
+		text-align:left;
+		color:#880000;
+		backgrownd-color:rgba(255,255,0,128);
+		display:none;"
+>
+
+<span style="	position:absolute;
+		left:0px;
+		top:150px;
+		text-align:left;
+		font-size:18pt;
+		width:512px;
+		padding-left:160px
+"><br/></span>
+</div><div
+	id="infomationField"
+	style="	position:absolute;
+		left:0px;
+		top:0px;
+		width:320px;
+		height:180px;
+		overflow:hidden;
+		font-size:14pt;
+		text-align:right;
+		color:#AA0000;"
+>
+<!--span
+	id="dll001"
+	style="	position:absolute;
+		left:34px;
+		top:100px;
+		text-align:left;
+		border-style:solid;
+		border-width:2px;
+		border-color:#000088;
+		background-color:#ddffdd;
+" ></span -->
+<span	id="playCutNo"
+	style="	position:absolute;
+		left:0px;
+		top:0px;
+		display:none;
+		text-align:left;
+		border-style:solid;
+		border-width:2px;
+		border-color:#000088;
+		background-color:#eeffee;
+">C# ###( ##+## )</span>
+</div>
+</div>
+<div
+	id="dialogField_"
+	style="	position:absolute;
+		left:24px;
+		bottom:340px;
+		width:512px;
+		height:80 px;
+		overflow:hidden;
+		font:bold;
+		font-size:18pt;
+		text-align:left;
+		text-shadow: 2px 2px 2px gray;
+		vertical-align:text-bottom;
+		color:#10ab10;
+		display:none;"
+</div>
+</td></tr>
+<tr>
+<td><div id=dialogField></div></td>
+</tr>
+<tr>
+<td><div id=contentField></div></td>
+</tr>
+<tr><td><div
+	id="timeSlider"
+	onMouseDown="timeSlider.slideValue(event);"
+><span
+	id="workArea"
+></span><button
+	id="leftmark"
+	type="button"
+	value=" "
+	style="width:18px;position:absolute;left:24px;"
+	onClick="timeSlider.setWorkArea(event,'left');"
+	title="set WorkArea Start"
+> </button><button
+	id="timeMarker"
+	type="button"
+	style="width:20px;"
+	onClick="timeSlider.setWorkArea(event,'center');"
+>◇</button><button
+	id="rightmark"
+	type="button"
+	value=" "
+	style="width:18px;position:absolute;left:502px;"
+	onClick="timeSlider.setWorkArea(event,'right');"
+	title="set WorkArea End"
+> </button></div></td></tr>
+<tr>
+<!--
+	style="width:18px;position:absolute;left:80px;"
+
+
+-->
+<td style="text-align:right;width:512px;height:48px;background-color:#AAAAAA;" nowrap>
+<button
+	id="About_this_SW"
+	title="version"
+	onclick = "about_nas()"
+	onFocus="this.blur()"
+	style="width:5em;"
+> about </button><button
+	type=button
+	value=CUT#
+	id=cutShow
+	title="カット番号の表示"
+	style="width:5em;color:#888888;"
+	onclick ="if(document.getElementById('playCutNo').style.display!='none'){document.getElementById('playCutNo').style.display='none';this.style.color='#888888'}else{document.getElementById('playCutNo').style.display='inline';this.style.color='#000000'}"
+	onFocus="this.blur()"
+>CUT#</button><button
+	type=button
+	value=contents
+	id=contentShow
+	title="ト書きの表示"
+	style="width:6em;color:#888888;"
+	onclick ="if(document.getElementById('contentField').style.display!='none'){document.getElementById('contentField').style.display='none';this.style.color='#888888'}else{document.getElementById('contentField').style.display='block';this.style.color='#000000'}"
+	onFocus="this.blur()"
+>content</button><button
+	id="dialogShow"
+	title="音声表示"
+	style="width:6em;color:#888888;"
+	value="dialog"
+	onclick ="if(document.getElementById('dialogField').style.display!='none'){document.getElementById('dialogField').style.display='none';this.style.color='#888888'}else{document.getElementById('dialogField').style.display='block';this.style.color='#000000'}"
+	onFocus="this.blur()"
+>dialog</button><button
+	id="screenScale"
+	title="スクリーン切り換え"
+	style="width:5em;"
+	value="size"
+	onclick = "document.getElementById('clipFrame').style.width=(document.getElementById('clipFrame').style.width=='480px')?'320px':'480px';document.getElementById('clipFrame').style.height=Math.floor(nas.decodeUnit(document.getElementById('clipFrame').style.width,'px')/mySB.convert.frameAspect)+'px';document.getElementById('clipFrame').style.marginLeft=(document.getElementById('clipFrame').style.marginLeft=='80px')?'0px':'80px';"
+	onFocus="this.blur()"
+> size </button>
+
+<button
+	id="changeLoop"
+	title="再生ループ"
+	style="width:4em;"
+	onclick = "loopPlay=(loopPlay)?false:true;this.innerHTML=(loopPlay)?'<img src=./template/images/sbd-ui/loop.png>':'<img src=./template/images/sbd-ui/stopEnd.png>';"
+	onFocus="this.blur()"
+> <img src=./template/images/sbd-ui/loop.png>  </button> 
+<br>
+<!--この表示は、storyboardのフレームレートで初期化して リードオンリーに変更 -->
+<span
+	id="nas_RATE"
+	title="現在のフレームレート"
+	style="width:6em;"
+>---</span>
+<button
+	id="status"
+	title="再生状態"
+	style="border-style:none;width:48px;background-color:#EEEEEE;"
+	onclick="alert('HiHo');return false;"
+	disable
+>startup</button>
+
+<input
+	type=text
+	id=nas_display
+	style="text-align:center;"
+	value="00:00:00:00"
+	readonly
+/>
+
+<br/><hr/>
+<!--ラップ欄-->
+<button
+	class=tcButton
+	id="lapView7"
+	onclick="nas_throwTime(this.innerHTML.replace(/\+/,':'));return false;"
+> 00:00:00:00 </button><button
+	class=tcButton
+	id="lapView6"
+	onclick="nas_throwTime(this.innerHTML.replace(/\+/,':'));return false;"
+> 00:00:00:00 </button><button
+	class=tcButton
+	id="lapView5"
+	onclick="nas_throwTime(this.innerHTML.replace(/\+/,':'));return false;"
+> 00:00:00:00 </button><button
+	class=tcButton
+	id="lapView4"
+	onclick="nas_throwTime(this.innerHTML.replace(/\+/,':'));return false;"
+> 00:00:00:00 </button><br><button
+	class=tcButton
+	id="lapView3"
+	onclick="nas_throwTime(this.innerHTML.replace(/\+/,':'));return false;"
+> 00:00:00:00 </button><button
+	class=tcButton
+	id="lapView2"
+	onclick="nas_throwTime(this.innerHTML.replace(/\+/,':'));return false;"
+> 00:00:00:00 </button><button
+	class=tcButton
+	id="lapView1"
+	onclick="nas_throwTime(this.innerHTML.replace(/\+/,':'));return false;"
+> 00:00:00:00 </button><button
+	class=tcButton
+	id="lapView0"
+	onclick="nas_throwTime(this.innerHTML.replace(/\+/,':'));return false;"
+> 00:00:00:00 </button>
+
+</td>
+</tr>
+<tr>
+<td>
+<button
+	class="control"
+	type="button"
+	value="||<]"
+	onMouseUp="nas_throwTime('start');"
+	onFocus="this.blur();"
+	title="最初へ"
+><img src=./template/images/sbd-ui/STRT.png></button><button
+	class="control"
+	type="button"
+	value="<]<]" 
+	onMouseUp="nas_throwTime('bwd')"
+	onFocus="this.blur();"
+	title="前のカット/前のフレーム"
+><img src=./template/images/sbd-ui/FBWD.png></button><button
+	id="playSwitch"
+	class="control"
+	type="button"
+	value="[[>" 
+	onMouseUp="nas_Capt('Start_Stop');"
+	onFocus="this.blur();"
+	title="再生/停止"
+><img src=./template/images/sbd-ui/play.png></button><button
+	class="control"
+	type="button"
+	value="[>[>" 
+	onMouseUp="nas_throwTime('fwd');"
+	onFocus="this.blur();"
+	title="次のカット/次のフレーム"
+><img src=./template/images/sbd-ui/FFWD.png></button><button
+	class="control"
+	type="button"
+	value="[>||"
+	onMouseUp="nas_throwTime('end');"
+	onFocus="this.blur();"
+	title="ラストへ"
+><img src=./template/images/sbd-ui/END.png></button>
+
+<input type="hidden" 
+	id="SWButton"
+	title="キュー"
+	value=".  Queue  ."
+	onMouseDown="nas_Capt('Start_Stop');this.value=(this.value=='.  Queue  .')?'.  Stop   .':'.  Queue  .';"
+	onFocus="this.blur()"
+>
+<input type="button"
+	id="LapButton"
+	title="マークをおく"
+	value=".  Put-Mark  ."
+	onMouseDown="nas_Capt('Lap_Reset')"
+	onFocus="this.blur()"
+>
+<input type="button"
+	id=Clear_Lap
+	title="マークをクリア"
+	value=".  Clear-Mark  ."
+	onClick = "nas_Capt('Clear_LAP')"
+	onFocus="this.blur()"
+>
+</td>
+</tr>
+<tr><td><div><img src="./template/images/logo/logo_UAT.png" width=128px/><br>sbdPlayer-Editor Nekomataya/kiyo 2019 (test version 2019/08/20)</div>
+</td></tr>
+</table>
+<!-- /form -->
+</div>
+<!--playerArea//-->
+<!--//page_view-->
+<div id=page_view>
+    <div id="sbdBody" onDblClick="doClick(event)"><table class="stbd">
+	
+<tbody><tr class="pageHeader headline"><th class="cutNumber">cut</th><th class="pictureArea">picture</th><th class="contentText">contents</th><th class="dialogText">dialog</th><th class="timeText">time</th></tr>
+
+	
+<tr class="headline"><td class="columnLabel"><br></td><td class="pictureArea"><br></td><td class="contents"><br></td><td class="dialog"><br></td><td class="timeText"><br></td></tr>
+
+	
+<tr class="headline"><td class="columnLabel"><br></td><td class="pictureArea"><br></td><td class="contents"><br></td><td class="dialog"><br></td><td class="timeText"><br></td></tr>
+
+	
+<tr class="headline"><td class="columnLabel"><br></td><td class="pictureArea"><br></td><td class="contents"><br></td><td class="dialog"><br></td><td class="timeText"><br></td></tr>
+
+	
+<tr class="headline"><td class="columnLabel"><br></td><td class="pictureArea"><br></td><td class="contents"><br></td><td class="dialog"><br></td><td class="timeText"><br></td></tr>
+
+	
+<tr class="headline"><td class="columnLabel"><br></td><td class="pictureArea"><br></td><td class="contents"><br></td><td class="dialog"><br></td><td class="timeText"><br></td></tr>
+</tbody></table>
+</div>
+</div>
+<!--page_view//-->
+</div>
+</body>
+</html>

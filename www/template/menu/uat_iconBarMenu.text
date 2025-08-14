@@ -1,0 +1,78 @@
+﻿/*
+ *	electron base Menu
+ */
+applicationMenu
+	about
+	========
+	services
+	========
+	hide
+	hideothers
+	unhide
+	========
+	quit
+
+applications
+	app_productManager
+	app_reName
+	app_console
+	app_storyBoard
+	app_timeSheet
+	========
+	openApplication
+	closeApplication
+	========
+	exit
+
+editMenu
+	select|release
+	selectAll
+	undo
+	redo
+	======== 
+	cut
+	copy
+	paste
+	========
+	pasteAndMatchStyle
+	delete
+	selectAll
+	========
+	Speech
+	Speech_startSpeaking
+	Speech_stopSpeaking
+	========
+	selectAll
+
+SettingsView
+	reload
+	forceReload
+	toggleDevTools
+	========
+	resetZoom
+	zoomIn
+	zoomOut
+	========
+	togglefullscreen
+
+Window
+	minimize
+	zoom
+	========
+	front
+	========
+	window
+	close
+
+Tools
+	calcurator
+	stopwatch
+	fieldTable
+
+help
+	usage
+	documentNamingRule
+	LearnMore
+	========
+	About
+[end]

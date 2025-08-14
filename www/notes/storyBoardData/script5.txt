@@ -1,0 +1,245 @@
+﻿nasMOVIE-SCRIPT 1.0
+#   フルスペックの記述サンプル（テスト用）
+/*
+    香盤用のキャストアイテムテーブルを拡張
+ヘッダ
+^(アイテム分類名称):[分類コード]
+    大分類のないエントリーは 大分類Aで補完 
+    小分類のない大分類のみのエントリーは 小分類aで補完
+    
+    分類コード全体が記述されない場合は分類名の頭文字を採用する
+    分類コード自動作成の頭文字のバッティングは、先行記述優先で後方へシフトする
+    頭文字はロワケースとなり すべて小分類として扱う その際の大分類はA
+character:   > Ac
+^--------
+cgi:         > Ag
+-^-
+    分類名のみの記載重複 - 二重記載となり後方記述は同じテーブルに統合される
+    分類コードつきの記載重複 - 先行の分類名称は破棄されて後置の分類名で置換され出力時に統合される
+
+レコード
+^\t(アイテム名称)([.|・|\s]+)(ディスクリプション)
+
+    アイテム名称エントリーには括弧でくくって属性を付加可能
+    名前は括弧を払って使用される
+    以下の例の表示名は「タカシ」のみ
+
+    タカシ(男)(17歳)....高校生　山岳部員
+*/
+##[beginStartup]
+title:      かちかちやま
+episode:    0:Pilot
+subtitle:   サンプルデータ
+format:     00:00:07:00
+style:{"document-dir":"vertical","column-order":["indexText","picture","dialogText","contentText","timeText"],"pageControll":true,"page-dir":"ttb","page-size":"A4"}
+cast:
+    characters Ac
+    stage Ab
+    prop Ap
+characters:
+    姐さん(28)・・・カチカチ山の猟師中堅
+    オサゲ(19)・・・見習い猟師
+stage:
+
+##[endStartup]
+
+
+/*----------------------------------------------*/
+##[begin]
+<column
+    picture="http://localhost/~kiyo/uat_sample/cont/img/3d923fd8-d9c2-4c8b-83a4-bfb25b89b86c.png"
+>
+	psAxe/remaping　チュートリアルサンプルデータ 
+<column
+    picture="http://www.nekomataya.info/uat/samples/cont/img/2e08df89-13ac-4712-9eca-d0911e2ea617.png"
+>
+	TITLE：かちかちやま 
+	OPUS:00 
+	subtitle:かちかち山に日がのぼる
+<column
+    picture="http://www.nekomataya.info/uat/samples/cont/img/f1f127b5-d817-499c-a61c-aca0942848d4.png"
+>
+<column
+    picture="http://www.nekomataya.info/uat/samples/cont/img/f13bd5b5-6145-4f2c-ab5e-7c4b61636597.png"
+>
+	この絵コンテは、作業チュートリアル用のデータです
+	チュートリアルデータセットの一部分としてのみ
+	自由に複製再配布が出来ます 
+<column
+    cid=-1
+    picture="http://www.nekomataya.info/uat/samples/cont/img/31e3a619-3e05-44cd-95bc-856fe89f43fd.png"
+>
+	それ以外の用途に関しては「ねこまたや」までお問い合わせください
+	連絡先:
+	support@nekomataya.info
+
+	www.nekomataya.info
+	<break>
+/*
+    絵コンテのコマには、シーンやカット所属しないコマ（カラム）が存在する。
+    表紙絵、状況説明のための配置図、設定のメモ書き等のためのカットに所属しないコマ（カラム）を許す
+    [begin]から最初のシーン柱までは、カットに所属しないものとして処理される
+*/
+1.タヌキ島 かちかちやま　中腹　山道
+◇s-c001(12+0)
+<column
+    picture="http://localhost/~kiyo/uat_sample/cont/img/4f37f7b9-4874-4e08-b7ca-8a5cdaa813b6.png"
+>
+    F.I.(2+12)▲ 
+<column
+    picture="http://localhost/~kiyo/uat_sample/cont/img/44a7947b-dcf3-4b64-97d0-3c9abb00fd0a.png"
+    timeText="12+0"
+>
+    昼間　晴天　水平線 
+    何か巨大な構造物のシルエットが 
+    うっかりすると気づかない程度に薄く見える 
+    その手前に雲がチラホラ 
+
+    PAN DOWN↓（ティルティング） 
+    海の見える坂道 
+    かちかち山ふもとから 
+
+    山道　斜面に古代文明の遺跡 
+    人声　絵に先行してIN 
+    小さな人影 
+オサゲ(OFFからON)「ホッ、ホッ、ホィ　ホッ…　（アドリブ）」
+◇s-c002
+<column
+    cid=0
+    picture="http://localhost/~kiyo/uat_sample/cont/img/f11296ee-8496-46cf-b8e3-d50b88ae81e0.png"
+    timeText=5+12
+>
+    カメラ寄り 
+    follow 
+    BGは止め　遠景はタテヒキ　近景は歩きの方向合わせ 
+    （クロス引き） 
+    買い出し荷物を持って坂道をのぼる　オサゲちゃん 
+
+    遠景に古代遺跡あり
+オサゲ「ホッ、ホッ、ホィ　ホッ…」
+2.かちかち山　別の場所
+◇s-c003(5+12)
+<column
+    cid=0
+    picture="http://localhost/~kiyo/uat_sample/cont/img/0eee2fae-50c3-4b00-9af4-18164b2c4735.png"
+>
+    かちかち山　中腹 
+
+    岩（実は遺跡の一部）に腰掛けた姐さんの足元 
+    カッと照りつける日差しと陽炎（カゲロウ） 
+    足元に汗が落ちるが　はじから蒸発して消える（F.O） 
+
+    セミの声大音量で響く 
+    それに紛れて姐さんの声が小さくきこえる 
+
+    (SE:バタバタうちわの音) 
+    じわっとPAN↑UP<cut>
+姐さん(OFF)「あ゛～　暑い　暑い　暑い　暑い　あつい」
+<column
+    cid=-1
+    picture="http://localhost/~kiyo/uat_sample/cont/img/0eee2fae-50c3-4b00-9af4-18164b2c4735.png"
+>
+    説明挿入
+
+◇s-c004(4+0)
+<column
+    picture="http://localhost/~kiyo/uat_sample/cont/img/cba58c9c-c9f7-433d-9656-3a7a995725ad.png"
+>
+    カメラ背中側から 
+    PAN↑UP 
+    立てかけた猟銃　その他　猟師さん風荷物など見える 
+
+    バタバタとうちわであおぐ 
+姐さん（セリフ　意味不明にブツブツと続く…）「あぢあぢ　うぇあおんがごげ」 
+◇s-c005(2+18)
+<column
+    picture="http://localhost/~kiyo/uat_sample/cont/img/250deef8-f938-4a33-b9d3-947b1c6786f7.png"
+>
+    姐さんの手元　クロースアップ 
+    うちわバタバタ 
+    ダラダラと流れ落ちる汗 
+    PAN-UP↑ 
+    ふと扇ぐ手を止めてせりふ 
+姐さん「お！」
+<column
+    picture="http://localhost/~kiyo/uat_sample/cont/img/458eed66-1f82-4efd-8825-0427f66e5713.png"
+    timeText=2+18
+>
+    立ち上がる(A.C) 
+◇s-c006(6+12)/10(7+12)
+<column
+    picture="http://localhost/~kiyo/uat_sample/cont/img/fab394de-16a0-4790-bc42-7273646ffe17.png"
+    timeText=6+12
+>
+    (A.C)岩の露頭に立ち上がり手を振る姐さん
+
+    T.B、するとふもとの方から山道を登ってくるオサゲちゃん
+    手を振る
+
+    山腹にはなにか巨大な空中構造物（先文明の遺跡）がある
+姐さん「オーイ！　かいだしごくろうさーん」 
+
+オサゲ「ハ～イーぃ　おまたせぇ～」
+3.同所
+◇s-c007(2+18)
+<column
+    cid=0
+    picture="http://localhost/~kiyo/uat_sample/cont/img/351438e8-d0ee-44d7-8900-18bf22a4feae.png"
+>
+    買い出しケース（保冷）のクローズアップ 
+
+    フタをパカっと開くとドライアイスの煙出る 
+    一番上にアイスバーが見える
+<column
+    cid=1
+    picture="http://localhost/~kiyo/uat_sample/cont/img/80b754b4-05b5-4c9a-8826-62df57070ded.png"
+    timeText=2+18
+>
+    ちょい　T.U
+オサゲ「じゃーん」
+◇s-c008(3+6)
+<column
+    picture="http://localhost/~kiyo/uat_sample/cont/img/ef52e031-0a32-459c-92a2-99f9518edfa4.png"
+    timeText=3+6
+>
+    汗だくのオサゲ、アップで 
+    アイスバーを差し出して「トクイ！」
+オサゲ「これ、ついでに買ってきちゃったー」
+◇s-c009(3+18)
+<column
+    cid=0
+    picture="http://localhost/~kiyo/uat_sample/cont/img/7d424a56-7e63-4759-b121-d520f54145ba.png"
+>
+    切り返し
+    姐さん　バストアップ 
+    汗ダラダラ流れてる 
+    目パチ 
+<column
+    cid=1
+    picture="http://localhost/~kiyo/uat_sample/cont/img/1dfdb181-aa71-4a4b-bbf6-c7cd95afe76c.png"
+>
+    姐さん　アップへ Q.T.U. 
+
+    中O.Lで表情変わるb
+    ウルウル目 
+
+    カンゲキ！！！ 
+姐さん「………！」
+◇s-c010(7+12)
+<column
+    picture="http://localhost/~kiyo/uat_sample/cont/img/1e8d1c39-c2b4-4f2e-b161-cb668e715d83.png"
+    timeText=7+12
+>
+    引き絵 
+    姐さん　アイスバー受け取って 
+    オサゲのアタマをかいぐりかいぐりする 
+
+    カメラC6同ポジション FIX 
+    WIPE (2+18)→
+
+姐さん「ナイスぅ！　ほめてとらすぞ 
+解ける前にいただきぃっ！」 
+オサゲ「でへへぇー（アドリブで）」
+
+##[end] 2019.08.12  ねこまたや:nekomataya@example.com
+

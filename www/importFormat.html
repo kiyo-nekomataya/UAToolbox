@@ -1,0 +1,528 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xps data convert</title>
+
+<!-- スタイルシート　アプリ本体準拠-->
+<link href="css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="css/remaping.css" type="text/css" rel=stylesheet>
+
+<!--  外部ライブラリ -->
+<script src=./nas/ext-lib/jquery-3.6.0.min.js></script>
+<script src=./nas/ext-lib/jquery-ui-1.13.1.custom/jquery-ui.min.js></script>
+<script src=./nas/ext-lib/ecl/ecl.js></script>
+<script src=./nas/ext-lib/csv/csvsimple.js></script>
+
+<!-- cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.2/markdown-it.min.js" integrity="sha512-ohlWmsCxOu0bph1om5eDL0jm/83eH09fvqLDhiEdiqfDeJbEvz4FSbeY0gLJSVJwQAp0laRhTXbUQG+ZUuifUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- cdn -->
+
+<!-- システム汎用ライブラリ remaping.jsよりも前方でロードする必要あり -->
+<script src=./nas/lib/config.js></script>
+<script src=./nas/lib/nas_common.js></script>
+
+        <script src=./nas/lib/nas_AnimationValues.js></script>
+        <script src=./nas/lib/pmio.js></script>
+
+        <script src=./nas/lib/cameraworkDescriptionDB.js></script>
+        <script src=./nas/lib/storyboard.js></script>
+        <script src=./nas/lib/etc/_pmdb_/configPMDB.js></script>
+
+
+</head>
+<body style='margin-left:50px;'>
+<h1>カット（カット袋）一括登録データ用フォーマット</h1>
+<hr>
+<pre>
+
+フィールド数不定のcsvまたはタブ区切りテキスト（フィールドセパレータはタブ'\t'またはカンマ','またはスラッシュ'/'）
+
+レコードごとにカット袋１件　各レコードは改行区切り
+
+</pre>
+    データの第一レコード、第一フィールドを識別情報とする
+
+<h2>#uatservice_startup_datalist</h2>
+
+<h2>nas_startup_detalist</h2>
+
+<pre>
+
+コメント行・空白行
+
+    '#'開始の行をコメントとして読み飛ばすものとする
+    空白行は読み飛ばす(可読性のために空白行を挿入して良い）
+    １行（レコード）につき、カット袋（cutbag）データ１件分とする
+    １行（レコード）に複数のカット（フィールド）がある場合、兼用カットのデータとする
+    特に指定がなければ、兼用カットは並べ替えを行い、カット番号の最も小さいものを代表カット番号とする
+
+    すでに登録済のカットを含むレコードは、データとして受けつけない
+    （このくらい判定を単純化する。兼用カット中一つでも重複を発見したらそのレコード全体をリジェクト）
+
+    各エントリーは　<b>カット記述子</b> (後述)を用いる
+
+</pre>
+eg.
+<hr>
+照合リスト （既存カット名のリスト）を配列データで与える事ができる<br>
+エントリー済みのカットと同名のカットが含まれるレコードは登録されない。<br>
+<textarea id=masterList style='width:720px;height:180px;'>
+[
+"1",
+"2",
+"3",
+"5"
+]
+</textarea><br>
+<hr>
+処理データ　<br>
+<textarea id=listdata style='width:720px;height:320px;'>#uatservice_startup_datalist
+s-c1(7+12)
+#レコード内に複数フィールドがあれば兼用カットとして登録
+s-c2(3+18),s-c4(4+0)
+s-c3(6+0)
+
+s-c5(5+12)
+s-c6(3+6)
+#フィールド区切りが混在していても良い
+s-c7(4+18)	s-c9(2+12)/s-c12(3+18)
+
+s-c8(5+0)
+s-c10(4+12)
+s-c11(8+0)
+s-c13(12+0)
+</textarea><br>
+<button
+	style = 'width:320px;'
+	onclick = 'console.log(parseEntries(document.getElementById("listdata").value,JSON.parse(document.getElementById("masterList").value)));'
+>parse to console</button><br>
+<button
+	style = 'width:320px;'
+	onclick = 'console.log(JSON.stringify(parseEntries(document.getElementById("listdata").value,JSON.parse(document.getElementById("masterList").value))));'
+>parse to console(JSON)</button><br>
+<hr>
+<pre>
+    シナリオ形式（script|screenplay|storyboard）のテキストを与えて、ストーリーボードオブジェクトを作成する機能
+    日本型｜英文のシナリオを入力とすることができる
+    拡張書式で「カット（ショット）」を定義することも可能
+    絵コンテにみられる「コマ（カラム）」を定義することも可能
+    詳細な書式は後述
+</pre>
+<hr>
+シナリオ形式参考データ（movie script） 
+<select name=sampleSelect id=sampleSelect　
+    onchange = 'getSample(this.value);'
+>
+ <option value=0>
+ <option value=1>シナリオ（柱番号なし）
+ <option value=2>シナリオ（シーン番号あり）
+ <option value=3>シナリオ＋カット柱（AR台本|カット割り）
+ <option value=4>シナリオ＋カット柱＋カラムタグ(絵コンテ)
+ <option value=5>シナリオ＋カット柱＋カラムタグ(フルスペック試験)
+ <option value=6>英文シナリオ（シーン番号あり）
+<!-- <option value=5>英文シナリオ
+ <option value=7>英文シナリオ＋カット柱（AR台本|カット割り）
+ <option value=8>英文シナリオ＋カット柱＋カラムタグ(絵コンテ)-->
+ <option value=9>カット割りのみ記載した例（カット袋リストと同等）
+</select>
+
+<br>
+<textarea id=screenplay style='width:720px;height:320px;'></textarea><br>
+<button
+	style = 'width:320px;'
+	onclick = 'test.SB=nas.StoryBoard.parseScript(document.getElementById("screenplay").value);console.log(test.SB);'
+>parse to console</button><br>
+<button
+	style = 'width:320px;'
+	onclick = 'console.log((nas.StoryBoard.parseScript(document.getElementById("screenplay").value)).toString());'
+>textExport(FULL-format)</button><br>
+
+<button
+	style = 'width:320px;'
+	onclick = 'console.log((nas.StoryBoard.parseScript(document.getElementById("screenplay").value)).toString("storyboard"));'
+>textExport(STORYBOARD)</button><br>
+
+<button
+	style = 'width:320px;'
+	onclick = 'console.log((nas.StoryBoard.parseScript(document.getElementById("screenplay").value)).toString("script"));'
+>textExport(SCRIPT)</button><br>
+<button
+	style = 'width:320px;'
+	onclick = 'console.log((nas.StoryBoard.parseScript(document.getElementById("screenplay").value)).toString("AR"));'
+>textExport(AR-SCRIPT)</button><br>
+<button
+	style = 'width:320px;'
+	onclick = 'console.log((nas.StoryBoard.parseScript(document.getElementById("screenplay").value)).getObject("JSON"));'
+>exchangedata(JSON)</button><br>
+<button
+	style = 'width:320px;'
+	onclick = 'console.log((nas.StoryBoard.parseScript(document.getElementById("screenplay").value)).getObject());'
+>exchangedata(Object)</button><br>
+<br><hr>
+
+<br>
+<button
+	style = 'width:320px;'
+	onclick = 'testCode = document.getElementById("testcode").value;console.log(eval(testCode));'
+>do test</button><br>
+<textarea id=testcode style='width:720px;height:320px;'>//オリジナル　ロック解除
+test.SB.fixed = false;
+//複製をとる
+var copySB = new nas.StoryBoard();
+copySB.parseScript(test.SB.toString());
+console.log(copySB.toString());
+
+copySB.moveHead('+',0);
+
+//　引数配列    [['moveHead','shot',1],['edit','insert',test.SB.contents[4]],"(! (result[0] instanceof nas.StoryBoard.SBShot))","[currentSht,result,copySB.activeColumnId]"],
+
+
+var doArguments=[
+    [['moveHead','shot',2],['edit','replace',test.SB.contents[4]],
+        "((result[1]))","[copySB.activeColumnId,currentClm,currentSht,currentScn,result]"],
+    [['moveHead','shot',3],['edit','replace',test.SB.contents[4]],
+        "((result[1])&&(test.SB.contents[4].name == result[1].name))","[copySB.activeColumnId,currentClm,currentSht,currentScn,result]"],
+    [['moveHead','shot+',1],['edit','replace',test.SB.contents[4]],
+        "((result[1])&&(test.SB.contents[4].name == result[1].name))","[copySB.activeColumnId,currentClm,currentSht,currentScn,result]"],
+    [['moveHead','end',0],['edit','add',test.SB.contents[4]],
+        "((shtCount + 1 ) == copySB.contents.length)","[shtCount,result,copySB.contents.length]"],
+    [['moveHead','shot',0],['edit','add',test.SB.contents[4]],
+        "((shtCount + 1 ) == copySB.contents.length)","[currentScn,currentSht,shtCount,result,copySB.contents.length]"],
+    [['moveHead','shot',2],['edit','remove','shot',2],
+        "(shtCount > copySB.contents.length)","[shtCount,copySB.contents]"],
+    [['moveHead','shot',0]],
+    [['moveHead','+',1],['edit','remove','column',1],
+        "(clmCount > copySB.columns.length)","[clmCount,copySB.columns]"],
+    [['moveHead','scene',3],['edit','remove','scene',8],
+        "(scnCount > copySB.scenes.length)","[scnCount,copySB.scenes]"]
+];
+
+//try {
+for (var tst = 0 ;tst <doArguments .length; tst ++){
+console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>> test : No.'+tst);
+console.log(doArguments[tst]);
+    var resAdd = copySB[doArguments[tst][0][0]](doArguments[tst][0][1],doArguments[tst][0][2]);
+console.log(doArguments[tst][0].join()+'>--------------- move to :'+copySB.activeColumnId);
+    if(doArguments[tst].length == 1) continue;//移動コマンドのみのエントリを処理
+//ターゲットポイントが末尾に入るとcurrentColumnはundefinedになる（正常）その場合replaceは不能でaddのみが正常に働く
+    var scnCount = copySB.scenes.length;
+    var shtCount = copySB.contents.length;
+    var clmCount = copySB.columns.length;
+    var currentClm = copySB.activeColumn;
+    var currentSht = (currentClm)? currentClm.getShot():undefined;
+    var currentScn = (currentSht)? currentSht.getScene():undefined;
+    var result;
+//console.log([resAdd,copySB.activeColumnId,currentClm,currentSht,currentScn]);
+//console.log(doArguments[tst]);
+    if(doArguments[tst][1].length > 3){
+        result = copySB[doArguments[tst][1][0]](doArguments[tst][1][1],doArguments[tst][1][2],doArguments[tst][1][3]);
+    }else{
+        result = copySB[doArguments[tst][1][0]](doArguments[tst][1][1],doArguments[tst][1][2]);
+    }
+    if(result){
+        console.log((eval(doArguments[tst][2]))?"OK":eval(doArguments[tst][3]));
+    }else{
+        console.log('=========== detect ERROR:');
+        console.log(result);
+    }
+}
+</textarea><br>
+
+<script>
+    var test={};
+        test.SB;
+/*
+ 	照合リストは配列で与える不正データの場合空の配列を使用
+ */
+	function parseEntries(dataStream,masterList){
+		if(! dataStream) return [];
+		if((! masterList)||(! masterList instanceof Array)) masterList = [];
+		
+		var result=[];//array
+		var dataArray = dataStream.split('\n');
+		var dataLine = '';
+		if(dataArray[0].indexOf('#uatservice_startup_datalist')!=0) return result;
+
+		var commentSkip = false;
+		for (var line=1;line<dataArray.length;line++){
+			dataLine = dataArray[line];
+			if (commentSkip){
+				if(dataArray[line].match(/^.*\*\/(.*)$/)){
+					commentSkip = false;
+					if(RegExp.$1){
+						dataLine=RegExp.$1;
+					}else{
+						continue;
+					}
+				}
+			}
+			if ((dataArray[line]=='')||(dataArray[line].match(/^#|^\/\//))) continue;
+			if (! commentSkip){
+				if(dataArray[line].match(/^(.*)\/\*.*$/)){
+					commentSkip = true;
+					if(RegExp.$1){
+						dataLine=RegExp.$1;
+					}else{
+						continue;
+					}
+				}
+			}
+			//既存データと照合
+			parsedSCi = (nas.Pm.parseSCi(dataLine));
+			var fdIx = -1;
+			for(var ckIx = 0; ckIx<parsedSCi.length;ckIx ++){
+				fdIx = masterList.findIndex(function(element){
+					return (nas.Pm.compareCutIdf(parsedSCi[ckIx].name,element) == 0)
+				});
+				if(fdIx >= 0) break;
+			}
+			if(fdIx >= 0){
+				console.log('コンフリクト検出');
+				console.log(parsedSCi);
+//コンフリクトの処理
+				continue;
+			}else{
+				for(var ix = 0; ix<parsedSCi.length;ix ++){
+					masterList.push(parsedSCi[ix].name);
+				}
+			}
+			result.push(parsedSCi);
+		}
+		return result;
+	}
+function getSample(Number){
+	var url="./template/blank.txt";
+	switch((Number*1)){
+case	0:url="./notes/storyBoardData/encoded/script0.txt";break;
+case	9:url="./notes/storyBoardData/encoded/script9.txt";break;//カット割りのみ（リストと同等）
+case	8:url="./notes/storyBoardData/encoded/script8.txt";break;//英文シナリオ＋カット柱+カラムタグ（絵コンテ状態）
+case	7:url="./notes/storyBoardData/encoded/script7.txt";break;//英文シナリオ＋カット柱（AR台本|カット割り）
+case	6:url="./notes/storyBoardData/encoded/script6.txt";break;//英文シナリオ（シーン番号つき）
+case	5:url="./notes/storyBoardData/encoded/script5.txt";break;//英文シナリオ（素あがり）
+case	4:url="./notes/storyBoardData/encoded/script4.txt";break;//シナリオ＋カット柱+カラムタグ（絵コンテ状態）
+case	3:url="./notes/storyBoardData/encoded/script3.txt";break;//シナリオ＋カット柱（AR台本|カット割り）
+case	2:url="./notes/storyBoardData/encoded/script2.txt";break;//シナリオ（シーン番号つき）
+case	1:url="./notes/storyBoardData/encoded/script1.txt";break;//シナリオ（素あがり）
+	default:url="./template/blank.txt";
+	}
+	myAjax= jQuery.ajax({
+		type    :"GET",
+		 url    : url ,
+		dataType:"text",
+		success : putSample
+	});
+//	jQuery("data_well").load(url);
+//		error :putSample
+
+};
+function putSample(request , stts ,oth){
+//	if(oth){alert(oth);alert(stts);alert(request);}
+//	confirm("stop");
+//	if(!request){request=myAjax};
+//	var myContent= request.transport.responseText;
+	var myContent= request;
+//	if(true){request=myAjax}
+//console.log(myContent)
+	$('#screenplay').text(decodeURI(myContent));
+//xUI.data_well.value=myContent;
+};
+
+</script>
+
+<pre>
+
+<h1>カット記述子</h1>
+    <h2>カット番号(カット尺)</h2>
+
+eg.
+c12(2+12),c14(2+12),c23(3+12)
+c12(2+12)/c14(2+12)/c23(3+12)
+
+上記の２行は同じ３カット兼用をあらわす記述
+
+カット番号（＝カット名）
+    カットの所属を表す名称
+    ハイフンで区切られた「シーン-カット」の２パートで表すことが可能
+    シーン部の記述がない場合は全体がカット番号（名）となる
+    シーン部にはシーン(scene)を表す's|S'を前置しても良い
+    カット部にはカット(cut)を表す'c|C'を前置しても良い
+    名称の数字（番号）部分には番号を表す'#(ナンバーサイン)'を前置しても良い
+    桁合わせのために数値部分前方に'0(ゼロ)'を置いても良い
+
+例:
+    c#0001
+    s12-c34
+    s#1-c#128
+    3-21
+
+        カット番号、シーン番号は数字以外の文字を含んでいても良い
+        数字で始まる名前を推奨するが、必ずしも数字で開始しなくても良い
+        
+        シーン番号がsで始まる場合は 前置の's','s#'を省略できない
+        カット番号がcで始まる場合は 前置の'c','c#'を省略できない
+        シーン番号、カット番号ともに'-'で始まってはならない
+        
+        まぎらわしい命名は避けるよう強く推奨
+        カット番号の数字部分は、全角半角を区別しない
+        '0'で桁合わせした数値は整数として判定されるので注意
+        以下のカットはすべて「カットいち」で同じカットとして扱われる
+
+    c#０１
+    c0001
+    s-c1
+		比較の際はカット番号比較用関数を利用する
+
+	nas.Pm.compareCutIdf(カット番号1,カット番号2)
+	
+/**
+ *  エンコード済みのカット記述子を比較してマッチ情報を返す
+ *  ソート時の判定関数を兼ねるようにリターンを数値に変更 2019 06 20
+ *  シーンカットともに一致した場合のみ 0 それ以外は -1|+1で順位情報を返す
+ *  引数に秒表記部が含まれないよう調整が必要
+ *  @params     {String}   tgt
+ *     比較元カット記述子
+ *  @params     {String}   dst
+ *     比較先カット記述子
+ *  @returns    {Number}
+ *       -1 比較元下位（前方)
+ *       0  一致
+ *       +1 比較元上位（後方)
+ */
+
+尺（＝カット尺）
+    カット番号に続けて(カッコ)内にカットの尺を書くことができる
+    尺の形式は以下のいずれか
+例:
+    (180)         :数字のみ フレーム数
+    (2+0)         :秒+コマ
+    (00:00:03:20) :SMPTEタイムコード
+    
+    尺後方にフレームレート指定を入れても良い
+    その場合は//（二重スラッシュ）で区切って入れる
+例:
+    (120//24fps)
+    (2+18//30NDF)
+    (00:00:08:15//59.94)
+
+１カット分のカット指定は以下の様になる
+
+例:
+    s2-c13(3+12)
+    c#0001(180/30)
+    s12-c34(2+0//25fps)
+    s#1-c#128(00:00:08:15//59.94)
+    3-21(19)
+
+カット袋等で１単位に複数のカットが含まれる場合は以下のように',(コンマ)'または'/(スラッシュ)'または'\t(タブ)'区切りのリストにする
+
+例:
+    s2-c13(3+12),s2-c15(4+18),s6-c08(12+06)
+    s2-c13(3+12)/s2-c15(4+18)/s6-c08(12+06)
+    s2-c13(3+12)	s2-c15(4+18)	s6-c08(12+06)
+
+カットの代表番号は、もっともカット番号の小さいものとなる
+
+==============================
+
+カット番号のエンコード
+        タイムコードに括弧が含まれるためカット番号(名称)が括弧を含む場合は%エンコードすること
+
+        nas.IdfEncode(カット名,'()\\/')
+
+/**
+ *     特定文字の%エンコーダ
+ * 引数文字列の指定された文字を部分的にURIエンコード(%文字コード)して返す関数
+ * 第一引数が与えられない場合は、空文字列として扱う（空文字列を返す）
+ * 第二引数が与えられない場合は、encodeURIComponentの値を返す
+ * 
+ *     要素の文字列は識別子をファイル名等に利用する場合、ファイルシステムで使用できない文字が禁止されるが、この文字も併せて部分エンコードの対象となる。
+ *     対象文字列は、Windowsの制限文字である  ¥\/:*?"<>| に加えて . 及びエンコード前置文字の %
+ *"
+ * nas.IdfEncode(sourceString,strings);
+ * nas.IdfEncode('ABCDE%FG','ABC');
+ *	@params	{String}	sourceString
+ *		エンコード前文字列
+ *	@params	{String}	strings
+ *		置き換え対象文字列
+ *	@returns {String}
+ *		エンコード済文字列
+ * 逆関数なし
+ * デコードはdecodeURIもしくはdecodeURIComponent関数を使用
+ */
+
+カット記述子パーサ
+        nas.Pm.parseSCi(カット識別レコード)
+        引数はカット記述子　複数カットを一括で処理してSCiオブジェクトの配列で返す
+
+/**
+ *    sci識別子をパースして無名オブジェクトの配列で返す
+ *    識別子に付属する時間情報はトランジション／継続時間ではなくカット尺のみ
+ *    補助情報は持たせない。かつ対比時に比較対象とならないものとする
+ *    カット番号情報は、ここではscene-cutの分離を行わない
+ *    比較の必要がある場合に始めて比較を行う方針でコーディングする
+ *    sciString末尾の（括弧内）は時間情報部分
+ *    (括弧)による記述が2つ以上ある場合は最初の開き括弧の前がカット識別子で、時間情報は最後の（括弧）内の情報を用いる
+ *    
+ *    書式は(TC//framareteString) or (TC) フレームレートの指定のない場合はデフォルトの値で補われる
+ *    (1+12),(1+12//24FPS),(1:12//30),(01:12//30DF),(00:00:01:12//59.94)等
+ *    デフォルト値は、タイトルから取得
+ *    sciStringに時間情報が含まれないケースあり
+ *    time指定の存在しない識別子の場合''を補う
+ *
+ *    引数が与えられない場合は引数を''とみなす
+ *      その場合の戻り値は空配列
+ *		名前が空となる要素はスキップ（無名要素は認められない）
+ *  @params     {String}    sciDescription
+ *  @returns    {Array}
+ *      array of {Object　SCi}
+ *      
+ */
+戻り値オブジェクトは以下のような形式となる(JSON文字列化可能)
+        Object SCi{
+            name:		カット識別用文字列（引数に忠実な文字列）,
+            scene:		シーン番号,
+            cut:		カット番号（必須）,
+            time:		時間表記文字列,
+            trin:		トランジション時間表記文字列,
+            trout:		トランジション時間表記文字列,
+            framerate:	カット独自フレームレートオブジェクト(指定があれば),
+            product:	プロダクトオブジェクト（指定があれば）
+        }
+
+配列要素の戻り値オブジェクトは、toStringメソッドで文字列化可能
+
+
+ソート関数
+        ソートの際は、以下のソート関数でカット順を整理する
+
+        Array.sort(nas.Pm.compareCutIdf)
+
+        配列の要素はカット識別子,カット記述オブジェクト(nas.Pm.SCi)またはプロダクション管理単位オブジェクト(nas.Pm.PmUnit)
+
+
+サーバ上でxMapデータを初期化の際はxMapコンストラクタにデータ識別子を与えて初期データを得る
+
+例	var newEntry = new xMap( "title#epsode[subtitle]//s-c#001(6+0)/s-c003(3+0)" );
+
+	
+
+パーサに必要なライブラリ
+
+
+./nas/lib/config.js
+./nas/lib/nas_common.js
+./nas/lib/nas_AnimationValues.js
+./nas/lib/pmio.js
+./nas/lib/cameraworkDescriptionDB.js
+./nas/lib/storyboard.js
+./nas/lib/etc/_pmdb_/configPMDB.js
+
+xMapの初期化をする場合は、以下のライブラリを必要とする
+
+./nas/lib/mapio.js
+./nas/lib/xpsio.js
+
+
+</pre>
+</body>
+</html>

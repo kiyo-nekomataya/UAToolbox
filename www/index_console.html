@@ -1,0 +1,393 @@
+﻿<html>
+<head>
+<link rel="shortcut icon" href="./images/icons/pmu.ico">
+<link href="./nas/lib/nas_common_HTML.css" type="text/css" rel=stylesheet media="screen,tv">
+<link href="./template/remaping.css" type="text/css" rel=stylesheet media="screen,tv">
+<link href="./template/xmap.css" type="text/css" rel=stylesheet >
+<link href="./template/printout.css" type="text/css" rel=stylesheet media="print">
+
+<link href="./nas/ext-lib/jquery-ui-1.13.1.custom/jquery-ui.min.css" type="text/css" rel="stylesheet">
+<link href="./nas/ext-lib/perfect-scrollbar/css/perfect-scrollbar.css" type="text/css" rel="stylesheet">
+
+
+<!-- script type="module" src=/nas/moduleTest/nas_import.js></script -->
+
+<!-- cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.2/markdown-it.min.js" integrity="sha512-ohlWmsCxOu0bph1om5eDL0jm/83eH09fvqLDhiEdiqfDeJbEvz4FSbeY0gLJSVJwQAp0laRhTXbUQG+ZUuifUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- 基礎ライブラリ-->
+<script src=./nas/ext-lib/jquery-3.6.0.min.js></script>
+<script src=./nas/ext-lib/ecl/ecl.js></script>
+<script src=./nas/ext-lib/encoding.js/encoding.min.js></script>
+<script src=./nas/ext-lib/csv/csvsimple.js></script>
+<!-- 基礎設定 -->
+<script src=./nas/lib/config.js></script>
+<!-- アプリ個別設定 -->
+<script src=./nas/config_console.js></script>
+<!-- nasライブラリ -->
+<script src=./nas/lib/nas_common.js></script>
+<script src=./nas/lib/nas_common_Image.js></script>
+<script src=./nas/lib/nas_AnimationValues.js></script>
+<script src=./nas/lib/pmio.js></script>
+<script src=./nas/lib/storyboard.js></script>
+<script src=./nas/lib/mapio.js></script>
+<script src=./nas/lib/xpsio.js></script>
+<script src=./nas/lib/cameraworkDescriptionDB.js></script>
+
+<script src=./nas/lib/etc/_pmdb_/configPMDB.js></script>
+
+<!--     汎用ライブラリのためソース分離 一括マージ可能      -->
+<script src=./nas/lib/postscriptConvert.js></script>
+<script src=./nas/lib/lib_AEK.js></script>
+<script src=./nas/lib/lib_TVP.js></script>
+<script src=./nas/lib/lib_stylosCSV.js></script>
+<script src=./nas/lib/lib_TSH.js></script>
+<script src=./nas/lib/lib_ARD.js></script>
+<script src=./nas/lib/lib_ARDJ.js></script>
+<script src=./nas/lib/lib_TSX.js></script>
+<script src=./nas/lib/lib_TDTS.js></script>
+
+<!-- /* i18next */ -->
+<script type="text/javascript" src="./nas/ext-lib/i18n/i18next.min.js"></script>
+<script type="text/javascript" src="./nas/ext-lib/i18n/jquery-i18next.js"></script>
+<script type="text/javascript" src="./nas/ext-lib/i18n/i18nextXHRBackend.js"></script>
+
+<!-- /*  AdobeExtension/Scripts 準互換 多言語化ライブラリ*/ -->
+<script src=./nas/lib/nas_locale.js></script>
+
+<!-- システム言語リソース 
+<script src=./nas/lib/messages.js></script>
+-->
+
+<!-- アプリケーション共用メニューライブラリ -->
+<script src=./nas/lib/nas_menuItem.js></script>
+
+<!-- JQライブラリ -->
+<script src=./nas/ext-lib/jquery-ui-1.13.1.custom/jquery-ui.min.js></script>
+<script src=./nas/ext-lib/perfect-scrollbar/dist/perfect-scrollbar.min.js></script>
+<script src=./nas/lib/jquery-addon.js></script>
+<!-- fabric.js  -->
+<script src=./nas/ext-lib/fabric.js/dist/fabric.min.js ></script>
+
+<!-- nas HTMLアプリケーションライブラリ -->
+<script src=./nas/lib/nas_common_HTML.js></script>
+<script src=./nas/scripts/remaping/airUI.js></script>
+<script src=./nas/scripts/remaping/nodeUI.js></script>
+<script src=./nas/scripts/remaping/remaping.js></script>
+<script src=./nas/lib/docio.js></script>
+
+<!-- 以下remaping.jsにマージ予定　-->
+<script src=./nas/scripts/remaping/utils.js></script>
+
+<script src=./nas/scripts/pman/pman_util.js></script>
+
+<script src=./nas/scripts/uat/uat_message_handler.js></script>
+
+
+<!-- /*  開発用テストコード   2016.07.16  追加*/ これらはすべてremaping.jsへ統合予定-->
+<script src=./nas/scripts/remaping/serviceAgent.js></script>
+
+<script src=./nas/scripts/remaping/serviceAgent.SessionControls.js></script>
+<script src=./nas/scripts/remaping/serverio_test.js></script>
+<script src=./nas/scripts/remaping/documentPanel.js></script>
+<script src=./nas/scripts/remaping/xUI.SessionControl.js></script>
+<script src=./nas/scripts/remaping/newTaskController.js></script>
+
+<!-- アプリケーション追加言語リソース -->
+<script src=./nas/scripts/remaping/messages.js></script>
+
+<!-- 臨時アドオン
+<script src=./draft/convertYukiWiki2Md.js></script>
+ -->
+
+
+<!-- ライブラリインストール -->
+<script language=javascript>
+// テンプレートアプリケーションID : app_template
+	function console_startup(){
+		xUI= new_xUI();
+		xUI.init(null,null,'app_template');
+	}
+	function sync(){
+		return true;
+	}
+</script>
+</head>
+<body
+onload="console_startup(); nas.console = new nas.Console(document.getElementById('console'),function(cmd,cback){try{cback(eval(cmd),this);}catch(err){cback(err,this);}},'cons');">
+
+<div id=overlayHeadline >
+ <div class=fixedHeadline id=UIheader>
+  <div class=fixedHeadline id=UIheaderScrollV
+	onMouseDown =" return xUI.Mouse(event)"
+	onMouseUp =" return xUI.Mouse(event)"
+	onDblClick =" return xUI.Mouse(event)"
+	onMouseOver =" xUI.Mouse(event)"
+	class=sheet
+  ></div>
+  <div class=fixedHeadline id=UIheaderScrollH
+	onMouseDown =" return xUI.Mouse(event)"
+	onMouseUp =" return xUI.Mouse(event)"
+	onDblClick =" return xUI.Mouse(event)"
+	onMouseOver =" xUI.Mouse(event)"
+  ></div>
+  <div class=fixedHeadline id=UIheaderFix > </div>
+ </div>
+</div>
+<!--	簡易UIヘッダ	-->
+<!-- 固定コントロール fixedHeaderは、UIのマージン等を取得するためのエレメント 		onMouseOver=xUI.Mouse(event);
+-->
+<!-- // fixedHeader  -->
+	<div id="fixedHeader">
+<!-- WEBプルダウンメニュー -->
+<div id=pMenu></div>
+<!-- WEBプルダウンメニュー-->
+<!-- //新UI ヘッドバーメニュー-->
+<div
+	id=applicationHeadbar
+	class='applicationHeadbar'
+	style='display:table;'
+>
+  <div
+	class='cornerBox'
+	style='display:table-cell;'
+  >
+	<button
+		id=menuIcon
+		class='boxButton iconButton-hamberger'
+		style='background-color:gray;'
+		onClick='xUI.sWitchPanel();'
+	></button>
+	</div>
+	<div
+		style='display:table-cell;vertical-align:middle;text-align:center;margin:auto;padding-left:8px;'
+	>
+		<span id=multiMenu>
+
+
+<!-- 管理IDコントロール UI -->
+<!-- //ドキュメントコントロール(制作管理)メニュー-->
+	<span id =pmcui class=pmcui>    <span id=pmfui class=pmfui>
+	</span>
+<!-- ドキュメントコントロール(制作管理)メニュー//-->
+
+
+<!-- //node selector-->
+	<span
+		id=pmsui
+		style='float:right;vertical-align:middle;color:#dddddd;'
+	>
+	<input
+		id=xmapstring
+		type=text
+		style="border-style:solid;border-width:1px;border-color:#4444dd;color:white;background-color:transparent;"
+		size=48
+		value="ABC#01__s-c000"
+		onchange = "var ipt = new nas.xMap(this.value); pman.reName.xmap = ipt ; this.value=ipt.getIdentifier('full').replace(/\.xmap$/,'');"
+	>
+	    </span>
+  </div><!--  -->
+  <div id='repository-info'>
+    <div
+		id="serverurl"
+		data-i18n='nosigninservice;[title]_description'
+	>
+		serverurl
+    </div>
+    <div
+	id="loginuser"
+	>
+		username
+    </div>
+    <div
+		id="currentrepository"
+	>no-repository
+    </div>
+  </div>
+  <div
+	style='display:table-cell;width:75px;vertical-align:middle;text-align:right;padding-right:16px;'
+  >
+<!--<button id='loginstatus_button' onclick='xUI.sWitchPanel("Login");return false' title="ユーザ切り替え"> =OFFLINE= </button>-->
+	 <button
+	    id=loginstatus_button
+	    class='round-button round-button-offline'
+	    onclick='xUI.setCurrentUser();return false'
+	    title="ユーザ切り替え"
+		data-i18n='[title]loginstatus_button_description'
+		style="background-image: url(images/icons/avatar.png);background-position: -6px 0;"
+	></button>
+  </div>
+</div>
+<!-- 新UI ヘッドバーメニュー//-->
+
+<!--	//ポスト状ツールバー/toolbarPost	-->
+<div id=toolbarPost>
+	<div
+		class='cornerBox'
+		style='background-color:gray;'
+	>
+	<button
+		class='boxButton iconButton-hamberger'
+		style='background-color:gray;'
+		onClick='xUI.ibCP.switch(-1);'
+		data-i18n='[title]pmenu_description'
+	></button>
+	</div>
+<!-- //ツールバー切り替えボタン	-->
+<span id="ibCP_" class=ibCPnav>
+	<button
+	id=ibCmenuSwitch
+		class='boxButton iconButton-menuFwd'
+		onclick='xUI.ibCP.switch("bwd",event);'
+		title="前のメニュー"
+	>
+	</button>
+</span>
+<!-- ツールバー切り替えボタン//	-->
+<!-- //アイコンポストメニューコンテント 初期化プロセスが生成する -->
+	<div id="ibContent">
+	</div>
+<!--  アイコンポストメニューコンテント//          -->
+</div>
+<!--	ポスト状ツールバー/toolbarPost//	-->
+
+<!-- //アプリケーションパネルUIリソース -->
+        <div id=applicationUIStore>
+
+<!-- コンテキストメニュー　-->
+<!--
+    regionの分類
+    onHeadline
+    onTimelineTrackLabel
+        onTimelineTrack
+        onSelection
+        onSection
+    onTimelineTrackHeader
+    onReferenece
+    onRefereneceHeader
+    outer
+
+    onAssetBrowser
+    
+
+    管理モードによるメニュー切替はモード変更メソッド(xUI.setUImode)
+    表示モードによるメニュー抑制はリセッターメソッド(xUI.resetSheet)が
+    アプリケーションのホスト状態による遷移も同様に(xUI.resetSheet)で行う
+
+    操作中の編集モードによるON/OFFはflipcMメソッドが担当する。
+-->
+<!--    //コンテキストメニューUI        -->
+<div id ="contextMenu" class ="contextMenu optionPanelFloat">
+
+    <ul class='cMonHeadline'>
+		<li id=cMbrowseMenu>
+			<span id=cMbrowse-d class='cM cM-alt'>書類選択</span>
+			<A	id=cMbrowse
+				href = 'javascript:void(0)'
+				onclick = 'xUI.sWitchPanel("File");return false;//myScenePref.open();document.getElementById("scnNewSheet").checked=true;return false;'
+				title="ドキュメントを選択"
+			>書類選択</A>
+		</li>
+	<hr>
+		<li>
+			<span id=cMnewdoc-d class='cM cM-alt'>新規書類</span>
+			<A	id=cMnewdoc
+				href = 'javascript:void(0)'
+				onclick = 'myScenePref.open("new");return false;'
+				title="新規書類"
+			>新規書類</A>
+		</li>
+	</ul>
+</div>
+<!--    コンテキストメニューUI//        -->
+<!-- コンテキストメニュー -->
+
+
+<hr>
+    <h1>UAT-electron</h1>
+    We are using<br>
+    Node.js  :<span id="node-version"> (ノード環境なし) </span>,<br>
+    Chromium :<span id="chrome-version"> (エレクトロンなし) </span>,<br>
+    Electron :<span id="electron-version"> (エレクトロンなし) </span>.<br>
+<hr>
+
+
+<div>
+
+	<button
+		onclick = "uat.MH.openURL('./index_uaf.html','_new');"
+		class = "appIconButton" 
+	>UAF</button>
+	<button
+		onclick = "uat.MH.openURL('./index.html','_new');"
+		class = "appIconButton" 
+	>UATb</button>
+	<button
+		onclick = "uat.MH.openURL('./importFormat.html','_new');"
+		class = "appIconButton" 
+	>importFormat</button>
+	<button
+		onclick = "uat.MH.openURL('./sbdConvert.html','_new');"
+		class = "appIconButton" 
+	>絵コンテ</button>
+	<button
+		onclick = "uat.MH.openURL('./XpsConverter.html','_new');"
+		class = "appIconButton" 
+	>タイムシートコンバータ</button>
+	<button
+		onclick = "uat.MH.openURL('./xpsedit.html','_new');"
+		class = "appIconButton" 
+	>タイムシート編集</button>
+	<button
+		onclick = "uat.MH.openURL('./calculator.html','_new');"
+		class = "appIconButton" 
+	>電卓</button>
+
+<br>
+	<button
+		onclick = "nas.console.changeHost();"
+	>changeHost</button>
+	<button
+		onclick = "nas.console.clear();"
+	>clear</button>
+
+	</div>
+
+	<div>
+		** console help > .help
+	</div>
+	
+	
+<!--
+コンソールの画面を一つにまとめる
+
+コンソールオブジェクトを作る
+
+コマンドバッファをもたせる　履歴あり
+
+テキストエリアの入力をコマンドバッファに転送する（changeingイベント駆動で）
+
+	エンターを検知したらコマンドとして実行
+	エンター以外はコマンドバッファの編集
+
+
+var nas.console= {};
+	nas.console.commandStore=[];
+	nas.console.
+	
+value.lengthを使用する
+
+出力の書き換えはできない（禁止）
+-->
+<div
+	style = 'width:100%;nomin-width:480px;min-height:240px;display:inline-block;'
+ >
+<textarea
+	id=console
+	style='width:96%;min-width:320px;height:50%;min-height: 280px;padding:6px;margin:12px;color:#44DD33;background-color:#22222f;'
+></textarea><br>
+</div>
+<canvas id='canvas' width=512 height=512></canvas>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+﻿/*
+ electron|pulldown Menu共用
+ */
+
+applicationMenu
+	about
+	========
+	services
+	========
+	hide
+	hideothers
+	unhide
+	========
+	quit
+
+document
+	app_reName
+	app_console
+	app_timeSheet
+	--------NW
+	pman_openFolder
+	pman_closeFolder
+	openWithExternalTool
+	openFolderWidthFinder
+	openFolderWidthFileExplorer
+	========
+	renameFiles
+	bakeItems
+	packageItems
+	renameSelection
+	downloadItemSet
+	exportScript
+	========
+	pman_workSlip
+	pman_statusWorkSlip
+	========
+	exit
+
+editMenu
+//	select|release
+//	selectAll
+	undo
+	redo
+	======== 
+	pman_hide
+	pman_hideothers
+	pman_unhide
+	======== 
+	cut
+	copy
+	paste
+	handleAll
+	releaseAll
+	sortItems
+	reverseItems
+	========
+	insertCanvasAsset
+	editCanvasAsset
+	holdCanvasAsset
+	========NW
+	pasteAndMatchStyle
+	delete
+	selectAll
+	========
+	Speech
+	Speech_startSpeaking
+	Speech_stopSpeaking
+	========
+	selectAll
+
+historyMenu
+	reName_history_bwd
+	reName_history_fwd
+	========
+	reName_history_remove
+	reName_history_init
+
+reName
+	nameIncr
+	nameDecr
+	nameReset
+	identifier
+	timesheet
+	addGrp
+	delGrp
+	=======
+	prefix
+	suffix
+	search
+	rename_setting
+	========
+	renameDigits
+	renameDigits_0
+	renameDigits_00
+	renameDigits_000
+	renameDigits_0000
+	renameDigits_00000
+
+flipMenu
+	flipControl
+	flipSeekbar
+	
+SettingsView
+	numOrder
+	saveSlipsAuto
+	nameExt
+	sortAuto
+	showThumbnail
+	========
+	lightBoxControl
+	lightBoxProp
+	thumbnail
+	preview
+	ubfilter
+	fnfilter
+	-------
+	resetScreen
+	========NW
+	reload
+	forceReload
+	toggleDevTools
+	========NW
+	resetZoom
+	zoomIn
+	zoomOut
+	========NW
+	togglefullscreen
+
+window
+//	app_reName
+//	app_console
+//	app_productManager
+//	app_storyBoard
+//	app_timeSheet
+	========
+	minimize
+	zoom
+	========
+	front
+	========
+	close
+
+Tools
+	calculator
+	stopwatch
+	fieldTable
+
+help
+	usage
+	documentNamingRule
+	LearnMore
+	========
+	About
+[end]

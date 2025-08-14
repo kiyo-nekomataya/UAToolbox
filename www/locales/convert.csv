@@ -1,0 +1,581 @@
+﻿about,about,りまぴんについて
+aboutof,about {{%1}},{{%1}} について
+abort,Abort,欠番
+aborted,process aborted.,処理を中断しました
+action,Action,動作設定
+activateupperlayer,activate upper layer,上位レイヤをアクティブ
+addnewlayer,add new layer,新規動画レイヤ作成
+addnewovl,add new overlay,新規修正レイヤ作成
+alertabnomalprccs,[！！Caution！！] Abnormal processing,[！！注意！！] 異常処理です
+alertcutconflict,The same scene has already been entered.<br>This scene can not be entered,既に同じカットが登録されています<br>このカットの登録はできません
+alertcutillegal,Scene name is invalid  nThis scene can not be entered,カット番号が不正です<br>このカットの登録はできません
+alertdurationchange,the duration of document is changed.,カットの継続時間が変更されます。
+alertdiscardframes,contents of the erased frame are discarded.,消去されるフレームの内容は破棄されます。
+alerttrackschange,layer counts of document is changed.,カットのレイヤ数が変更されます。
+alertdiscardtracks,contents of the erased track are discarded.,消去されるトラックの内容は破棄されます。
+alertdiscardedit,Current edits are discarded.,現在の編集内容は破棄されます。
+alertnewdocumet,Create a new document,新規ドキュメントを作成します
+animationdrawing,animationDrawing,動画
+animationframeselectall,animation frame selectAll,アニメフレーム全選択
+atcreatenewlayer,to Create a new Layer,新規レイヤ作成時に
+backgroundcolor,background color,背景色
+confirmedit,(You can edit the contents of the text box.),(テキストボックスの内容を編集できます)
+confirmok,Is it OK?,よろしいですか？
+confirmexecute,Do you want to run it?,実行してよろしいですか?
+confirmcallecho,Save the document in the download folder with the following name.,次の名前でダウンロードフォルダに書類を保存します。
+confirmcallechoswap,Save {{%1}} in the download folder with the following name.,次の名前でダウンロードフォルダに {{%1}} を保存します。
+baseresolution,BaseResolution,基準解像度
+bg,BG,背景
+book,MG/FG,BOOK
+cancel,Cancel,取消
+cell,Cell,セル
+change,Change,変更
+close,Close,閉じる
+common,Common,一般環境
+confirmlayername,confirm layer name,レイヤ名を確認して下さい
+cut,Cut [ctr]+[Y],Cut[ctr]+[X]
+delete,Delete,削除
+destruction,Destruction,破棄
+document,document,ドキュメント
+documenthtml,HTML document,HTML書類
+documentxmap,xMap document,xMap書類
+documentxps,Xps document,Xps書類
+documenttdts,Tdts document,TDTS書類
+documentxdts,Xdts document,XDTS書類
+documentard,ARD document,ARD書類
+documentardj,ARDJ document,ARDJ書類
+documentcsv,Stylos-CSV document,Stylos-CSV書類
+documentsts,STS document,STS書類
+documenttsheet,t-Sheet document,t-Sheet書類
+documenttvp,TVP-csv document,TVPaint-csv書類
+documents,Documents,ドキュメント設定
+drawingfunctions,drawingFunctions,作画機能設定
+drawsettings,DrawSettings,作画設定
+duplicateanimationframe,duplicate animation frame,アニメフレームを複製
+edit,Edit,編集
+elementsfilter,footages,素材フィルタ
+export,Export,書出
+failed,Processing failed,処理できませんでした
+file,File,ファイル
+filename,file name,ファイル名
+filter,Filter,フィルタ
+frame,Frame,フレーム
+framerate,Framerate,フレームレート
+imedit,ImputMedias,入力メディア編集
+import,Import,読出
+imset,入力メディア登録,入力メディア登録
+inputdocname,Specify the document name,ドキュメントの名前を入力
+install,install,インストール
+keydrawing,KeyDrawing,原画
+layerclassify,layerClassify,レイヤ仕分
+layercontrol,layerControl,レイヤコントロール
+layerrename,layer rename,レイヤ名変更
+layout,Layout,レイアウト
+load,Load,読込
+makenewxps,make new eXposureSheet,新規タイムシートを作成します
+modechange,mode change,モード切替
+medias,Medias,メディア設定
+newlayerbgcolor,bgColor of new layer,新規レイヤの背景色
+newxps,new eXposureSheet,新規タイムシート
+noanimationframes,no Animation Frames,アニメーションフレームがありません
+nodocument,no document,ドキュメントがありません
+nolayers,no layer for deploying,展開するレイヤがありません
+noremovedata,no data to remove.,削除するデータがありません
+nosvaedata,no data to save.,保存するデータがありません
+notarget,no target items,対象アイテムがありません
+nosigninservice,(You are not signed in to the service),（サービスにサインインしていません）
+omedit,OutputMedias,出力メディア編集
+omset,出力メディア登録,出力メディア登録
+open,Open,開く
+opus,Opus,制作番号
+othet,other,その他
+overlaybgcolor,bgColor of overlay,修正レイヤの背景色
+overridealpha,overrideAlpha,アルファチャンネル優先
+overridecolorkey,overrideColorKey,カラーキー優先
+peg,peg,タップ
+preference,Preference,各種設定
+previewcontrol,preview Control,プレビューコントロール
+processing,proscessing…,処理中…
+inputwarning,The input operation is currently invalid.<br>To change the document please check in and start your job.,現在、入力操作は無効です。<br>ドキュメントの編集を行う場合は、作業にチェックインしてください。
+registration,Registration,新規登録
+removeanimationframe,remove animation frame,アニメフレームを削除
+resetsmartobj,reset smartObj,スマートオブジェクトをリセット
+reverseanimationframe,reverse animation frame,アニメフレームを反転
+requiresnumber,Please specify a numerical value,数値を指定してほしいのョ!と
+requirespositiveinteger,Please specify a positive value,正の数がいいなぁ…
+requiresstrings,Please specify String value,文字列で指定してほしいのですョ!
+statusedit,editting,編集中
+statusview,readonly,閲覧
+statusadmin,management,制作管理
+save,Save,作業保存
+saveandclose,save and close,保存して閉じる
+savepsdplease,Please save the document in psd format.,ドキュメントをpsd形式で保存してください。
+savetodonloadfolder,save to download folder,ダウンロードフォルダに保存
+savetodonloadfolderswap,ダウンロードフォルダに {{%1}} を保存,ダウンロードフォルダに {{%1}} を保存
+servicenode,service node,共有サーバ
+repositoryname,share name,共有名
+repositoryowner,share owner,共有オーナー
+scene,Scene,シーン
+scenecut,S-C,S-C
+setguidelayer,setGuideLayer,ガイドレイヤにする
+sheetlength,xSheetLength,シート１枚の長さ
+shortcutkey,shartcut key scripts,ショートカットツール
+sounds,Sounds,サウンド編集
+time,time,time
+title,title,題名
+transition,transition,トランジション
+timelinetrack,timeline track,タイムライントラック
+timelinerename,timeline rename,タイムライン名変更
+tagedit,timeline tag edit,タイムラインタグ編集
+update,Update,更新
+userinfo,userInfo,作業者の情報
+username,Name,名前
+withcolorkey,withColorKey,カラーキーで白を透過
+withsmoothing,withSmoothing,スムージングする
+withtransparent,with transparent,透過させる
+worktitles,workTitles,作品タイトル登録
+xsheet,xSheet,タイムシート
+xsheetinfo,xSheet information,タイムシート情報
+activate,activate,作業再開
+checkin,check in,作業開始
+checkout,check out,作業終了
+deactivate,deactivate,作業保留
+receipt,receipt,作業検収
+inuse,in use,作業中
+line,line,ライン
+currentline,current line,現在のライン
+newline,new line,新規ライン
+stage,stage,工程
+currentstage,current stage,現在の工程
+newstage,new stage,新規工程
+job,job,作業
+currentjob,curent job,現在の作業
+newjob,new job,新規作業
+addnewscene,add new scene,新規カット追加
+reseiptstage,check out job/check in new stage,作業検収/新規工程
+toprefix,to:, 
+topostfix, ,様へ
+dmpmnewdocument,I will create a new document.<br>Please enter scene number/duration and confirm with OK button.,新規カットを作成します。<br>カット番号/継続時間を入力して[OK]ボタンで確定してください。
+dmpmnewitemswap,"Start new {{%1}}.<br>Please enter a new %1 name. <br>If it is not on the list, please enter it with the keyboard.",新規 {{%1}} を開始します。<br>新しい %1 名を入力してください。<br>リストにない場合は、キーボードで入力してください。
+dmpmnewstage,"Close the current stage and open the next stage.<br>Please enter a new stage name.<br>If it is not on the list, please enter it with the keyboard.",現在の工程を閉じて次の工程を開きます。<br>新しい工程名を入力してください。<br>リストにない場合は、工程名を入力してください。
+dmpmnewassign,We finish the job for {{%1}} and make it editable by other users.<br>It is possible to assign the next user.<br>To assign please choose a name from the list or enter the user name directly.<br>Please input if there is a message to send.,カット{{%1}}の作業を終了して、他のユーザが編集可能な状態にします。<br>次の担当者を指名することが可能です。<br>指名する場合はリストから名前を選ぶか、または直接ユーザ名を入力してください。<br>申し送りメッセージがあれば、入力してください。
+normal,NORMAL,通常
+multiply,MULTIPLY,乗算
+lighten,LIGHTEN,比較（明）
+darker,DARKER,比較（暗）
+difference,DIFFERENCE,差の絶対値
+silhouette_luma,SILHOUETTE_LUMA,シルエットルミナンス
+dm000,"nas- library is required.<br>Please run the ""nasStartup.jsx"".",nasライブラリが必要です。<br>nasStartup.jsx を実行してください。
+dm001,"The effect is limited to the session.<br> If you need record, please click Save button below.",このパネルの変更はセッション限りです。記録が必要な場合は下のボタンで保存してください。
+dm002,Switching the active layer with the movement of animation frames<br>(only valid when using psAxe),フレーム移動時にアクティブレイヤの移動をする<br>(エクステンション使用時のみ有効)
+dm003,Dialog to create a new file,新規ファイル作成ダイアログ
+dm004,PsAxe use the advanced features when you create a new document,新規ドキュメント作成時にアニメ拡張機能を使う
+dm005,Can not drop to zero because the number of entries.,エントリ数が0になるので削除できません。
+dm006,Drop the selected entry. Are you sure?,選択されたエントリを削除します。よろしいですか？
+dm007,Load the saved settings. Current settings will be overwritten.,保存中の設定を読み込みます。現在の設定は上書きされます。
+dm008,You can not cancel. Are you sure?,取消はできません。よろしいですか？
+dmpreferenceconfirmsave,Save the configuration to the directory [ {{%1}} ].<br>The previous file is overwritten. Are you sure? ,設定を[ {{%1}} ]以下に保存します。<br>以前のファイルは上書きされます。よろしいですか？
+dm010,Use the opacity key to the head movement (timeline),ヘッド移動に不透明度キーを使用(timeline)
+dm011,frame skip (timeline),フレームスキップ(timeline)
+dm013,use difference mode when peg image placement,タップ画像配置時に差の絶対値にする
+dm014,use semi-transparent when picture-frame arrangement,フレーム画像配置時に半透明にする
+dm015,There is the same name of the layer.<br> Layer after the second will not be subject to the sort.,同名のレイヤがあります。<br>二つ目以降のレイヤは並び替えの対象になりません。
+dmprefconfirmsave,The setting has been changed. Do you want to apply it?,設定が変更されています。反映させますか?
+dmdocumentnosave,Document has not been saved. Do you want to save?,ドキュメントは保存されていません。保存しますか？
+dmdocumentnosaveexport,Document has not been saved. Do you want to export?,ドキュメントは保存されていません。書出しますか？
+dmdocumentconfirmokcancel,OK:save / Cancel:coninue without saveing,OK:保存する / Cancel:保存せずに続行
+dmdocumentconfirmync,Yes:save / No: update without saving / Cancel:cancel processing,Yes:保存する / No:保存しないで更新 / Cancel:処理をキャンセル
+dmdocumentconfirmoverwrite,There is already a file with the same name.<br>Are you sure you want to overwrite?,同名のファイルがすでにあります.<br>上書きしてよろしいですか?
+dm018,It has already been started.<br>Double start since receiving the console output is prohibited.<br>Do you want to reset.,すでに起動されています。<br>コンソール出力を受信するので二重起動は禁止されています<br>リセットしますか
+dm019,specify the file name for export,書き出しのファイル名を指定してください
+dm020,choose eXposure sheet to read,読み込むタイムシートを選んでください
+dm021,Please select eXposure sheet file.,タイムシートファイルを選択してください。
+dm023,"All the recorded information to the individual area to clear.<br>but it does clear the information of all the applications that use the nas library, please particular attention to those who are using the nas library in AE ,PS and others.<br>It is may be clear?",個人領域に記録した情報をすべてクリアします。<br>nasライブラリを使用するすべてのアプリケーションの情報をクリアしますので、AEとPSでnasライブラリを使用している方は特にご注意ください。<br>クリアして良いですか？
+dm024,"Information was recorded in the personal area : {{%1}} pieces of data has been cleared.<br>The current information is located on the memory.<br>Data is initialized at the time of application restart.<br>If you want to initialize, please restart the application without saving.",個人領域に記録した情報 :{{%1}} 個のデータをクリアしました。<br>現在の情報は、メモリ上にあります。<br>データはアプリケーション再起動の際に初期化されます。<br>初期化を希望する場合は、保存せずにアプリケーションを再起動してください。
+dm025,please choose Folder to import.,読み込むフォルダを指定してください
+dm026,please choose Folder to export,書き出しフォルダを指定してください
+dm027,:<br> You will import the settings of the folder above.<br>The same name of the setting can not undo been overwritten.<br>Are you sure you want to run?,:<br> 上のフォルダの設定をインポートします。<br>同名の設定は上書きされて取り消しはできません。<br>実行してよろしいですか？
+dm028,:<br>It will export the settings to a folder of the above.<br>We recommend the free folder.<br>Are you sure you want to run?,:<br>上のフォルダに設定をエクスポートします。<br>空きフォルダ推奨します<br>実行してよろしいですか？
+dmbackupconfirm,Load the backup data on the sheet. Current data will be lost. Is it OK?,バックアップデータをシートに読み込みます。<br>現在のデータは失われます。<br>よろしいですか？
+dmbackupdone,current data has been saved in the backup area,バックアップ領域に現在のデータを退避しました
+dmbackupnodata,no data in the backup area,バックアップ領域にデータがありません
+dmbackupclear,Cleared backup area,バックアップ領域をクリアしました
+dmunimplemented,this feature has not been implemented yet,この機能はまだ実装されていません
+dmconfirmclosepmenu,are you sure you want to hide the drop down menu?,ドロップダウンメニューを非表示にしてよろしいですか？
+dmaskuserinfo,please enter user name and e-mail address.,ユーザ名とメールアドレスを入力してください。
+dmcookieremoved,"I deleted the cookie. <br>In order to reset the value, reloading the page is necessary.<br>It will be reloaded with [OK].",クッキーを削除しました。<br>値をリセットするには、ページの再読込みが必要です。<br>[OK]で再読込みします。
+dmalertmenytracks,The number of specified tracks is very large.<br>Automatic generation of track name is up to 'Z'.,止めないけど…そんなにレイヤが多いとツライよ<br>レイヤ名を自動でつけるのは「Z」までなので<br>その先は自分でつけてね。
+dmalertcheckinfail,Check-in failed.<br>please check the status of document,作業開始に失敗しました<br>ドキュメントの状態を確認してください
+dmalertcheckoutfail,Check-out failed.<br>please check the status of document,作業終了に失敗しました<br>ドキュメントの状態を確認してください
+dmalertdatabusy,undefined,他のユーザが作業中です<br>このカットを作業することはできません
+dmalertcantactivate,You can not work on this data. <br>Please try Check-in procedure,このデータで作業する事はできません。<br>作業開始手続を試してみてください
+dmalertcantdeactivate,Work cannot deactivate.<br>This is not active data,作業保留できません<br>これは作業中のデータではありません
+dmalertcantcheckout,Work cannot Chack-out.<br>This is not active data,作業終了できません<br>これは作業中のデータではありません
+dmalertfailauthorize,Server authentication failed.<br>Please check ID and password,サーバ認証に失敗しました<br>IDとパスワードを確認してください
+dmcomfirmnewxsheetprop,Set a new xSheet with the default value.<br> Is it OK?,デフォルトの値で新規にシートを設定します。<br>	よろしいですか?
+dmalertnoentry,There are no match-entry in this repository.<br>Please make sure the target repository is selected.<br>You can temporarily store it to LocalRepository or write it externally to protect the data.,リポジトリにこのカットがありません<br>正しいリポジトリか確認してください<br>ローカルリポジトリに一時的に保存するか又は外部に書出してデータを保護することができます
+dmpmrecoverlostsession,This data is currently being edited in your account.<br>Please check that the document is not open in other environment.<br>Press OK to resume work from the current data.,このデータは現在あなたのアカウントで編集中です<br>他の環境でドキュメントを開きっぱなしになっていないか確認してください<br>OKを押すと、現在のデータから作業を再開できます<br>
+dmtllabelrename,Change timeline label.,タイムラインラベルを変更します。
+dmrenamelabels,"Please specify a new label name set. <br>The shortfall, excess will be ignored.",新しいラベル名セットを指定してください。<br>不足分、超過分は無視されます。
+dmrenamelabel,Please specify a new label.,新しいラベルを指定してください。
+dmreadonly,You can not edit this document at the moment.<br>To change the document please check in and start your job.,現在ドキュメントは編集できません。<br>ドキュメントを変更するためにはチェックインしてジョブを開始してください。
+dmremovethismessage,"Thereafter, do not display this message.",以後、このメッセージを表示しない。
+dmtltagedit,Edit the note text of the track.,トラックの注釈を編集します。
+jobcheckin,checkin,開始
+newdoc,new document,新規書類
+newdoc_description,新規ドキュメントを作成,新規ドキュメントを作成
+browse,selector,書類選択
+browse_description,select document,ドキュメントを選択
+discard,discard,編集破棄
+discard_description,discard job,編集を破棄してドキュメントを閉じる
+newentry_description,make new entry,タイトルやカットを新規に登録
+receipt_description,make new stage,次の工程へ進める
+checkoutf,force check out,引上
+checkoutf_description,force check out current job ,強制的に作業を閉じる
+abort_description,abort production entry,制作を中断する
+branch,branch,ライン分岐
+branch_description,branch production-line,制作ラインを分岐
+merge,merge,ライン検収
+headertools,header tools,ヘッダツール
+headertools_description,headline controls show/hide,ヘッドラインコントロールON/OFF
+importdatas_description,import data,ローカルドキュメントを開く
+openfs_description,import from localFS,ローカルドキュメントを開く(ファイル)
+savefs_description,export to localFS,保存（ファイル）
+exportfsps,export as,別名で保存（ファイル）
+callecho,Save via CGI,ダウンロード保存
+callecho_description,download exported data,CGI経由でローカルに保存（要CGI設定）
+downloadxps_description,download exported data(XPS),ローカルに保存（XPS）
+downloadtdts,download Tdts,ダウンロード保存(TDTS)
+downloadtdts_description,download exported data(TDTS),ローカルに保存（TDTS）
+downloadxdts,download Xtds,ダウンロード保存(XDTS)
+downloadxdts_description,download exported data(XTDS)）,ローカルに保存（XTDS）
+importexport,Import/Export,読込/書出
+importexport_description,open date Import/Export panel,読み込み書き出しパネルを開く
+docinfo,Document prop,シート情報
+exporthtmlair,Export as HTML,表示用HTML書出
+exportepsair,Export as EPS,eps画像書出
+exporthtml,表示用HTMLダウンロード,表示用HTMLダウンロード
+exporteps,eps画像ダウンロード,eps画像ダウンロード
+authpnl,auth panel,認証パネル
+authpnl_description,authorize panel ON/OFF,認証パネルを開く/閉じる
+signinout,Authorize,認証
+signinout_description,sign in/out,サインイン/アウト
+menuroot,top page,トップページ
+menuroot_description,back to title list,作品一覧へ戻る
+menuproducts,episode,エピソード
+menuproducts_description,back to opus list,制作話数一覧へ戻る
+menuback,カット,カット
+menuback_description,back to document list,カット一覧へ戻る
+selectall,select all[ctrl]+[A],全コマ選択[ctrl]+[A]
+selectall_description,select all frames in a track,トラックを全フレーム選択
+renametl,renameTL,ラベル変更
+renametl_description,rename timeline label,タイムラインの名前変更
+edittn,edit track tag,タグ編集
+cleartl,clearTL,一列クリア
+clearsheet,clear all,シートクリア
+clearsheet_description,clear xSheet,シートをクリア
+insertblank,insert blank,カラコマ挿入
+insertblank_description,insert blank cells,空白データを挿入して以降後送
+blockremove,block delete,ブロック削除
+blockremove_description,block delete contents,選択範囲を削除して間を詰める
+addsoundtrack,add soundtrack,音声トラック追加
+addsoundtrack_description,add soundtrack timeline,右に音声トラックを追加
+addstiltl,addStilTL,静止画を追加
+addstiltl_description,add still-image timeline,右に静止画トラックを追加
+addreplacementtl,add cell TL,セルを追加
+addreplacementtl_description,add replacement timeline right,右側にタイムライン追加
+addcameratl,add cameraTL,カメラを追加
+addcameratl_description,add camera timeline,右にカメラトラックを追加
+addgeometrytl,add stagework TL,ステージワークを追加
+addgeometrytl_description,add stagework timeline right,右にステージワークを追加
+addsfxtl,add sfx TL,効果を追加
+addsfxtl_description,add sfx timeline right,右に効果トラックを追加
+inserttl,insert TL,トラック挿入
+inserttl_description,insert timelines left,左にタイムラインを挿入
+deletetl,delete TL,トラック削除
+deletetl_description,remove timelines,指定のタイムラインを削除
+formattl,reformat TL,タイムライン整形
+formattl_description,reformat timelines,タイムラインを１列整形
+formatsheet,reformat xSheet,シート整形
+formatsheet_description,シートを整形,シートを整形
+simplifytl,simplify TL,トラック単純化
+simplifytl_description,simplify timelines,タイムラインの整形解除
+simplifysheet,simplify xSheet,シート単純化
+simplifysheet_description,タイムシート全体の整形を解除,タイムシート全体の整形を解除
+pushbackup,push to backup,バックアップ更新
+pushbackup_description,push current data to backup regian,バックアップエリアにデータを退避
+restorebackup,restoreBackup,バックアップ復帰
+restorebackup_description,restore from backup region,バックアップエリアからデータを復帰
+clearbackup,clearBackup,バックアップ削除
+clearbackup_description,clear backup region,バックアップエリアをクリア
+reference,Ref..,参照
+importreference_description,import to referenece area,参照エリアにデータ読込
+copytoreference,copy to Ref,参照エリアへ
+copytoreference_description,copy to referenece area,参照エリアへ転記
+copyfromreference_description,copy from reference area,参照エリアから転記
+clearreference,clear Ref,参照クリア
+clearreference_description,clear reference area,参照エリア消去
+buildactionsheet,make action-sheet,アクションシート
+buildactionsheet_description,make old-style Action-sheet,原画アクションシートを作成
+tools,Tools,ツール
+pref,Pref,環境設定
+pref_description,preferences,各種環境設定
+repositoryinfo,share information,共有情報
+repositoryinfo_description,show repository information,リポジトリ情報を見る
+memoedit,edit note,メモ編集
+reload,reload,アプリケーションを再読込
+previousver,previous ver,前バージョン
+show,Show,表示
+restrictionmode,[restriction],[制限モード]
+restrictionmode_description,change input restriction mode,入力制限モード切り替え
+managementmode,[management mode],[管理モード]
+managementmode_description,chamge management mode,管理モード切り替え
+editmode,[view mode],[表示モード]
+editmode_description,change view mode page/scroll,ページ/スクロール切り替え
+columns,[columns],[段組]
+columns_description,doble column,二段組
+chgloacle,[change locale],[言語切替]
+chgloacle_description,change language resource,言語リソース切替
+zoom,zoom,ズーム
+zoom_description,zoomChange,ズーム切替
+unzoom,100%,100%
+unzoom_description,zoom100%,ズーム解除
+loginpnl_description,lgin,認証パネル開/閉
+soundpnl,sound,音声編集
+soundpnl_description,Snd,音響パネル開/閉
+filepnl,filePanel,ドキュメントセレクタ
+filepnl_description,セレクタ開/閉,セレクタ開/閉
+logo,logo,ロゴ
+logo_description,ロゴ表示/非表示,ロゴ表示/非表示
+pmenu,pMenu,メインメニュー
+pmenu_description,メインメニュー表示/非表示,メインメニュー表示/非表示
+accountbox,service account,サービスアカウント
+accountbox_description,service account show/hide,サービスアカウント表示/非表示
+skb,softwareKB,ソフトウェアキーボード
+skb_description,addPln,ソフトウェアキーボード開/閉
+toolbar,toolbarHeader,ツールバー
+toolbar_description,ツールバー表示/非表示,ツールバー表示/非表示
+airmenu,-----airMenu,----- AIR用メニュー
+airmenu_description,airMenu,Adobe AIRメニュー
+pmcontrol,product control bar,制作管理バー
+pmcontrol_description,product control bar show/hide,制作管理バー表示/非表示
+tccontrol,time counter,カウンター
+tccontrol_description,time counter show/hide,カウンター表示/非表示
+inputcontrol,input box,入力ボックス
+inputcontrol_description,input box show/hide,入力ボックス表示/非表示
+sheetheader,sheetHeaderTable,シートヘッダ
+sheetheader_description,シートヘッダ表示/非表示,シートヘッダ表示/非表示
+commandbar,commandBar,コマンドバー
+commandbar_description,utility command bar,コマンドバー表示/非表示
+memoarea,memo,メモ欄
+memoarea_description,memo area show/hide,メモ欄表示/非表示
+referencearea,reference area,参照欄
+referencearea_description,reference area show/hide,参照欄表示/非表示
+dbgcons,debugConsole,デバッグコンソール
+dbgcons_description,debug_ON,デバッグコンソールON/OFF
+dbgmode,dbg ON/OFF, デバッグON/OFF
+dbgmode_description,change debug mode,デバッグモード切り替え
+introspector,AIRIntrospector,イントロスペクタ
+viewsource,AIRSourceViewer,ソース
+viewsource_description,ソース閲覧,ソース閲覧
+addangles,<△>,<△>
+addangles_description,add Angleblackets,矢囲い
+addbrackets,[□],[□]
+addbrackets_description,add Brackets,角括弧
+addcircle,(◯),(◯)
+addcircle_description,add Circle,丸囲い
+camera,camerawork,カメラワーク
+camera_description,選択範囲をカメラワークに,選択範囲をカメラワークに
+footstamp,diff,差分機能
+footstamp_description,diff ON/OFF,差分機能ON/OFF
+paintfs,paint diff,差分表示
+paintfs_description,paint diff cell background,参照エリアとの差分を表示
+clearfs,diff clear,差分クリア
+clearfs_description,erace cell diff,差分表示をクリア
+copy,Copy [ctr]+[Y],Copy[ctr]+[C]
+copy_description,copy,複写
+cut_description,切り取り,切り取り
+decrementnum,[--],[--]
+decrementnum_description,decrement number,セルを繰り下げる
+fadein,fade-in,フェードイン
+fadein_description,選択範囲をフェードインに,選択範囲をフェードインに
+fadeout,fade-out,フェードアウト
+fadeout_description,選択範囲をフェードアウトに,選択範囲をフェードアウトに
+incrementnum,[++],[++]
+incrementnum_description,incremant number,セルを繰り上げる
+interpsign,interporation sign,補間記号
+paste,Paste [ctr]+[Y],Paste[ctr]+[V]
+paste_description,paste,貼り付け
+printhtml,page for printout,印刷ページ
+printhtml_description,open new page for printout,印刷用ページを開く
+redo,Redo [ctr]+[Y],Redo[ctr]+[Y]
+redo_description,やり直しのやり直し[ctr]+[Y],やり直しのやり直し[ctr]+[Y]
+transition_description,選択範囲をトランジションに,選択範囲をトランジションに
+undo,Undo [ctr]+[Z],Undo[ctr]+[Z]
+undo_description,やり直し[ctr]+[Z],やり直し[ctr]+[Z]
+vbar,vertical bar,縦線
+vbar_description,set vertical bar,選択範囲に縦線
+wbar,vertical wave,波線
+wbar_description,set vertical wave,選択範囲に波線
+loginstatus_button_description,change user,ユーザ切り替え
+activelvl_description,convert AEkey,AEキー変換
+fct0_description,jump to,変更するとジャンプ
+fct1_description,数字だけはコマ数,数字だけはコマ数
+spin_v_description,spin-value,スピン値
+v_up_description,spin-value up,SPIN増
+v_dn_description,spin-value down,SPIN減
+spincklb_description,set spin-value selection,選択範囲をスピン指定にする
+inputbox_description,input data,シートにデータを入力します。
+pmfui-new,entry,登録
+pmfui-new_description,Register the current dope sheet in the repository.,現在のタイムシートを共有に登録
+pmcui-checkin_description,check in job,チェックイン
+pmcui-checkout,終了,終了
+pmcui-checkout_description,チェックアウト,チェックアウト
+pmcui-deactivate,deactiovate,保留
+pmcui-activate,再開,再開
+pmaui-receipt,検収,検収
+pmaui-receipt_description,作業終了した工程を閉じて次の工程を開始,作業終了した工程を閉じて次の工程を開始
+pmaui-checkout_description,作業中のカットを強制的に終了（引揚）,作業中のカットを強制的に終了（引揚）
+pmaui-abort_description,カットの全工程を停止（カット削除）,カットの全工程を停止（カット削除）
+pmaui-branch,分岐,分岐
+pmaui-branch_description,新規ラインを立ち上げる,新規ラインを立ち上げる
+pmaui-merge_description,merge prpduction-line,分岐したラインを収束
+datapnl,データ入出力,データ入出力
+datapnlcaption,(Copy and paste the data into this well),(このウェルにデータをコピーペーストします)
+exportxpswindow,write out in a separate window,別ウィンドウに書き出し
+exportxpswindow_description,for saving,保存用に書き出し
+exporthtmlwindow,Export in HTML in a separate window,別ウィンドウにHTMLで書き出し
+exporthtmlwindow_description,export HTML,HTML書き出し
+sampleloaderselect,select sample data,サンプル読み込み
+dataloaderimport,読込＋取込,読込＋取込
+dataloaderref,set reference,参照取込
+dataloaderget,set ,取込
+dataloaderselectall,select all,全選択
+dataloaderreset,reset,リセット
+dataloaderclear,clear,消去
+exporterxps,Xps,Xps
+exportereps,EPS,EPS
+exporterard,ARD,ARD
+exportertsheet,TSheet,TSheet
+expoterardj,ARDJ,ARDJ
+exporterstyloscsv,Stylos-csv,Stylos-csv
+exporterdlcheck,download,ダウンロード
+scnnewsheetlbl,新規作成,新規作成
+scnpushentry,register,登　録
+scnpushentry_description,Register the current dope sheet in the repository,現在のタイムシートをリポジトリに登録します
+scnupdate,更　新,更　新
+scnnew,new,作　成
+dbgclearmsg,cls↑,cls↑
+dbgdoaction,Do,Do
+dbgselectall,selectAll,selectAll
+dbgswitchpmenu,pMenu,pMenu
+dbgdormpinit,nas_Rm..,nas_Rm..
+dbgchangeuimode,uiMode,uiMode
+dbgresetwell,reset,reset
+dbgclearcommand,cls↓,cls↓
+dbginsdgebi,document.getE...,document.getE...
+dbginsjq,$...,$...
+dbginsforprop,list...,list...
+dbginsxui,xUI...,xUI...
+dbginsconslg,cons...,cons...
+dbgclosepnl,close,close
+skbhome_description,to top,先頭へ
+skbhome,HOME,HOME
+skbend_description,to end,カット尻へ
+skbend,END,END
+tbtrackid,track,レベル
+tbitems,items,よく使う文字
+skb12_description,esc,esc
+skb13_description,undo,undo
+skb14_description,redo,redo
+skb15_description,bs,bs
+skb07_description,7,7
+skb08_description,8,8
+skb09_description,9,9
+skb04_description,4,4
+skb05_description,5,5
+skb06_description,6,6
+skb01_description,1,1
+skb02_description,2,2
+skb03_description,3,3
+skb00_description,0,0
+skb10_description,openPln,openPln
+skb11_description,closePln,closePln
+skbpgup_description,page back,１ページもどる
+skbpgup,Pgup,Pgup
+skbpgdn_description,page fwd,１ページ進む
+skbpgdn,Pgdn,Pgdn
+skbup_description,UP,UP
+skbup,△,△
+skbright,>>,>>
+skbdown,▽,▽
+skbback,↑spin↑,↑spin↑
+skbfwd,↓spin↓,↓spin↓
+soundpnlincrframe,▲,▲
+soundpnldecrframe,▼,▼
+soundpnlget,↑：get,↑：取込
+soundpnlput,↓：put,↓：適用
+soundpnlfix,fix,確定
+memopnltab,TAB,TAB
+memopnllinefeed,line feed,改行
+memopnlcaption,edit X-Sheet note text,タイムシートコメントを編集します
+vmwordprop,WordProp,WordProp
+vmcompact,Compact,Compact
+ui-id-3,xSheet properties,新規タイムシート/タイムシート内容の編集
+scnlayers_description,layer counts,重ね数の変更を行います
+scnlayerslbls_description,label informations,ラベルを指定します
+scnlayerupdate_description,track preference,セルの詳細を編集します
+ddp-close,Cancel,Cancel
+ddp-refresh_description,Update list with latest information,リストを最新の情報に更新
+prefbtapply,apply,設定反映
+prefbtsave,save setting,設定を保存
+prefbtdelete,remove setting,設定を削除
+prefmodewp,page view,タイムシートワープロ
+prefmodecp,scroll view,コンパクトエディタ
+preflbfpsf,footage framerate,フーテージのフレームレート
+preflbtimeshift,auto correction,取り込み自動補正
+preflbsheetlength,sheet duration,1枚の秒数
+preflbsec,sec.,秒
+preflbcolums,2 columns/page,1ページ2列
+preflbdiff,show difference,差分表示機能
+preflbfct,FCT type,カウンタのタイプ
+preflbloop,loop action,ループアクション
+preflbcloop,cursor,カーソル
+preflbsloop,spin,スピン
+preflbascroll,auto scroll,自動スクロール
+preflbtabspin,spin with TAB,TABで確定
+preflbnosync, stop synchronization,入力同期停止
+preflbutilbar,show 2nd toolbar at startup,開始時にツールバーを表示
+dialogscimsg,"The selected document was read into the conversion area.<br><br>It can be read into the dope sheet by automatic conversion as it is.<br>To convert manually, click button [Directly load]<br>",選択したドキュメントを変換領域に読込みました<br><br>このまま自動変換でタイムシートに読み込む事ができます<br>手動で変換する場合は[OK]ボタンをクリック<br>
+updatescitarget,Directly load,タイムシートへ読込
+updatescitarget_description,load into dope sheet.,直接タイムシートへ
+resetscitarget_description,Restore,元に戻す
+closescidialog,OK,ＯＫ
+closescidialog_description,Convert manually,手動で変換
+forgetwarning,今後このダイアログを表示しない,今後このダイアログを表示しない
+drawing,Drawing,Drawing
+uninstall,uninstall,uninstall
+checkin_description,checki in job,checki in job
+save_description,data save to repository,data save to repository
+checkout_description,check out job,check out job
+activate_description,activate job,activate job
+deactivate_description,deactivate job,deactivate job
+newentry,new entry,new entry
+exportfsps_description,export to localFS other format,export to localFS other format
+downloadxps,download Xps,download Xps
+docinfo_description,show document properties,show document properties
+exporthtmlair_description,export as HTML(read only),export as HTML(read only)
+exportepsair_description,export as eps(read only),export as eps(read only)
+exporthtml_description,download exported HTML,download exported HTML
+exporteps_description,download exported eps,download exported eps
+edittn_description,edit timeline tag,edit timeline tag
+cleartl_description,clear timeline data,clear timeline data
+copyfromreference,copy from Ref,copy from Ref
+about_description,about Remaping,about Remaping
+loginpnl,loginPanel,loginPanel
+stw,StopWatch,StopWatch
+stw_description,open stopwatch,open stopwatch
+tbtrackel,element,element
+memopnlput,uodate,uodate
+ddp-reference,reference,reference
+preflbsheetinfo,page info,page info

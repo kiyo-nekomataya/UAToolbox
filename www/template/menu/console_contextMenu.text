@@ -1,0 +1,23 @@
+﻿/*
+ contextMenu用
+ */
+allRegion
+	openFolder
+	closeFolder
+	========
+	undo
+	redo
+	========
+	calcurator
+	stopwatch
+	fieldTable
+headerRegion
+	app_reName
+	app_console
+	app_storyBoard
+	app_timeSheet
+	about
+consoleRegion
+	copy
+	paste
+[end]

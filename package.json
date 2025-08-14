@@ -1,0 +1,29 @@
+{
+  "name": "UAToolbox(beta)",
+  "displayName": "UAToolbox",
+  "version": "0.5.0",
+  "description": "Universal Animation Toolbox (beta)",
+  "scripts": {
+    "monaca:preview": "npm run dev",
+    "dev": "browser-sync start -s www/ --watch --port 8080 --ui-port 8081"
+  },
+  "engines": {
+    "node": ">=18.16"
+  },
+  "dependencies": {
+    "cordova-plugin-device": "2.1.0",
+    "cordova-plugin-splashscreen": "6.0.2",
+    "monaca-plugin-monaca-core": "3.3.1",
+    "node-machine-id": "1.1.12"
+  },
+  "devDependencies": {
+    "browser-sync": "~2.27.7"
+  },
+  "cordova": {
+    "plugins": {
+      "monaca-plugin-monaca-core": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {}
+    }
+  }
+}

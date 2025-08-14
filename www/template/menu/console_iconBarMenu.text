@@ -1,0 +1,23 @@
+﻿/*
+ iconBarMenu用
+ */
+document
+	openFolder
+	closeFolder
+	renameFiles
+	renameSelection
+	downloadItemSet
+	exportScript
+	========
+	workSlip
+	
+consoleMenu
+	undo
+	redo
+	======== 
+	cut
+	copy
+	paste
+
+
+[end]

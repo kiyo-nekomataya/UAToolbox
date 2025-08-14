@@ -1,0 +1,183 @@
+remove,id,prefix,key,en,ja
+FALSE,139,term,activate,activate,作業再開
+FALSE,530,term,apply,apply,設定反映
+FALSE,588,term,assignmessage,assign : message,指名:申し送り
+FALSE,545,term,autoscroll,auto scroll,自動スクロール
+FALSE,236,term,branch,branch,ライン分岐
+FALSE,140,term,checkin,check in,作業開始
+FALSE,141,term,checkout,check out,作業終了
+FALSE,455,trem,clear,clear,消去
+FALSE,34,term,common,Common,一般
+FALSE,554,term,convertmanually,Convert manually,手動変換
+FALSE,152,term,currentjob,curent job,現在の作業
+FALSE,146,term,currentline,current line,現在のライン
+FALSE,149,term,currentstage,current stage,現在の工程
+FALSE,543,term,cursorloop,cursor,カーソル
+FALSE,452,trem,dataload,load,取込
+FALSE,142,term,deactivate,deactivate,作業保留
+FALSE,540,term,diff,show difference,差分表示機能
+FALSE,229,term,discard,discard,編集破棄
+FALSE,51,term,documents,Documents,ドキュメント設定
+FALSE,556,term,drawing,drawing,描画
+FALSE,55,term,edit,Edit,編集
+FALSE,57,term,export,Export,書出
+FALSE,541,term,fcttype,FCT type,カウンタのタイプ
+FALSE,59,term,file,File,ファイル
+FALSE,60,term,filename,file name,ファイル名
+FALSE,61,term,filter,Filter,フィルタ
+FALSE,592,term,fix,fix,確定
+FALSE,535,term,footageframerate,footage framerate,フーテージのフレームレート
+FALSE,389,term,footstamp,diff,差分機能
+FALSE,487,term,item,items,よく使う文字
+FALSE,151,term,job,job,作業
+FALSE,586,term,jobselector,job selector,作業セレクタ
+FALSE,145,term,line,line,ライン
+FALSE,520,term,linefeed,line feed,改行
+FALSE,575,term,loginpnl,loginPanel,ログインパネル
+FALSE,542,term,loop,loop action,ループアクション
+FALSE,591,term,mailaddress,mail address,メールアドレス
+FALSE,238,term,merge,merge,ライン検収
+FALSE,429,term,newentry,new entry,新規登録
+FALSE,563,term,newentry,new entry,新規登録
+FALSE,153,term,newjob,new job,新規作業
+FALSE,147,term,newline,new line,新規ライン
+FALSE,150,term,newstage,new stage,新規工程
+FALSE,584,term,nodechart,node chart,ノードチャート
+FALSE,553,term,ok,OK,ＯＫ
+FALSE,522,term,pageview,page view,ページ表示
+FALSE,533,term,pageview,page view,タイムシートワープロ
+FALSE,590,term,password,password,パスワード
+FALSE,143,term,receipt,receipt,作業検収
+FALSE,411,term,redo,Redo,Redo
+FALSE,311,term,ref,Ref..,参照
+FALSE,580,term,reference,reference,参照
+FALSE,372,term,referencearea,reference area,参照欄
+FALSE,464,term,register,register,登録
+FALSE,454,term,reset,reset,リセット
+FALSE,552,term,restore,Restore,元に戻す
+FALSE,329,term,restrictionmode,[restriction],[制限モード]
+FALSE,110,term,save,Save,作業保存
+FALSE,333,term,screenmode,[view mode],[表示モード]
+FALSE,523,term,scrollview,scroll view,スクロール表示
+FALSE,534,term,scrollview,scroll view,コンパクトエディタ
+FALSE,538,term,sec,sec.,秒
+FALSE,453,selection,selection-all,select all,全選択
+FALSE,401,selection,selection-apply,apply {{%1}} to the selection ,選択範囲を{{%1}}に
+FALSE,395,selection,selection-copy,Copy,Copy
+FALSE,36,selection,selection-cut,Cut,Cut
+FALSE,37,selection,selection-delete,Delete,削除
+FALSE,407,selection,selection-paste,Paste,貼り付け
+FALSE,537,term,sheetlength,sheet duration,1枚の秒数
+FALSE,544,term,slooploop,spin,スピン
+FALSE,148,term,stage,stage,工程
+FALSE,576,term,stw,StopWatch,ストップウォッチ
+FALSE,519,term,tab,TAB,TAB
+FALSE,546,term,tabspin,spin with TAB,TABで確定
+FALSE,124,term,time,time,TIME
+FALSE,536,term,timeshift,auto correction,取り込み自動補正
+FALSE,578,term,trackelement,element,セル
+FALSE,414,term,undo,Undo,Undo
+FALSE,557,term,uninstall,uninstall,アンインストール
+FALSE,416,term,vbar,vertical bar,縦線
+FALSE,418,term,wbar,vertical wave,波線
+FALSE,,term,nop,NOP,NOP
+FALSE,,term,reload,reload,再読込
+FALSE,,term,search,search,検索
+FALSE,3,term,abort,Abort,欠番
+FALSE,18,term,animationdrawing,animationDrawing,動画
+FALSE,27,term,baseresolution,BaseResolution,基準解像度
+FALSE,28,term,bg,BG,背景
+FALSE,29,term,book,MG/FG,BOOK
+FALSE,30,term,cancel,Cancel,取消
+FALSE,31,term,cell,Cell,セル
+FALSE,32,term,change,Change,変更
+FALSE,33,term,close,Close,閉じる
+FALSE,34,term,common,Common,一般
+FALSE,38,term,destruction,Destruction,破棄
+FALSE,39,term,document,document,ドキュメント
+FALSE,51,term,documents,Documents,ドキュメント設定
+FALSE,55,term,edit,Edit,編集
+FALSE,57,term,export,Export,書出
+FALSE,59,term,file,File,ファイル
+FALSE,60,term,filename,file name,ファイル名
+FALSE,61,term,filter,Filter,フィルタ
+FALSE,62,term,frame,frame,フレーム
+FALSE,63,term,framerate,framrate,フレームレート
+FALSE,65,term,import,Import,読出
+FALSE,69,term,keydrawing,KeyDrawing,原画
+FALSE,73,term,layout,Layout,レイアウト
+FALSE,74,term,load,Load,読込
+FALSE,89,term,open,Open,開く
+FALSE,90,term,opus,Opus,制作番号
+FALSE,91,term,othet,other,その他
+FALSE,95,term,peg,peg,タップ
+FALSE,96,term,preference,Preference,各種設定
+FALSE,110,term,save,Save,作業保存
+FALSE,118,term,scene,Scene,シーン
+FALSE,119,term,scenecut,S-C,S-C
+FALSE,124,term,time,time,TIME
+FALSE,125,term,title,title,題名
+FALSE,126,term,transition,transition,トランジション
+FALSE,127,term,timelinetrack,timeline track,タイムライントラック
+FALSE,130,term,update,Update,更新
+FALSE,132,term,username,name,名前
+FALSE,137,term,xsheet,xSheet,タイムシート
+FALSE,139,term,activate,activate,作業再開
+FALSE,140,term,checkin,check in,作業開始
+FALSE,141,term,checkout,check out,作業終了
+FALSE,142,term,deactivate,deactivate,作業保留
+FALSE,143,term,receipt,receipt,作業検収
+FALSE,144,term,inuse,in use,作業中
+FALSE,145,term,line,line,ライン
+FALSE,146,term,currentline,current line,現在のライン
+FALSE,147,term,newline,new line,新規ライン
+FALSE,148,term,stage,stage,工程
+FALSE,149,term,currentstage,current stage,現在の工程
+FALSE,150,term,newstage,new stage,新規工程
+FALSE,151,term,job,job,作業
+FALSE,152,term,currentjob,curent job,現在の作業
+FALSE,153,term,newjob,new job,新規作業
+FALSE,229,term,discard,discard,編集破棄
+FALSE,236,term,branch,branch,ライン分岐
+FALSE,238,term,merge,merge,ライン検収
+FALSE,311,term,ref,Ref..,参照
+FALSE,320,term,tools,Tools,ツール
+FALSE,328,term,show,Show,表示
+FALSE,329,term,restrictionmode,restriction,制限モード
+FALSE,333,term,screenmode,view mode,表示モード
+FALSE,372,term,referencearea,reference area,参照欄
+FALSE,389,term,footstamp,diff,差分機能
+FALSE,411,term,redo,Redo,Redo
+FALSE,414,term,undo,Undo,Undo
+FALSE,429,term,newentry,new entry,新規登録
+FALSE,454,term,reset,reset,リセット
+FALSE,464,term,register,register,登録
+FALSE,487,term,item,items,よく使う文字
+FALSE,519,term,tab,TAB,TAB
+FALSE,520,term,linefeed,line feed,改行
+FALSE,522,term,pageview,page view,ページ表示
+FALSE,523,term,scrollview,scroll view,スクロール表示
+FALSE,530,term,apply,apply,設定反映
+FALSE,541,term,fcttype,FCT type,カウンタのタイプ
+FALSE,542,term,loop,loop action,ループアクション
+FALSE,543,term,cursorloop,cursor,カーソル
+FALSE,544,term,slooploop,spin,スピン
+FALSE,545,term,autoscroll,auto scroll,自動スクロール
+FALSE,546,term,tabspin,spin with TAB,TABで確定
+FALSE,552,term,restore,Restore,元に戻す
+FALSE,553,term,ok,OK,ＯＫ
+FALSE,554,term,convertmanually,Convert manually,手動変換
+FALSE,556,term,drawing,drawing,描画
+FALSE,557,term,uninstall,uninstall,アンインストール
+FALSE,563,term,newentry,new entry,新規登録
+FALSE,575,term,loginpnl,loginPanel,ログインパネル
+FALSE,576,term,stw,StopWatch,ストップウォッチ
+FALSE,580,term,reference,reference,参照
+FALSE,584,term,nodechart,node chart,ノードチャート
+FALSE,586,term,jobselector,job selector,作業セレクタ
+FALSE,588,term,assignmessage,assign : message,指名:申し送り
+FALSE,590,term,password,password,パスワード
+FALSE,591,term,mailaddress,mail address,メールアドレス
+FALSE,592,term,fix,fix,確定
+FALSE,452,trem,dataload,load,取込
+FALSE,455,trem,clear,clear,消去

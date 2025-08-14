@@ -1,0 +1,78 @@
+﻿/*
+ iconBarMenu用
+ */
+document
+	pman_openNewWindow
+	--------NW
+	pman_openFolder
+	pman_closeFolder
+	renameFiles
+	renameSelection
+	downloadItemSet
+	exportScript
+	========
+	pman_editText
+	pman_statusWorkSlip
+	pman_workSlip_print
+	pman_workSlip_scan
+
+editMenu
+	undo
+	redo
+	========
+	pman_hide
+	pman_hideothers
+	pman_unhide
+	========
+	cut
+	copy
+	paste
+	handleAll
+	releaseAll
+	sortItems
+	reverseItems
+
+flipMenu
+	flipControl
+	flipSeekbar
+
+SettingsView
+	numOrder
+	saveSlipsAuto
+	nameExt
+	sortAuto
+	showThumbnail
+	========
+	lightBoxControl
+	lightBoxProp
+	thumbnail
+	preview
+	ubfilter
+	fnfilter
+	-------
+	resetScreen
+
+canvasMenu
+	insertCanvasAsset
+	editCanvasAsset
+	holdCanvasAsset
+	canvasPaint
+	--------
+	insertNoteAsset
+	editNoteAsset
+	holdNoteAsset
+
+reName
+	nameIncr
+	nameDecr
+	nameReset
+	identifier
+	timesheet
+	addGrp
+	delGrp
+	=======
+	prefix
+	suffix
+	search
+
+[end]
