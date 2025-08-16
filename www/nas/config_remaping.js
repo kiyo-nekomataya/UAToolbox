@@ -1215,8 +1215,8 @@ config.app[config.appIdf].panelTable = {
     'lightBoxProp'   :{elementId:'lightBoxProperty'        ,sync:"lightBoxProp"   ,uiOrder: 4,type:'fix', note:"reName ライトボックス設定"},
     'UBFilter'       :{elementId:'uafBundleFilter'         ,sync:"UBFilter"       ,uiOrder: 4,type:'fix', note:"reName バンドルフィルタ設定-1"},
     'FNFilter'       :{elementId:'optionPanelFilter'       ,sync:"FNFilter"       ,uiOrder: 4,type:'fix', note:"reName 関数フィルタ設定"},
-    'Zoom'           :{elementId:'screenZoom'              ,uiOrder: 4,type:'fix', note:"ズーム設定"},
-    'Appearance'     :{elementId:'docImgAppearance'        ,uiOrder: 4,type:'fix', note:"アピアランス設定"},
+    'Zoom'           :{elementId:'screenZoom'              ,                       uiOrder: 4,type:'fix', note:"ズーム設定"},
+    'Appearance'     :{elementId:'docImgAppearance'        ,                       uiOrder: 4,type:'fix', note:"アピアランス設定"},
 //===============
     '_exclusive_items_':{
         type:'exclusive_item_group',

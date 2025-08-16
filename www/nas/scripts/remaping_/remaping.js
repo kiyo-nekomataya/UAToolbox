@@ -143,7 +143,7 @@ if(location.hostname.indexOf("remaping-stg")>=0){
     "' title='"+ config.headerLogo_urlComment +
     "' target='_new'>"+ headerLogo +"</a>";
 // サービスCGIのアドレスを調整
-    if(String(location).indexOf('https')==0) {ServiceUrl=HttpsServiceUrl};
+    if(String(location).indexOf('https')==0) {config.ServiceUrl=config.HttpsServiceUrl};
 //  グローバルの XPSを実際のXpsオブジェクトとして再初期化する
 /*
     xUI.XPS  = new nas.Xps(SheetLooks,MaxFrames);
@@ -194,19 +194,6 @@ if(document.getElementById( "startupReference" ) && document.getElementById( "st
     xUI = new_xUI();
 //app設定 configで設定されるのでここではそのデータを参照 後でxUI.init の引数として渡すのでここでは不要コード
 //    xUI.app = config.appIdf;
-
-
-//floating window 初期化 xUI初期化部に移動
-    if(appHost.touchDevice){
-        Array.from(document.getElementsByClassName("minimize")).forEach(e => e.style.display = 'none');
-        Array.from(document.getElementsByClassName("close")).forEach(e => e.style.display = 'none');
-    }else{
-        Array.from(document.getElementsByClassName("down")).forEach(e => e.style.display = 'none');
-    };//一括調整
-    for(var prp in xUI.panelTable){if(xUI.panelTable[prp].type == 'float') xUI.initFloatingPanel(prp);};
-
-console.log(xUI.XPS)
-
 
 //    *** xUI オブジェクトは実際のコール前に必ずXPSを与えての再初期化が必要  要注意
 if(false){
@@ -703,6 +690,22 @@ console.log(items);
 //    document.getElementById("iNputbOx").focus();
 //test タスクコントローラ起動
         startupTaskController();
+
+//floating window 初期化 xUI初期化済み
+    if(appHost.touchDevice){
+        Array.from(document.getElementsByClassName("minimize")).forEach(e => e.style.display = 'none');
+        Array.from(document.getElementsByClassName("close")).forEach(e => e.style.display = 'none');
+    }else{
+        Array.from(document.getElementsByClassName("down")).forEach(e => e.style.display = 'none');
+    };//一括調整
+    for(var prp in xUI.panelTable){
+        if(xUI.panelTable[prp].type == 'float') xUI.initFloatingPanel(prp);
+    };
+
+//console.log(xUI.XPS)
+
+
+
     });
 };
 //Startup//
@@ -3121,7 +3124,7 @@ nas.HTML.showModalDialog("prompt",msg,title,xUI.getFileName()+'\.xps',function()
 	  xUI.setStored("current");
 	  sync();
 		//ファイル保存を行うのであらかじめリセットする;
-	  document.saveXps.action=ServiceUrl+'COMMAND=save&';
+	  document.saveXps.action=config.ServiceUrl+'COMMAND=save&';
 	  document.saveXps.COMMAND.value ='save';
 	  document.saveXps.encode.value  ='utf8';
 	  document.saveXps.XPSBody.value=encodeURI(XPS.toString());
@@ -3134,7 +3137,7 @@ nas.HTML.showModalDialog("prompt",msg,title,xUI.getFileName()+'\.xps',function()
 	  xUI.setStored("current");
 	  sync();
 		//ファイル保存を行うのであらかじめリセットする;
-	  document.saveXps.action=ServiceUrl+'COMMAND=save&';
+	  document.saveXps.action=config.ServiceUrl+'COMMAND=save&';
 	  document.saveXps.COMMAND.value ='save';
 	  document.saveXps.encode.value  ='utf8';
 	  document.saveXps.XPSBody.value=encodeURI(XPS.toString());
@@ -3189,7 +3192,7 @@ tsh : "documentTSheet"
 nas.HTML.showModalDialog("prompt",msg,title,xUI.getFileName()+'\.'+myExt,function(){
 	if(this.status==0){
 //alert(myEncoding);
-	document.saveXps.action=ServiceUrl+'COMMAND=save&';
+	document.saveXps.action=config.ServiceUrl+'COMMAND=save&';
 	document.saveXps.COMMAND.value ='save';
 	document.saveXps.encode.value  =myEncoding;
 	switch (myEncoding){
@@ -3215,7 +3218,7 @@ function callEchoHTML()
 nas.HTML.showModalDialog("prompt",msg,title,xUI.getFileName()+'\.'+myExt,function(){
 //	sendData=sendData.replace(/\r?\n/g,"\r\n");
 	if(this.status==0){
-	document.saveXps.action=ServiceUrl+'COMMAND=save&';
+	document.saveXps.action=config.ServiceUrl+'COMMAND=save&';
 	document.saveXps.COMMAND.value ='save';
 	document.saveXps.encode.value  =myEncoding;
 	document.saveXps.XPSBody.value =sendData;
@@ -3241,7 +3244,7 @@ function callEchoEps(myContent,myName,myNumber)
 
 	sendData=sendData.replace(/\r?\n/g,"\r\n");
 
-	document.saveXps.action=ServiceUrl+'COMMAND=save&';
+	document.saveXps.action=config.ServiceUrl+'COMMAND=save&';
 	document.saveXps.target="window"+myNumber;
 	document.saveXps.COMMAND.value ='save';
 	document.saveXps.encode.value  =myEncoding;

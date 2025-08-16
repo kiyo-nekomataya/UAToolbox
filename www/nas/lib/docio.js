@@ -169,30 +169,13 @@ appConfig.buildCk = function buildCk(){
     ];
 
 //[7] UIView
-//Cookieの値は bainari文字列｜またはキーワード
+//Cookieの値は bainari文字列｜またはキーワード default|minimum|full|restriction
     if(config.useCookie.UIView){
-//        config.ToolView
-        var toolView=[];
-        var ix = 0
-        for (var prp in xUI.panelTable){
-            if(prp == '_exclusive_items_'){
-                toolView.push(0);
-            }else if(document.getElementById(xUI.panelTable[prp].elementId)){
-                if(xUI.panelTable[prp].uiOrder <= 0){
-                    toolView.push(0);//オーダー外なので開かない(0を置く)
-                }else{
-                    toolView.push(($('#'+xUI.panelTable[prp].elementId).isVisible())? 1:0);//表示状態を保存
-                };
-            }else{
-                toolView.push(config.ToolView[ix]);//エレメント自体がないので旧来の値をコピー
-            };
-            ix++;
-        };
+    var toolView = xUI.checkToolView(true).join("");
     var toolViewIbCs = xUI.ibCP.activePalette;//toolViewIbCs;
-console.log(config.ToolView);
+console.log(config.ToolView); // binaryString | keyword
 console.log(xUI.toolView);
 console.log(toolView);
-    toolView = toolView.join("");
 //    alert(ToolView);//  beforunloadで呼び出すのでその際のアラート、コンソールは読めない
 
 
@@ -575,6 +558,8 @@ function new_xUI(){
     xUI.canvasPaint = {
         active :false
     };
+//ドキュメントズームパラメータ
+    xUI.viewScale = 1;
 //------- 初期化前のキー入力サブモードオブジェクト
     xUI.rapidMode = false;
 //    初期化前にバックアップデータの処理が発生するので暫定的に初期化しておく
@@ -615,7 +600,7 @@ function new_xUI(){
     xUI.hoverColor              ; //リンクホーバー色
     xUI.activeColor             ; //リンクアクティブ色
 //メニュー関連
-    xUI.toolView              = Array.from(config.ToolView); //ツールパネル表示状態(cookieの値)
+    xUI.toolView              = (String(config.ToolView).match(/^[01]+$/))? Array.from(config.ToolView):[]; //ツールパネル表示状態配列
 //    xUI.toolViewIbCs          = parseInt(config.ToolViewIbCs);
     xUI.closeWindowAtCheckout = true ; //
     xUI.summaryGroup                 ; //サマリ表示エリア状態変数
@@ -3930,34 +3915,32 @@ xUI.checkToolView = function(asBin){
             (xUI.panelTable[prp].elementId)&&
             (document.getElementById(xUI.panelTable[prp].elementId))
         ){
-            result.push([
-                prp,
-                xUI.panelTable[prp].elementId,
-                ($("#"+xUI.panelTable[prp].elementId).isVisible())? 1:0
-            ]);
+            let v = ($("#"+xUI.panelTable[prp].elementId).isVisible())? 1:0;
+            if(xUI.panelTable[prp].elementId == 'inputControl'){
+//例外処理 後で処理一考 20250816
+                v = (document.getElementById('inputControl').getAttribute('class').indexOf('inputControl-show') >= 0)? 1:0;
+            };
+            result.push([prp,xUI.panelTable[prp].elementId,v]);
         }else{
             let v = 0;
             if(
                 (document.getElementById(xUI.panelTable[prp].elementId))&&
                 (xUI.panelTable[prp].type == 'float')
             ) v = (xUI.toolView[ix])? 1:0;
-            result.push([
-                prp,
-                xUI.panelTable[prp].elementId,
-                v
-            ]);
+            result.push([prp,xUI.panelTable[prp].elementId,v]);
         };
         ix ++;
     };
-    if(asBin) return Array.from(result ,e => e[2]);
+    xUI.toolView = Array.from(result ,e => e[2]);
+    if(asBin) return xUI.toolView;
     return result;
 };
 /**
-    @params {string} toolView
+    @params {String | Array} toolView
         toolView 文字列
     @returns {string}
         表示状態を表す文字列（checkToolViewの出力と同じ）
-    引数・戻値は2進数値文字列
+    引数・戻値は基本的に2進数値文字列 |
 
     またはキーワード引数
         full        フルサイズUI 
@@ -3976,60 +3959,41 @@ xUI.checkToolView = function(asBin){
 // */
 xUI.setToolView = function(toolView){
     if(toolView instanceof Array) toolView = toolView.join('');//配列で与えられた場合は連結文字列
-    if(String(toolView).length == 0) toolView = 'default';//引数が与えられない場合はキーワード'default'
-    var currentView = xUI.checkToolView(true);//配列で戻る
-/*
-    var currentView = [];
-    var ix = 0;
-    for (var prp in xUI.panelTable){
-        if(document.getElementById(xUI.panelTable[prp].elementId)){
-            currentView.push(($('#'+xUI.panelTable[prp].elementId).isVisible())? 1:0);
-        }else{
-            currentView.push((xUI.toolView)?xUI.toolView[ix]:config.ToolView[ix]);
-        };
-        ix ++;
-    };
-    currentView = currentView.join('');
-*/
-console.log('currentView :'+currentView);
-console.log('currentView :'+xUI.checkToolView(true));
-
-    xUI.toolView = currentView;//配列で控える
-    currentView  = currentView.join("");//文字列化
-
-    if(String(toolView).match(/^[01]+$/)){
-        xUI.toolView = Array.from(toolView);
-    }else{
+    if((!(toolView))||(String(toolView).length == 0)) toolView = config.ToolView;//引数が与えられない場合は設定値
 console.log(toolView);
-        if(xUI.restriction) toolView = 'restriction';
-        if(String(toolView).match(/full|minimum|default|compact|restriction/i)){
-            var limit = {
-                restriction:0,
-                minimum:1,
-                compact:2,
-                default:3,
-                full:4
-            };
-            var tv = [];ix = 0;
-            for (var prp in xUI.panelTable){
-                if(prp != '_exclusive_item_'){
-                    if(
-                        (document.getElementById(xUI.panelTable[prp].elementId))&&
-                        (xUI.panelTable[prp].uiOrder >= 0)
-                    ){
-                        tv.push((xUI.panelTable[prp].uiOrder <= limit[toolView])?1:0);
-                    }else if(xUI.panelTable[prp].type == 'modal'){
-                        tv.push(0);
-                    }else{
-                        tv.push((xUI.toolView)?xUI.toolView[ix]:config.ToolView[ix]);
-                    };
-                }
-                ix ++;
-            };
-            toolView = tv.join('');
-        }else{
-            toolView = config.ToolView;
+    var currentView = xUI.checkToolView(true).join("");//文字列で取得
+    if(String(toolView).match(/^(full|minimum|default|compact|restriction)$/i)){
+        if(xUI.restriction) toolView = 'restriction';//強制的に変更
+        var limit = {
+            restriction:0,
+            minimum:1,
+            compact:2,
+            default:3,
+            full:4
         };
+        var tv = [];var ix = 0;
+        for (var prp in xUI.panelTable){
+            if(
+                (document.getElementById(xUI.panelTable[prp].elementId))&&
+                (xUI.panelTable[prp].uiOrder >= 0)
+            ){
+                tv.push((xUI.panelTable[prp].uiOrder <= limit[toolView])?1:0);
+            }else if(
+                (prp == '_exclusive_item_')||
+                (xUI.panelTable[prp].uiOrder < 0)||
+                (xUI.panelTable[prp].type == 'modal')
+            ){
+//exclusive_items | order minus | type modal
+                tv.push(0);
+            }else{
+                tv.push((xUI.toolView[ix])? 1:0);
+            };
+            ix ++;
+        };
+            toolView = tv.join('');
+    }else if(String(toolView).match(/[^01]/)){
+            throw "setToolView Incorrect arguments: "+toolView
+            //これは実行されない エラー発生案件
     };
 console.log(toolView);
     if(toolView != currentView){
