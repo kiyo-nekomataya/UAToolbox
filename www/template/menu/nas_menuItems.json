@@ -4456,8 +4456,8 @@
   },
   {
     "id": 212,
-    "type": "file",
-    "platform": "",
+    "type": "file-",
+    "platform": "!(Electron)",
     "app": "",
     "key": "app_reName",
     "label": "リネームツール",
@@ -4476,8 +4476,8 @@
   },
   {
     "id": 213,
-    "type": "file",
-    "platform": "",
+    "type": "file-",
+    "platform": "!(Electron)",
     "app": "",
     "key": "app_console",
     "label": "コンソール",
@@ -4496,8 +4496,8 @@
   },
   {
     "id": 214,
-    "type": "file",
-    "platform": "",
+    "type": "file-",
+    "platform": "!(Electron)",
     "app": "",
     "key": "app_productManger",
     "label": "UAF",
@@ -4517,13 +4517,13 @@
   {
     "id": 215,
     "type": "file",
-    "platform": "",
+    "platform": "Electron",
     "app": "",
     "key": "app_storyBoard",
     "label": "ストーリーボード",
     "role": "",
     "checkd": "",
-    "func": "./sbdConvert.html",
+    "func": "./index_sbdConvert.html",
     "hotkey": "",
     "region": "",
     "icon": "",
@@ -4536,14 +4536,14 @@
   },
   {
     "id": 216,
-    "type": "file",
-    "platform": "",
+    "type": "file-",
+    "platform": "!(Electron)",
     "app": "",
     "key": "app_timeSheet",
     "label": "タイムシート編集",
     "role": "",
     "checkd": "",
-    "func": "./xpsedit.html",
+    "func": "./index_xpsedit.html",
     "hotkey": "",
     "region": "",
     "icon": "",
@@ -4556,11 +4556,31 @@
   },
   {
     "id": 217,
+    "type": "file",
+    "platform": "Electron",
+    "app": "",
+    "key": "app_remaping",
+    "label": "タイムシート編集(旧)",
+    "role": "",
+    "checkd": "",
+    "func": "./index_remaping.html",
+    "hotkey": "",
+    "region": "",
+    "icon": "",
+    "image": "",
+    "submenu": [
+      ""
+    ],
+    "description": "",
+    "note": ""
+  },
+  {
+    "id": 218,
     "type": "command",
     "platform": "mac && !(WEB)",
     "app": "",
     "key": "minimize",
-    "label": "しまう",
+    "label": "最小化",
     "role": "minimize",
     "checkd": "",
     "func": "",
@@ -4575,7 +4595,7 @@
     "note": ""
   },
   {
-    "id": 218,
+    "id": 219,
     "type": "command",
     "platform": "mac && !(WEB)",
     "app": "",
@@ -4595,7 +4615,7 @@
     "note": ""
   },
   {
-    "id": 219,
+    "id": 220,
     "type": "command",
     "platform": "mac && !(WEB)",
     "app": "",
@@ -4615,7 +4635,7 @@
     "note": ""
   },
   {
-    "id": 220,
+    "id": 221,
     "type": "window",
     "platform": "mac && !(WEB)",
     "app": "",
@@ -4633,7 +4653,7 @@
     "note": ""
   },
   {
-    "id": 221,
+    "id": 222,
     "type": "command",
     "platform": "!(WEB)",
     "app": "",
@@ -4653,7 +4673,7 @@
     "note": ""
   },
   {
-    "id": 222,
+    "id": 223,
     "type": "window",
     "platform": "",
     "app": "",
@@ -4673,15 +4693,15 @@
     "note": ""
   },
   {
-    "id": 223,
-    "type": "file-",
+    "id": 224,
+    "type": "url-",
     "platform": "",
     "app": "",
     "key": "calculator",
     "label": "電卓",
     "role": "",
     "checkd": "",
-    "func": "./calculator/index.html",
+    "func": "https://www.nekomataya.info/tools/calculator/index.html",
     "hotkey": "",
     "region": "",
     "icon": "",
@@ -4693,7 +4713,7 @@
     "note": ""
   },
   {
-    "id": 224,
+    "id": 225,
     "type": "url-",
     "platform": "",
     "app": "",
@@ -4713,7 +4733,7 @@
     "note": ""
   },
   {
-    "id": 225,
+    "id": 226,
     "type": "openEx",
     "platform": "",
     "app": "",
@@ -4733,7 +4753,7 @@
     "note": ""
   },
   {
-    "id": 226,
+    "id": 227,
     "type": "window",
     "platform": "",
     "app": "",
@@ -4753,7 +4773,7 @@
     "note": ""
   },
   {
-    "id": 227,
+    "id": 228,
     "type": "url-",
     "platform": "",
     "app": "",
@@ -4773,7 +4793,7 @@
     "note": ""
   },
   {
-    "id": 228,
+    "id": 229,
     "type": "url-",
     "platform": "",
     "app": "",
@@ -4793,7 +4813,7 @@
     "note": ""
   },
   {
-    "id": 229,
+    "id": 230,
     "type": "",
     "platform": "",
     "app": "",
@@ -4813,7 +4833,7 @@
     "note": ""
   },
   {
-    "id": 230,
+    "id": 231,
     "type": "command",
     "platform": "",
     "app": "",
@@ -4836,7 +4856,7 @@
     "note": ""
   },
   {
-    "id": 231,
+    "id": 232,
     "type": "command",
     "platform": "",
     "app": "",
@@ -4856,7 +4876,7 @@
     "note": "作業データをバックアップ"
   },
   {
-    "id": 232,
+    "id": 233,
     "type": "command",
     "platform": "",
     "app": "",
@@ -4876,7 +4896,7 @@
     "note": "作業バックアップを復帰"
   },
   {
-    "id": 233,
+    "id": 234,
     "type": "command",
     "platform": "",
     "app": "",
@@ -4896,7 +4916,7 @@
     "note": "作業バックアップ領域をクリア"
   },
   {
-    "id": 234,
+    "id": 235,
     "type": "window",
     "platform": "",
     "app": "",
@@ -4914,7 +4934,7 @@
     "note": "タイムシート参照欄操作メニュー"
   },
   {
-    "id": 235,
+    "id": 236,
     "type": "command",
     "platform": "",
     "app": "",
@@ -4934,7 +4954,7 @@
     "note": "編集エリアと参照エリアの内容を全交換"
   },
   {
-    "id": 236,
+    "id": 237,
     "type": "command",
     "platform": "",
     "app": "",
@@ -4954,7 +4974,7 @@
     "note": "ファイルブラウザを開き参照エリアへ読み込むデータを選択"
   },
   {
-    "id": 237,
+    "id": 238,
     "type": "command",
     "platform": "",
     "app": "",
@@ -4974,7 +4994,7 @@
     "note": "参照エリアのデータを保存"
   },
   {
-    "id": 238,
+    "id": 239,
     "type": "command",
     "platform": "",
     "app": "",
@@ -4994,7 +5014,7 @@
     "note": "参照エリアに編集内容を転記"
   },
   {
-    "id": 239,
+    "id": 240,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5014,7 +5034,7 @@
     "note": "参照エリアから編集エリアへ転記"
   },
   {
-    "id": 240,
+    "id": 241,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5034,7 +5054,7 @@
     "note": "参照エリアの内容をクリア"
   },
   {
-    "id": 241,
+    "id": 242,
     "type": "window",
     "platform": "",
     "app": "",
@@ -5054,7 +5074,7 @@
     "note": "アプリケーション情報パネルを表示"
   },
   {
-    "id": 242,
+    "id": 243,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5074,7 +5094,7 @@
     "note": "アバウトパネルを閉じる"
   },
   {
-    "id": 243,
+    "id": 244,
     "type": "window",
     "platform": "",
     "app": "",
@@ -5094,7 +5114,7 @@
     "note": "台詞編集パネル"
   },
   {
-    "id": 244,
+    "id": 245,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5114,7 +5134,7 @@
     "note": "編集内容をタイムラインに適用"
   },
   {
-    "id": 245,
+    "id": 246,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5134,7 +5154,7 @@
     "note": "編集内容を確定してパネルを閉じる"
   },
   {
-    "id": 246,
+    "id": 247,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5154,7 +5174,7 @@
     "note": "編集内容を破棄する"
   },
   {
-    "id": 247,
+    "id": 248,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5174,7 +5194,7 @@
     "note": "カーソル位置に挿入"
   },
   {
-    "id": 248,
+    "id": 249,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5194,7 +5214,7 @@
     "note": "台詞に属性を加える"
   },
   {
-    "id": 249,
+    "id": 250,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5214,7 +5234,7 @@
     "note": "台詞編集パネルを閉じる"
   },
   {
-    "id": 250,
+    "id": 251,
     "type": "window",
     "platform": "",
     "app": "",
@@ -5234,7 +5254,7 @@
     "note": "ソフトウェアキーボードを開く"
   },
   {
-    "id": 251,
+    "id": 252,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5254,7 +5274,7 @@
     "note": "ソフトウェアキーボーを閉じる"
   },
   {
-    "id": 252,
+    "id": 253,
     "type": "window",
     "platform": "",
     "app": "",
@@ -5274,7 +5294,7 @@
     "note": "環境設定パネル"
   },
   {
-    "id": 253,
+    "id": 254,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5297,7 +5317,7 @@
     "note": "環境設定パネル"
   },
   {
-    "id": 254,
+    "id": 255,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5317,7 +5337,7 @@
     "note": "編集内容をリセット"
   },
   {
-    "id": 255,
+    "id": 256,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5337,7 +5357,7 @@
     "note": "編集内容をアプリケーションに適用"
   },
   {
-    "id": 256,
+    "id": 257,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5357,7 +5377,7 @@
     "note": "設定をクッキーで保存"
   },
   {
-    "id": 257,
+    "id": 258,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5377,7 +5397,7 @@
     "note": "設定クッキーを削除"
   },
   {
-    "id": 258,
+    "id": 259,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5397,7 +5417,7 @@
     "note": "環境設定パネルを閉じる"
   },
   {
-    "id": 259,
+    "id": 260,
     "type": "window",
     "platform": "",
     "app": "",
@@ -5417,7 +5437,7 @@
     "note": "共有情報パネルを開く"
   },
   {
-    "id": 260,
+    "id": 261,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5437,7 +5457,7 @@
     "note": ""
   },
   {
-    "id": 261,
+    "id": 262,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5457,7 +5477,7 @@
     "note": "メモ欄用編集パネルを開く"
   },
   {
-    "id": 262,
+    "id": 263,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5477,7 +5497,7 @@
     "note": ""
   },
   {
-    "id": 263,
+    "id": 264,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5497,7 +5517,7 @@
     "note": "メモ編集UIを閉じる"
   },
   {
-    "id": 264,
+    "id": 265,
     "type": "window",
     "platform": "",
     "app": "",
@@ -5517,7 +5537,7 @@
     "note": "現在選択中のエピソードを絵コンテ表示でみる"
   },
   {
-    "id": 265,
+    "id": 266,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5537,7 +5557,7 @@
     "note": "パネルを閉じる"
   },
   {
-    "id": 266,
+    "id": 267,
     "type": "window",
     "platform": "",
     "app": "",
@@ -5557,7 +5577,7 @@
     "note": "タイムシート画面表示設定"
   },
   {
-    "id": 267,
+    "id": 268,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5577,7 +5597,7 @@
     "note": "タイムシートの段組指定"
   },
   {
-    "id": 268,
+    "id": 269,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5597,7 +5617,7 @@
     "note": "タイムシートのページ長（秒数）"
   },
   {
-    "id": 269,
+    "id": 270,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5617,7 +5637,7 @@
     "note": "参照エリアとの差分を表示（旧フットスタンプ）"
   },
   {
-    "id": 270,
+    "id": 271,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5637,7 +5657,7 @@
     "note": "矢印キーでシート上下をループ接続"
   },
   {
-    "id": 271,
+    "id": 272,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5657,7 +5677,7 @@
     "note": "スピン操作でシート上下をループ接続"
   },
   {
-    "id": 272,
+    "id": 273,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5677,7 +5697,7 @@
     "note": "タブキーを確定操作に含める"
   },
   {
-    "id": 273,
+    "id": 274,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5697,7 +5717,7 @@
     "note": "キー入力を画面に同期"
   },
   {
-    "id": 274,
+    "id": 275,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5717,7 +5737,7 @@
     "note": "タイムシートを制限表示モードに切替"
   },
   {
-    "id": 275,
+    "id": 276,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5737,7 +5757,7 @@
     "note": "ページ｜スクロール表示の切替"
   },
   {
-    "id": 276,
+    "id": 277,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5757,7 +5777,7 @@
     "note": "タイムシートのズーム表示切替"
   },
   {
-    "id": 277,
+    "id": 278,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5777,7 +5797,7 @@
     "note": "タイムシートのズーム表示解除"
   },
   {
-    "id": 278,
+    "id": 279,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5797,7 +5817,7 @@
     "note": "参照エリアの表示"
   },
   {
-    "id": 279,
+    "id": 280,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5817,7 +5837,7 @@
     "note": "開始位置へ戻る"
   },
   {
-    "id": 280,
+    "id": 281,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5837,7 +5857,7 @@
     "note": "カット末尾へ"
   },
   {
-    "id": 281,
+    "id": 282,
     "type": "window",
     "platform": "",
     "app": "",
@@ -5857,7 +5877,7 @@
     "note": "ドロップダウンメニューの表示"
   },
   {
-    "id": 282,
+    "id": 283,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5877,7 +5897,7 @@
     "note": "ドロップダウンメニューを非表示"
   },
   {
-    "id": 283,
+    "id": 284,
     "type": "window",
     "platform": "",
     "app": "",
@@ -5897,7 +5917,7 @@
     "note": "アバターメニューの表示"
   },
   {
-    "id": 284,
+    "id": 285,
     "type": "window",
     "platform": "",
     "app": "",
@@ -5917,7 +5937,7 @@
     "note": "UATサービス互換"
   },
   {
-    "id": 285,
+    "id": 286,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5937,7 +5957,7 @@
     "note": "UATサービス互換"
   },
   {
-    "id": 286,
+    "id": 287,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5957,7 +5977,7 @@
     "note": "UATサービス互換"
   },
   {
-    "id": 287,
+    "id": 288,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5977,7 +5997,7 @@
     "note": "UATサービス互換"
   },
   {
-    "id": 288,
+    "id": 289,
     "type": "command",
     "platform": "",
     "app": "",
@@ -5997,7 +6017,7 @@
     "note": "UATサービス互換"
   },
   {
-    "id": 289,
+    "id": 290,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6017,7 +6037,7 @@
     "note": "ボタンツールバーを表示"
   },
   {
-    "id": 290,
+    "id": 291,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6037,7 +6057,7 @@
     "note": "ツールバーのメニューセットを切替"
   },
   {
-    "id": 291,
+    "id": 292,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6057,7 +6077,7 @@
     "note": "ツールバーのメニューセットを切替"
   },
   {
-    "id": 292,
+    "id": 293,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6077,7 +6097,7 @@
     "note": "ユーザ編集可能なカスタムツールバーをつくる"
   },
   {
-    "id": 293,
+    "id": 294,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6097,7 +6117,7 @@
     "note": "パネルを閉じる"
   },
   {
-    "id": 294,
+    "id": 295,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6117,7 +6137,7 @@
     "note": "フレームカウンターパネル表示"
   },
   {
-    "id": 295,
+    "id": 296,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6137,7 +6157,7 @@
     "note": "パネルを閉じる"
   },
   {
-    "id": 296,
+    "id": 297,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6157,7 +6177,7 @@
     "note": "入力コントロールエリアの表示"
   },
   {
-    "id": 297,
+    "id": 298,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6177,7 +6197,7 @@
     "note": "コマ送り量を増やす"
   },
   {
-    "id": 298,
+    "id": 299,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6197,7 +6217,7 @@
     "note": "コマ送り量を減らす"
   },
   {
-    "id": 299,
+    "id": 300,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6217,7 +6237,7 @@
     "note": "選択範囲をスピン量に設定する"
   },
   {
-    "id": 300,
+    "id": 301,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6237,7 +6257,7 @@
     "note": "入力を適用する"
   },
   {
-    "id": 301,
+    "id": 302,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6257,7 +6277,7 @@
     "note": "入力をキャンセルする"
   },
   {
-    "id": 302,
+    "id": 303,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6277,7 +6297,7 @@
     "note": "入力エリアを隠す"
   },
   {
-    "id": 303,
+    "id": 304,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6297,7 +6317,7 @@
     "note": "メモ欄の表示切り替え"
   },
   {
-    "id": 304,
+    "id": 305,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6317,7 +6337,7 @@
     "note": "メモ欄を非表示"
   },
   {
-    "id": 305,
+    "id": 306,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6337,7 +6357,7 @@
     "note": "デバッグコンソール表示"
   },
   {
-    "id": 306,
+    "id": 307,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6357,7 +6377,7 @@
     "note": "デバッグコンソールを閉じる"
   },
   {
-    "id": 307,
+    "id": 308,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6377,7 +6397,7 @@
     "note": "データをソーステキストで編集する"
   },
   {
-    "id": 308,
+    "id": 309,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6397,7 +6417,7 @@
     "note": "ソースパネルを閉じる"
   },
   {
-    "id": 309,
+    "id": 310,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6417,7 +6437,7 @@
     "note": "カメラワーク編集ウインドウ"
   },
   {
-    "id": 310,
+    "id": 311,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6437,7 +6457,7 @@
     "note": "定形入力コマンド"
   },
   {
-    "id": 311,
+    "id": 312,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6457,7 +6477,7 @@
     "note": "カメラワーク編集パネルを閉じる"
   },
   {
-    "id": 312,
+    "id": 313,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6477,7 +6497,7 @@
     "note": "SE音楽等のスポッティング編集パネルを表示"
   },
   {
-    "id": 313,
+    "id": 314,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6497,7 +6517,7 @@
     "note": "breve"
   },
   {
-    "id": 314,
+    "id": 315,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6517,7 +6537,7 @@
     "note": "全音符"
   },
   {
-    "id": 315,
+    "id": 316,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6537,7 +6557,7 @@
     "note": "2分音符"
   },
   {
-    "id": 316,
+    "id": 317,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6557,7 +6577,7 @@
     "note": "4分音符"
   },
   {
-    "id": 317,
+    "id": 318,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6577,7 +6597,7 @@
     "note": "8分音符"
   },
   {
-    "id": 318,
+    "id": 319,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6597,7 +6617,7 @@
     "note": "音響編集パネルを閉じる"
   },
   {
-    "id": 319,
+    "id": 320,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6617,7 +6637,7 @@
     "note": "アフターエフェクトキーデータ調整パネル"
   },
   {
-    "id": 320,
+    "id": 321,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6637,7 +6657,7 @@
     "note": "パネルを閉じる"
   },
   {
-    "id": 321,
+    "id": 322,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6657,7 +6677,7 @@
     "note": "ストップウオッチパネル表示"
   },
   {
-    "id": 322,
+    "id": 323,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6677,7 +6697,7 @@
     "note": "計測スイッチ"
   },
   {
-    "id": 323,
+    "id": 324,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6697,7 +6717,7 @@
     "note": "計測マーク"
   },
   {
-    "id": 324,
+    "id": 325,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6717,7 +6737,7 @@
     "note": "マーク消去"
   },
   {
-    "id": 325,
+    "id": 326,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6737,7 +6757,7 @@
     "note": "ストップウオッチのマークを入力に変換"
   },
   {
-    "id": 326,
+    "id": 327,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6755,7 +6775,7 @@
     "note": "コンテキストリジョングループ全体"
   },
   {
-    "id": 327,
+    "id": 328,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6773,7 +6793,7 @@
     "note": "コンテキストリジョングループ"
   },
   {
-    "id": 328,
+    "id": 329,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6791,7 +6811,7 @@
     "note": "コンテキストリジョングループ"
   },
   {
-    "id": 329,
+    "id": 330,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6809,7 +6829,7 @@
     "note": "コンテキストリジョングループ"
   },
   {
-    "id": 330,
+    "id": 331,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6827,7 +6847,7 @@
     "note": "コンテキストリジョングループ"
   },
   {
-    "id": 331,
+    "id": 332,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6845,7 +6865,7 @@
     "note": "コンテキストリジョングループ"
   },
   {
-    "id": 332,
+    "id": 333,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6863,7 +6883,7 @@
     "note": "コンテキストリジョングループ"
   },
   {
-    "id": 333,
+    "id": 334,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6881,7 +6901,7 @@
     "note": "コンテキストリジョングループ"
   },
   {
-    "id": 334,
+    "id": 335,
     "type": "window",
     "platform": "",
     "app": "",
@@ -6899,7 +6919,7 @@
     "note": "コンテキストリジョングループ"
   },
   {
-    "id": 335,
+    "id": 336,
     "type": "selector",
     "platform": "",
     "app": "",
@@ -6919,7 +6939,7 @@
     "options": "return Array.from(xUI.ibCP.options,(e)=>{e.selected = (xUI.ibCP.activePalette == e.value)?true:false;return e;})"
   },
   {
-    "id": 336,
+    "id": 337,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6940,7 +6960,7 @@
     "note": ""
   },
   {
-    "id": 337,
+    "id": 338,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6961,7 +6981,7 @@
     "note": ""
   },
   {
-    "id": 338,
+    "id": 339,
     "type": "command",
     "platform": "",
     "app": "",
@@ -6982,7 +7002,7 @@
     "note": ""
   },
   {
-    "id": 339,
+    "id": 340,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7003,7 +7023,7 @@
     "note": ""
   },
   {
-    "id": 340,
+    "id": 341,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7024,7 +7044,7 @@
     "note": "画像をクリップボードへ複写"
   },
   {
-    "id": 341,
+    "id": 342,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7045,7 +7065,7 @@
     "note": "アイテムのURLをクリップボードへ複写"
   },
   {
-    "id": 342,
+    "id": 343,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7066,7 +7086,7 @@
     "note": "アセットをダウンロードして保存"
   },
   {
-    "id": 343,
+    "id": 344,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7087,7 +7107,7 @@
     "note": "アセットを最新状態に更新"
   },
   {
-    "id": 344,
+    "id": 345,
     "type": "window",
     "platform": "",
     "app": "",
@@ -7105,7 +7125,7 @@
     "note": "開発用コンソール"
   },
   {
-    "id": 345,
+    "id": 346,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7126,7 +7146,7 @@
     "note": "スクリプトファイルを読み込んで実行"
   },
   {
-    "id": 346,
+    "id": 347,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7147,7 +7167,7 @@
     "note": "現在のスクリーン内容を保存"
   },
   {
-    "id": 347,
+    "id": 348,
     "type": "window",
     "platform": "",
     "app": "",
@@ -7165,7 +7185,7 @@
     "note": ""
   },
   {
-    "id": 348,
+    "id": 349,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7183,7 +7203,7 @@
     "note": ""
   },
   {
-    "id": 349,
+    "id": 350,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7201,7 +7221,7 @@
     "note": ""
   },
   {
-    "id": 350,
+    "id": 351,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7219,7 +7239,7 @@
     "note": ""
   },
   {
-    "id": 351,
+    "id": 352,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7237,7 +7257,7 @@
     "note": ""
   },
   {
-    "id": 352,
+    "id": 353,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7255,7 +7275,7 @@
     "note": ""
   },
   {
-    "id": 353,
+    "id": 354,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7273,7 +7293,7 @@
     "note": ""
   },
   {
-    "id": 354,
+    "id": 355,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7291,7 +7311,7 @@
     "note": ""
   },
   {
-    "id": 355,
+    "id": 356,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7309,7 +7329,7 @@
     "note": ""
   },
   {
-    "id": 356,
+    "id": 357,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7327,7 +7347,7 @@
     "note": ""
   },
   {
-    "id": 357,
+    "id": 358,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7348,7 +7368,7 @@
     "note": ""
   },
   {
-    "id": 358,
+    "id": 359,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7369,7 +7389,7 @@
     "note": "\"これは削除予定\""
   },
   {
-    "id": 359,
+    "id": 360,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7390,7 +7410,7 @@
     "note": ""
   },
   {
-    "id": 360,
+    "id": 361,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7408,7 +7428,7 @@
     "note": ""
   },
   {
-    "id": 361,
+    "id": 362,
     "type": "normal",
     "platform": "",
     "app": "",
@@ -7429,7 +7449,7 @@
     "note": ""
   },
   {
-    "id": 362,
+    "id": 363,
     "type": "normal",
     "platform": "",
     "app": "",
@@ -7447,7 +7467,7 @@
     "note": ""
   },
   {
-    "id": 363,
+    "id": 364,
     "type": "normal",
     "platform": "",
     "app": "",
@@ -7465,7 +7485,7 @@
     "note": ""
   },
   {
-    "id": 364,
+    "id": 365,
     "type": "normal",
     "platform": "",
     "app": "",
@@ -7483,7 +7503,7 @@
     "note": ""
   },
   {
-    "id": 365,
+    "id": 366,
     "type": "normal",
     "platform": "",
     "app": "",
@@ -7501,7 +7521,7 @@
     "note": ""
   },
   {
-    "id": 366,
+    "id": 367,
     "type": "normal",
     "platform": "",
     "app": "",
@@ -7519,7 +7539,7 @@
     "note": ""
   },
   {
-    "id": 367,
+    "id": 368,
     "type": "window",
     "platform": "",
     "app": "",
@@ -7537,7 +7557,7 @@
     "note": ""
   },
   {
-    "id": 368,
+    "id": 369,
     "type": "window",
     "platform": "",
     "app": "",
@@ -7555,7 +7575,7 @@
     "note": ""
   },
   {
-    "id": 369,
+    "id": 370,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7576,7 +7596,7 @@
     "note": ""
   },
   {
-    "id": 370,
+    "id": 371,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7597,7 +7617,7 @@
     "note": ""
   },
   {
-    "id": 371,
+    "id": 372,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7618,7 +7638,7 @@
     "note": ""
   },
   {
-    "id": 372,
+    "id": 373,
     "type": "window",
     "platform": "",
     "app": "",
@@ -7636,7 +7656,7 @@
     "note": ""
   },
   {
-    "id": 373,
+    "id": 374,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7657,7 +7677,7 @@
     "note": ""
   },
   {
-    "id": 374,
+    "id": 375,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7675,7 +7695,7 @@
     "note": ""
   },
   {
-    "id": 375,
+    "id": 376,
     "type": "window",
     "platform": "",
     "app": "",
@@ -7693,7 +7713,7 @@
     "note": ""
   },
   {
-    "id": 376,
+    "id": 377,
     "type": "window",
     "platform": "",
     "app": "",
@@ -7711,7 +7731,7 @@
     "note": ""
   },
   {
-    "id": 377,
+    "id": 378,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7729,7 +7749,7 @@
     "note": ""
   },
   {
-    "id": 378,
+    "id": 379,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7747,7 +7767,7 @@
     "note": ""
   },
   {
-    "id": 379,
+    "id": 380,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7765,7 +7785,7 @@
     "note": ""
   },
   {
-    "id": 380,
+    "id": 381,
     "type": "window",
     "platform": "",
     "app": "",
@@ -7783,7 +7803,7 @@
     "note": ""
   },
   {
-    "id": 381,
+    "id": 382,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7804,7 +7824,7 @@
     "note": ""
   },
   {
-    "id": 382,
+    "id": 383,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7825,7 +7845,7 @@
     "note": ""
   },
   {
-    "id": 383,
+    "id": 384,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7843,7 +7863,7 @@
     "note": ""
   },
   {
-    "id": 384,
+    "id": 385,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7861,7 +7881,7 @@
     "note": ""
   },
   {
-    "id": 385,
+    "id": 386,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7879,7 +7899,7 @@
     "note": ""
   },
   {
-    "id": 386,
+    "id": 387,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7897,7 +7917,7 @@
     "note": ""
   },
   {
-    "id": 387,
+    "id": 388,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7915,7 +7935,7 @@
     "note": ""
   },
   {
-    "id": 388,
+    "id": 389,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7936,7 +7956,7 @@
     "note": ""
   },
   {
-    "id": 389,
+    "id": 390,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7957,7 +7977,7 @@
     "note": ""
   },
   {
-    "id": 390,
+    "id": 391,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7978,7 +7998,7 @@
     "note": ""
   },
   {
-    "id": 391,
+    "id": 392,
     "type": "command",
     "platform": "",
     "app": "",
@@ -7999,7 +8019,7 @@
     "note": ""
   },
   {
-    "id": 392,
+    "id": 393,
     "type": "command",
     "platform": "",
     "app": "",
@@ -8020,7 +8040,7 @@
     "note": ""
   },
   {
-    "id": 393,
+    "id": 394,
     "type": "command",
     "platform": "",
     "app": "",
@@ -8041,7 +8061,7 @@
     "note": ""
   },
   {
-    "id": 394,
+    "id": 395,
     "type": "command",
     "platform": "",
     "app": "",
@@ -8062,7 +8082,7 @@
     "note": ""
   },
   {
-    "id": 395,
+    "id": 396,
     "type": "command",
     "platform": "",
     "app": "",
@@ -8083,7 +8103,7 @@
     "note": ""
   },
   {
-    "id": 396,
+    "id": 397,
     "type": "command",
     "platform": "",
     "app": "",
@@ -8104,7 +8124,7 @@
     "note": ""
   },
   {
-    "id": 397,
+    "id": 398,
     "type": "command",
     "platform": "",
     "app": "",
@@ -8125,7 +8145,7 @@
     "note": ""
   },
   {
-    "id": 398,
+    "id": 399,
     "type": "command",
     "platform": "",
     "app": "",
@@ -8146,7 +8166,7 @@
     "note": "日・英切り替え_繁簡韓予定"
   },
   {
-    "id": 399,
+    "id": 400,
     "type": "checkbox",
     "platform": "",
     "app": "",
@@ -8167,7 +8187,7 @@
     "note": ""
   },
   {
-    "id": 400,
+    "id": 401,
     "type": "checkbox",
     "platform": "",
     "app": "",
@@ -8188,7 +8208,7 @@
     "note": ""
   },
   {
-    "id": 401,
+    "id": 402,
     "type": "checkbox",
     "platform": "",
     "app": "",
@@ -8209,17 +8229,17 @@
     "note": ""
   },
   {
-    "id": 402,
+    "id": 403,
     "type": "checkbox",
     "platform": "",
     "app": "",
     "key": "modechange_pgscrl",
-    "label": "ページ|スクロール",
+    "label": "ページモード",
     "role": "",
     "checkd": "",
     "func": [
       "menu",
-      "xUI.viewMode=(xUI.viewMode=='Compact')?'WordProp':'Compact';xUI.resetSheet();"
+      "xUI.viewMode=(xUI.viewMode=='Scroll')?'PageImage':'Scroll';xUI.resetSheet(undefined,undefined,xUI.applySheetlooks);"
     ],
     "hotkey": "",
     "region": "",
@@ -8230,7 +8250,7 @@
     "note": ""
   },
   {
-    "id": 403,
+    "id": 404,
     "type": "checkbox",
     "platform": "",
     "app": "",
@@ -8251,7 +8271,7 @@
     "note": ""
   },
   {
-    "id": 404,
+    "id": 405,
     "type": "command",
     "platform": "",
     "app": "",
@@ -8272,7 +8292,7 @@
     "note": ""
   },
   {
-    "id": 405,
+    "id": 406,
     "type": "command",
     "platform": "",
     "app": "",
@@ -8293,7 +8313,7 @@
     "note": ""
   },
   {
-    "id": 406,
+    "id": 407,
     "type": "command",
     "platform": "",
     "app": "",
@@ -8314,7 +8334,7 @@
     "note": "トラック名を編集"
   },
   {
-    "id": 407,
+    "id": 408,
     "type": "window",
     "platform": "",
     "app": "",
@@ -8332,7 +8352,7 @@
     "note": ""
   },
   {
-    "id": 408,
+    "id": 409,
     "type": "command",
     "platform": "",
     "app": "",
@@ -8350,7 +8370,7 @@
     "note": ""
   },
   {
-    "id": 409,
+    "id": 410,
     "type": "window",
     "platform": "",
     "app": "",
@@ -8368,7 +8388,7 @@
     "note": ""
   },
   {
-    "id": 410,
+    "id": 411,
     "type": "window",
     "platform": "",
     "app": "",
@@ -8386,7 +8406,7 @@
     "note": ""
   },
   {
-    "id": 411,
+    "id": 412,
     "type": "command",
     "platform": "",
     "app": "",

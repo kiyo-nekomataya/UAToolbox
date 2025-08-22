@@ -912,7 +912,6 @@ putReference=function()
 		xUI.resetSheet(undefined,documentDepot.currentReference);
 	}else{
 	//return false;
-	
 		var mStart=[
 			(xUI.Selection[0]>0)?xUI.Select[0]:xUI.Select[0]+xUI.Selection[0],
 			(xUI.Selection[1]>0)?xUI.Select[1]:xUI.Select[1]+xUI.Selection[1]

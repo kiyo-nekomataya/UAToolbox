@@ -11,7 +11,7 @@
  *
  *ソースデータのフォーマットは以下
  *
- *<整数ID>
+ *<整数ID 自動作成>
  *	type:<window|submenu|command|normal|separator|========|checkbox|radio|selector|button|text ...必須>
  *	key:<アイテムキーワード・ユニーク・必須>
  *	platform:<win|mac|unix|WEB|CEP|ESTK|NODE|Electron|Cordova|Monaca ...・任意>
@@ -31,8 +31,7 @@
  *
  *ID/type/key/以外のプロパティは任意（なくても良い）
  *整数IDは、セッション内でユニークではあるが、リスト更新ごとに読み込み順にリセットされるので数値自体は意味を持たないので注意
- *
- *ソース上はアイテムの区分の役目のみを持っている
+ *ソース上はアイテムの区分の役目のみを持っている 
  *
  *タイプキーワード詳細
  *type
@@ -52,6 +51,11 @@
  *	URL-|FILE-			指定アドレスへページ遷移する(preload.jsなし)
  *	openEx  			指定のアドレス|ファイルをシステムで開く(electron互換)
  *
+ * プラットフォームキーワード詳細
+ *platform
+ *	win|mac|unix
+ *	WEB|CEP|ESTK|NODE
+ *	Electron|Cordova|Monaca
  *	以下テンプレート
  *----------------------------------------
 0
@@ -2650,6 +2654,130 @@
 	region:
 	note:コンテキストリジョングループ
 0
+	type:window
+	key:xpsTimelineRegion
+	label:タイムシート上
+	region:onTimeguide
+	note:
+
+0
+	type:window
+	key:xpsSelectRegion
+	label:選択セル上
+	region:onXpsSelect
+	note:
+
+0
+	type:window
+	key:xpsSelectionRegion
+	label:選択範囲上
+	region:onXpsSelection
+	note:
+
+0
+	type:window
+	key:xpsTCRegion
+	label:タイムコード
+	region:onTimeguide
+	note:
+
+0
+	type:window
+	key:xpsDialogRegion
+	label:セリフトラック
+	region:onXpsDialog
+	note:
+
+0
+	type:window
+	key:xpsSoundRegion
+	label:音響トラック
+	region:onXpsSound
+	note:
+
+0
+	type:window
+	key:xpsReplacementRegion
+	label:タイムライントラック
+	region:onXpsReplacement
+	note:
+
+0
+	type:window
+	key:xpsStillRegion
+	label:静止画タイムライントラック
+	region:onXpsStill
+	note:
+
+0
+	type:window
+	key:xpsCameraworkRegion
+	label:カメラトラック
+	region:onXpsCamera
+	note:
+
+0
+	type:window
+	key:xpsStageworkRegion
+	label:ステージトラック
+	region:onXpsStg
+	note:
+
+0
+	type:window
+	key:xpsSfxRegion
+	label:効果トラック
+	region:onXpsSft
+	note:
+
+0
+	type:window
+	key:xpsNoteTextRegion
+	label:注釈トラック
+	region:onXpsTracknote
+	note:
+
+0
+	type:window
+	key:xpsReferenceRegion
+	label:参照エリア
+	region:onXpsReference
+	note:
+
+0
+	type:window
+	key:xpsReferenceHeaderRegion
+	label:参照ラベル
+	region:onReferenceheader
+	note:
+
+0
+	type:window
+	key:xpsSheetFooterRegion
+	label:ページフッター
+	region:
+	note:
+
+0
+	type:window
+	key:xpsSheetHeaderRegion
+	label:シートヘッダ
+	region:onXpsPageHeader
+	note:
+
+0
+	type:window
+	key:xpsTrackLabelRegion
+	label:トラックラベル
+	region:onTracklabel
+	note:
+
+0
+	type:text
+	key:noteTEST
+	label:試験テキスト
+	
+0
 	type:selector
 	key:ibcSelect
 	label:セレクタリスト
@@ -2970,7 +3098,7 @@
 	type:command
 	key:newDocumentXps
 	label:新規ドキュメント
-	func:["menu","xUI.sWitchPanel('Scn','show');"]
+	func:["menu","xpsScenePref.open('new');"]
 	icon:iconButton-close
 	description:"新規ドキュメントを作成"
 
@@ -3077,7 +3205,7 @@
 	type:command
 	key:documentInfoXps
 	label:シート情報
-	func:["menu","xUI.sWitchPanel('Scn','show');"]
+	func:["menu","xpsScenePref.open('edit');"]
 	icon:
 	description:
 	note:

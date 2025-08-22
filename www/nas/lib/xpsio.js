@@ -44,38 +44,38 @@ if ((typeof config != 'object')||(config.on_cjs)){
  *
  * XPSオブジェクトの再初期化
  *
- * method    [object Xps].init([int trackcount(layerCount)][,int frames])
+ * method    [object nas.Xps].init([int trackcount(layerCount)][,int frames])
  * 自分自身を再初期化する。
  * すべてのプロパティをリセット
  * 指定されたレイヤ数とフレーム長で空の値のテーブルを作成する。
  * 以前のデータは消去。new_XPSは、内部でこのメソッドを呼ぶ。
  *
  * 現在の継続時間を返す
- * method    [object Xps].duration()
+ * method    [object nas.Xps].duration()
  * このメソッドは、プロパティに変更予定
  *
  * 現在のカット尺を返す
- * method    [object Xps].time()
+ * method    [object nas.Xps].time()
  * このメソッドは、プロパティに変更予定
  *
  * カット尺をフレーム数で返す
- * method    [object Xps].getTC(フレーム数)
+ * method    [object nas.Xps].getTC(フレーム数)
  * 暫定メソッド、消えそう
  *
  * テキスト形式データを読み込んでオブジェクトに反映
- * method    [object Xps].readIN(テキストデータ)
+ * method    [object nas.Xps].readIN(テキストデータ)
  * parseXpsのラッパとして残置
  *
- * method    [object Xps].parseXps(xpsStreamText)
+ * method    [object nas.Xps].parseXps(xpsStreamText)
  * 与えられたテキストストリームをパースしてオブジェクトを再初期化する
  * 現在のプロパティはすべて破棄
  * 戻値:取り込み成功時にtrue/失敗の際はfalse
  * テキスト形式で出力
- * method    [object Xps].toString(セパレータ)
+ * method    [object nas.Xps].toString(セパレータ)
  * そのうち拡張
  * と思っていたが、コンバータは別立てにしてXpsオブジェクトの汎用性を高めるが吉
  *
- * method    [object Xps].mkAEKey(レイヤID)
+ * method    [object nas.Xps].mkAEKey(レイヤID)
  * モードよっては不要ぽい
  * 同上
  *
@@ -85,7 +85,7 @@ if ((typeof config != 'object')||(config.on_cjs)){
  * nas.Xps.newTracks= function(TrackCount);//タイムシートの本体オブジェクトを作成して戻す
  */
 /**
- * object Xps(汎用アニメーションタイムシート)日本形式のタイムシート記述クラスを提供
+ * object nas.Xps(汎用アニメーションタイムシート)日本形式のタイムシート記述クラスを提供
  * @class 
  *   汎用アニメーションタイムシートクラス
  * 
@@ -113,8 +113,7 @@ if ((typeof config != 'object')||(config.on_cjs)){
  * 
  * [リプレースメントトラック数]
  * [ダイアログトラック数,リプレースメントトラック数]
- * [ダイアログトラック数,リプレースメントトラック数,ジオメトリトラック数]
- * [ダイアログトラック数,リプレースメントトラック数,ジオメトリトラック数,コンポジットトラック数]
+ * [ダイアログトラック数,リプレースメントトラック数,カメラワークトラック数]
  * 
  * 配列長が1の場合は、特例でリプレースメントトラック数とする
  * ダイアログトラック数は、1以上とする
@@ -230,16 +229,19 @@ nas.Xps = function Xps(Layers, Length, Framerate, xmap, nodepath){
     this.inherit   = '';//this.pmu.inherit(文字列化);
     this.trin      = new nas.ShotTransition('trin');
     this.trout     = new nas.ShotTransition('trout');
-    this.headMargin   = 0;//カット開始前マージンフレーム
-    this.tailMargin   = 0;//カット終了後マージンフレーム
+    this.headMargin   = 0;//カット開始前マージンフレーム Int frames
+    this.tailMargin   = 0;//カット終了後マージンフレーム Int frames
 //フレームレートはsheetLooksの値を優先で連動
-    this.framerate = nas.newFramerate(Framerate);
+    this.framerate = new nas.Framerate(this.sheetLooks.FrameRate);
     this.rate = this.framerate.toString(true); //互換維持のため残置 順次削除
+
     var Now = new Date();
     this.create_time = Now.toNASString();
-    this.create_user = new nas.UserInfo(nas.CURRENTUSER);
+    this.create_user = ((xUI)&&(xUI.currentUser))? xUI.currentUser:new nas.UserInfo(config.myName);
     this.update_time = Now.toNASString();
-    this.update_user = new nas.UserInfo(nas.CURRENTUSER);
+    this.update_user = ((xUI)&&(xUI.currentUser))? xUI.currentUser:new nas.UserInfo(config.myName);
+
+//オブジェクトコレクション設定
 //シグネチャトレーラー
     this.signatures  = new nas.UserSignatureCollection();
 //タイムシートフォーマット
@@ -250,7 +252,7 @@ nas.Xps = function Xps(Layers, Length, Framerate, xmap, nodepath){
     this.noteImages.imageAppearance = 1;
 //ドキュメント画像マスターセッション間フラグ if true image master data
 //    this.imgMaster    = false;
-//状態取得関数として実装　定数扱いにしない
+//状態取得関数として実装 定数扱いにしない
 
 // タイムライントラックコレクション配列初期化
 // コレクションの初期化で同時にシートメモが空文字列で初期化される
@@ -305,7 +307,7 @@ console.log(this.sheetLooks);
 "update_user"  :{ get:"toString", put:"parse"},
  */
 }
-//==================== Object Xps//
+//==================== Object nas.Xps//
 
 /*
 Xpsをフルスペックに拡張するための基礎情報
@@ -356,6 +358,7 @@ action
 tracknote
     自由記述テキストトラック
 */
+
 if((config)&&(config.SheetLooks)){
     nas.Xps.DocumentFormat = config.SheetLooks;
 }else if(typeof SheetLooks == "object"){
@@ -433,7 +436,7 @@ nas.Xps.TrackProperties=[
 nas.Xps.TrackPropRegex=new RegExp(nas.Xps.TrackProperties.join("|"),"i");
 
 /*
- *	Xps.sheetLooks.xpsTracksの配置とXps.sheetLooksからエリアを導く
+ *	nas.Xps.sheetLooks.xpsTracksの配置とXps.sheetLooksからエリアを導く
  *エリアを形成するトラック
  *	reference,
  *	action,
@@ -692,15 +695,14 @@ console.log(trackSpec)
     //トラックのインデックス更新正規化
     myTimelineTracks.assignAreaOrderMember();
     myTimelineTracks.renumber();
-//if(dbg) console.log(myTimelineTracks);
     return myTimelineTracks;
 };
 /**
- * xpsTracksのメンバーをタイムラインオブジェクトとしてアクセスする抽出メソッド
- *
  * @params {Number|String} idx
  *   指定IDはラベル文字列でも良い　ラベルの場合は先にマッチしたトラックが戻る
  * @returns {Object nas.Xps.XpsTimelineTrack}
+ * xpsTracksのメンバーをタイムラインオブジェクトとしてアクセスする抽出メソッド
+ *
  */
 nas.Xps.prototype.timeline = function (idx) {
     if(isNaN(idx)){
@@ -872,7 +874,9 @@ console.log('不正引数検出のためトラック仕様をデフォルト値�
     this.create_user = ((xUI)&&(xUI.currentUser))? xUI.currentUser:new nas.UserInfo(config.myName);
     this.update_time = Now.toNASString();
     this.update_user = ((xUI)&&(xUI.currentUser))? xUI.currentUser:new nas.UserInfo(config.myName);
-//    this.memo = ""; 
+
+//    this.memo = "";
+// タイムシート画像トレーラーを初期化
     this.timesheetImages.clearMember();
 // ノート画像トレーラーを初期化
     this.timesheetImages.clearMember();
@@ -1125,6 +1129,20 @@ nas.Xps.prototype.time = function () {
 nas.Xps.prototype.getTC = function (mtd) {
     return (nas) ? nas.Frm2FCT(mtd, 3, 0, this.framerate) : Math.floor(mtd / this.framerate) + "+" + mtd % this.framerate + ".";
 };
+/*
+ *	タイムライントラックの前後マージンを自動調整
+ *	マージン設定の際に呼び出す補助関数
+ */
+nas.Xps.prototype.adjustMargin = function adjustMargin(){
+	if(this.headMargin < this.trin / 2)  this.headMargin = this.trin / 2;
+	if(this.tailMargin < this.trout / 2) this.tailMargin = this.trout / 2;
+}
+/*TEST
+	xUI.XPS.headMargin = 18;//18フレームを設定
+	xUI.XPS.trin.setValue("from s-c124 (2+12)","in");//60フレームを設定
+	xUI.XPS.adjustMargin();//30フレームに矯正
+		
+*/
 /**
  *  
  */
@@ -1134,11 +1152,18 @@ nas.Xps.prototype.stringifySheetLooks = function () {
 /**
  *  @params {String|Object}  sheetLooks
  *  sheetLooks情報を適用する
+ *  トラックスペックの変更が検出された場合のみトラックエリアの再初期化が実行される
+ *  アプリ画面の書換はこのメソッドでは呼び出されない
+ *  必要ならば、画面の書き換えは別に呼び出す
  */
 nas.Xps.prototype.parseSheetLooks = function (sheetLooks){
+console.log(sheetLooks);
+console.log(this);
     if ((typeof sheetLooks == 'string')&&(sheetLooks.match(/(\{[\s\S]*?\})/))){
+//引数が文字列ならばオブジェクト化しておく
         sheetLooks = JSON.parse(RegExp.$1);
     };
+    var changeTrack = (this.sheetLooks.trackSpec.join() == sheetLooks.trackSpec.join())? false:true;
     for (var prp in sheetLooks){
         if(this.sheetLooks[prp]){
             if(prp == 'trackSpec') console.log(this.sheetLooks[prp],sheetLooks[prp]);
@@ -1153,8 +1178,11 @@ nas.Xps.prototype.parseSheetLooks = function (sheetLooks){
             };
         };
     };
-    this.xpsTracks.initAreaOrder(sheetLooks.trackSpec);
-    this.xpsTracks.assignAreaOrderMember();
+    if (changeTrack){
+//エリアオーダーを更新してエリアを再アサイン
+        this.xpsTracks.initAreaOrder(sheetLooks.trackSpec);
+        this.xpsTracks.assignAreaOrderMember();
+    };
 }
 /**
  * @todo 仮メソッドアトでキチンとカケ
@@ -1180,15 +1208,16 @@ nas.Xps.prototype.parseSheetLooks = function (sheetLooks){
  *  挿入点トラックid　指定idの前方に挿入される
  * @params {Araay of nas.Xps.XpsTimelineTrack} myTimelines
  *  挿入オブジェクトまたは配列
+ * @returns {Array of Object XpsTimelineTrack}
  */
 nas.Xps.prototype.insertTL = function (myId, myTimelines) {
     //引数が配列ではないまたは単独のタイムライントラックオブジェクトである場合配列化する
-    /*
-        nas.Xps.XpsTimelineTrackが配列ベースのためか、通常の配列をinstanceof nas.Xps.XpsTimelineTrack で判定すると trueが戻るので
-        プロパティで判定を行う
-        obj.id(トラックラベル)があればタイムライントラック
-        typeofobj.length== "undefined"ならば 配列以外
-    */
+/*
+ XpsTimelineTrackが配列ベースのため通常の配列をinstanceof XpsTimelineTrack で判定すると trueが戻るので
+ プロパティで判定を行う
+ obj.id(トラックラベル)があればタイムライントラック
+ typeofobj.length== "undefined"ならば 配列以外
+ */
     if ((myTimelines.id) || (typeof myTimelines.length == "undefined")){
         myTimelines = [myTimelines];
     }
@@ -1196,22 +1225,20 @@ nas.Xps.prototype.insertTL = function (myId, myTimelines) {
         myId = this.xpsTracks.length - 1
     }
     for (var idx = 0; idx < myTimelines.length; idx++) {
-        /**
-         * 挿入データの検査
-         * 挿入データがタイムライントラック以外なら挿入データをラベルに持つtimingタイムラインを作成する
-         */
+/*
+ * 挿入データの検査
+ * 挿入データがタイムライントラック以外なら挿入データをラベルに持つtimingタイムラインを作成する
+ */
         if (!(myTimelines[idx].id)) {
             if (myTimelines[idx]) {
                 myTimelines[idx] = new nas.Xps.XpsTimelineTrack(myTimelines[idx], "timing",this.xpsTracks,this.duration());
             } else {
                 myTimelines[idx] = new nas.Xps.XpsTimelineTrack(nas.Zf(idx + myId, 2), "timing",this.xpsTracks,this.duration());
             }
-        }
-        /**
-         * 挿入データを揃えて挿入
-         */
-        this.xpsTracks.splice(myId + idx, 0, myTimelines[idx]);
-    }
+        };
+    };
+// 挿入データを揃えて挿入
+    this.xpsTracks.insertTrack(myId,myTimelines);
     return myTimelines;
 };
 //test insertTL(挿入点id,挿入するタイムラインオブジェクト配列)
@@ -1224,25 +1251,49 @@ nas.Xps.prototype.insertTL = function (myId, myTimelines) {
  * IDを単独又は配列渡しで
  * XpsLayerとxpsTracks はそのうちタイムラインとして統合すべきかと思う。
  *
- * @params args
+ * @params {Array of Number} args
+ * @returns {Object TimeLineTrack}
  */
 nas.Xps.prototype.deleteTL = function (args) {
-    if (!(args instanceof Array)) {
-        args = [args]
-    }
-    args.sort().reverse();
-    for (var idx = 0; idx < args.length; idx++) {
-        //操作範囲外の値は無視
-        var targetIndex = args[idx];
-        if (isNaN(targetIndex)) {
-            continue;
-        }
-        if ((targetIndex > 0) && (targetIndex < this.xpsTracks.length - 1)) {
-            this.xpsTracks.splice(targetIndex, 1);
-        }
-    }
-
+    return this.xpsTracks.removeTrack(args);
 };
+/**
+ *	@params {String} direction
+ *		head|from|tail|to|both
+ *	@params {String} length
+ *	シートデータにマージンを設定する
+ *	方向性にbothを指定した場合両方のパラメータが同一になる
+ *	マージン設定の際にショットトランジションが存在した場合
+ *	トランジションに必要なマージン以下には設定できない
+ *	マージンの変更値を計算して
+ 	lengthに許される値は 0以上のFCT文字列
+ 	0の場合は、マージンを削除
+	現在のマージンに対する変更値を計算する
+	加算分は空白セルを作成して挿入 減算分は削除する
+
+ */
+nas.Xps.prototype.setMargin = function setMargin(direction,length){
+	var target = [];
+	length = nas.FCT2Frm(length);//フレーム数に変換
+	if(length == false) return false;
+	if(direction == 'head'){
+		target.push('headMargin');
+	}else if(direction == 'tail'){
+		target.push('tailMargin');
+	}else if(direction == 'both'){
+		target=['tailMargin','headMargin'];
+	}else{
+		return false;
+	};
+	for(var ix = 0 ; ix < target.length ; ix ++ ){
+		var prp  = target[ix];
+		var current = this[prp];//現在の値 整数
+		var keep = (prp == 'headMargin')? trin / 2:trout / 2;//
+		var change = (keep >= length)? keep:length - current;// 12にたいして1+0を設定する場合 +12
+		
+		this[prp] = length;
+	};
+}
 /**
     @params {Number Int} myDuration
     @returns {Number}
@@ -1286,83 +1337,83 @@ nas.Xps.prototype.setDuration =function(myDuration){
  * @params newTimelines
  * @params newDuration
  * @returns {boolean}
+  引数にsheetLooks|trackSpecを与えられるように改修
  */
 nas.Xps.prototype.reInitBody = function (newTimelines, newDuration) {
+if(
+    (typeof newTimelines == 'object')&&
+    (newTimelines)
+){
+    
+}
     var oldWidth = (this.xpsTracks.length);
     if (!newTimelines) newTimelines = oldWidth;
     var oldDuration = this.duration();//this.xpsTracks.duration;
     if (!newDuration) newDuration = oldDuration;
-    if (newTimelines < 1 || newDuration <= 0) {
-        return false;
-    }
+    if (newTimelines < 1 || newDuration <= 0) return false;
+
     var widthUp    = (newTimelines > oldWidth)   ? 1 : (newTimelines == oldWidth)   ? 0 : -1 ;
+
     var durationUp = (newDuration > oldDuration) ? 1 : (newDuration == oldDuration) ? 0 : -1 ;
-//  トラック数を先に編集トラック数が増えた場合は空白ラベルで挿入減っている場合は削除メソッドを発行
+
+//  トラック数を先に編集 トラック数が増えた場合は空白ラベルで挿入 減っている場合は削除メソッドを発行
     if(widthUp > 0){
+//トラック増加
         var newTracks=[];
         var widthUpCount = newTimelines-oldWidth;
                         alert("add new "+widthUpCount+ ' tracks!');
         for (var tid = 0 ; tid < widthUpCount ; tid ++){
-            newTracks.push(new nas.Xps.XpsTimelineTrack('','timing',this.xpsTracks,this.duration()));
-        }
+            newTracks.push(new XpsTimelineTrack('','timing',this.xpsTracks,this.duration()));
+        };
         this.xpsTracks.insertTrack(0,newTracks);
-//if(dbg) console.log(this.xpsTracks);
     }else if(widthUp < 0){
+//トラック減少 コメントを残し後方のとタックを順次削除
         for (var tid = (this.xpsTracks.length-2);tid >= (newTimelines-1);tid --){
             this.xpsTracks[tid].remove();
-        }
-    }
+        };
+    };
 //  トラック長を変更する
     if(durationUp != 0){
         this.setDuration(newDuration);
-    }
+    };
      return true;
-
 if(this.xpsTracks.duration){
     // NOP
 }else{
     this.xpsTracks.length = newTimelines;//配列長(タイムライン数)の設定 メソッドに置きかえ予定
 
-    /**
-     * 延長したらカラデータで埋める
-     * この部分はxpsTracksへの変更にともなって更新が必要
-     */
+// 延長したらカラデータで埋める
+// この部分はxpsTracksへの変更にともなって更新が必要
     if (widthUp) {
         for (var i = 0; i < oldWidth; i++) {
             this.xpsTracks[i].length = newDuration;
             if (durationUp) {
                 for (var f = oldDuration; f < newDuration; f++) {
                     this.xpsTracks[i][f] = '';
-                }
-            }
-        }
+                };
+            };
+        };
         for (var i = oldWidth; i < newTimelines; i++) {
- //           this.xpsTracks[i] = new Array(newDuration);
-//	nas.Xps.XpsTimelineTrack(myLabel, myType, myParent, myLength, myIndex)
-            this.xpsTracks[i] = new nas.Xps.XpsTimelineTrack(i,option,this.xpsTracks,newDuration,i);
-//if(durationUp)
+            this.xpsTracks[i] = new XpsTimelineTrack(i,option,this.xpsTracks,newDuration,i);
             for (var f = 0; f < newDuration; f++) {
                 this.xpsTracks[i][f] = '';
-            }
-        }
+            };
+        };
     } else {
         for (var i = 0; i < newTimelines; i++) {
             this.xpsTracks[i].length = newDuration;
             if (durationUp) {
                 for (var f = oldDuration; f < newDuration; f++) {
                     this.xpsTracks[i][f] = '';
-                }
-            }
-        }
-    }
+                };
+            };
+        };
+    };
 
-    /**
-     * タイムラインが増えた場合は、再描画前にグループ情報の追加が必要
-     * 空データを自動生成してやる必要あり
-     * 現在はラベル名以外は直前タイムラインの複製
-     * @type {number}
-     */
-//    this["layers"].length = (newTimelines - 2);//(現在決め打ち)
+// タイムラインが増えた場合は、再描画前にグループ情報の追加が必要
+// 空データを自動生成してやる必要あり
+
+// 現在はラベル名以外は直前タイムラインの複製
 	this.xpsTracks.length = newTimelines;
     if (widthUp) {
         for (var i = oldWidth - 2; i < (newTimelines - 2); i++) {
@@ -1377,12 +1428,17 @@ if(this.xpsTracks.duration){
             this.xpsTracks[i]["option"] = this.xpsTracks[oldWidth - 3]["option"];
             this.xpsTracks[i]["link"] = this.xpsTracks[oldWidth - 3]["link"];
             this.xpsTracks[i]["parent"] = this.xpsTracks[oldWidth - 3]["parent"];
-        }
-    }
-}
+        };
+    };
+};
+    
     return true;
 };
 /**
+ *   @params {Array of Array} Range
+ *   @returns {Array}
+ *
+ *    xUI.getRange(Range:[[startColumn,startFrame],[endColumn,endFrame]])
  * nas.Xps.getRange(Range:[[startC,startF],[endC,endF]])
  * 範囲内のデータをストリームで返す
  * xpsのメソッドに移行 2013.02.23
@@ -1393,15 +1449,13 @@ if(this.xpsTracks.duration){
  * 開始と終了のアドレスが一致している場合は、該当セルの値を返す
  * 第一象限と第三象限の指定は無効
  *
- * @params Range
- * @returns {Array}
  */
 nas.Xps.prototype.getRange = function (Range) {
     if (typeof Range == "undefined") {
         Range = [[0, 0], [this.xpsTracks.length - 1, this.xpsTracks[0].length - 1]]
     }//指定がなければ全体をストリーム変換
     var StartAddress = Range[0];
-    var EndAddress = Range[1];
+    var EndAddress   = Range[1];
 //	if(StartAddress==EndAddress){return xpsTracks[StartAddress[0]][StartAddress[1]]}
     var xBUF = [];
     var yBUF = [];
@@ -1509,7 +1563,7 @@ var exLst = {
 };//*/
 nas.Xps.prototype.get = nas.Pm.valueGet;
 nas.Xps.prototype.put = nas.Pm.valuePut;
-/**
+/*
  * nas.Xps.put(書込開始アドレス:[startC,startF],データストリーム)
  * 書込開始アドレスを起点にストリームでデータ置き換え
  * Xpsオブジェクトメソッド
@@ -1519,11 +1573,12 @@ nas.Xps.prototype.put = nas.Pm.valuePut;
  * このメソッドでは本体データとしてセパレータの",""\n"を与えることはできない（禁則事項）
  * リザルトとして書き込みに成功したベクトル（左上、右下）、書き換え前のデータストリーム、書き込みに成功したデータを返す
  *
- * @params myAddress
+ * @params {Array of sheetcell address} myAddress
  * @params myStream
  * @returns {*}
- */
-nas.Xps.prototype.bput = function (myAddress, myStream) {
+
+nas.Xps.prototype.put = function (myAddress, myStream) {
+//指定がなければ操作失敗
     if ((!myAddress) || (typeof myStream == "undefined")) {
         return false
     }//指定がなければ操作失敗
@@ -1543,10 +1598,9 @@ nas.Xps.prototype.bput = function (myAddress, myStream) {
     if (writeRange[1][0] >= this.xpsTracks.length)    writeRange[1][0] = this.xpsTracks.length - 1;
     if (writeRange[1][1] < writeRange[0][1]) writeRange[1][1] = writeRange[0][1];
     if (writeRange[1][1] >= this.xpsTracks[0].length) writeRange[1][1] = this.xpsTracks[0].length - 1;
-// 書き込み範囲をバックアップ
+//書き込み範囲をバックアップ
     var currentData = this.getRange(writeRange);
-// ループして置き換え
-    //var updatedRange=new Array();
+//ループして置き換え
     for (var c = 0; c < srcData.length; c++) {
         var writeColumn = c + myAddress[0];
         this.xpsTracks[writeColumn].sectionTrust=false;
@@ -1557,14 +1611,14 @@ nas.Xps.prototype.bput = function (myAddress, myStream) {
                 (writeFrame >= 0) && (writeFrame < this.xpsTracks[0].length)
             ) {
                 this.xpsTracks[writeColumn][writeFrame] = srcData[c][f];
-                //updatedRange.push([writeColumn,writeFrame]);
-            }
-        }
-    }
-//     * 戻り値は、書き込みに成功したレンジ
-//	return this.getRange([updatedRange[0],updatedRange[updatedRange.length-1]]);
+            };
+        };
+    };
+//戻り値は、書き込みに成功したレンジ
     return [writeRange, this.getRange(writeRange), currentData];
-};//*/
+}; //
+ 
+ */
 
 /**
  * 読み込みメソッド
@@ -1573,13 +1627,13 @@ nas.Xps.prototype.bput = function (myAddress, myStream) {
  * このメソッドをオーバーライドして使用すること。
  * 戻り値として、parseXps の戻り値を返すこと。2013.04.06
  *
- * @params datastream
+ * @params {String} datastream
  * @returns {Boolean}
  */
 nas.Xps.prototype.readIN = function (datastream) {
     if (datastream instanceof Boolean) {
         return datastream
-    }
+    };
     return this.parseXps(datastream);
 };
 
@@ -1595,12 +1649,13 @@ nas.Xps.prototype.readIN = function (datastream) {
  * パーサにフラグを与えて、フレームレートが確定するまでフレーム計算を行わないように修正
  */
 nas.Xps.prototype.parseXps = function (datastream) {
-console.log(datastream);
-/**
- *  マルチステージ拡張を行うため以前のコードに存在したエラーハンドリングは全廃
- */
-    if ((! datastream)||(!(datastream.match))) return false;
-    /* ラインで分割して配列に取り込み */
+//マルチステージ拡張を行うため以前のコードに存在したエラーハンドリングは全廃
+    if ((! datastream)||(!(datastream.match))) {
+//console.log('bad datestream:') ;console.log(datastream);
+//console.log(datastream instanceof String);
+        return false;
+    };
+// ラインで分割して配列に取り込み
     var SrcData = [];
     if (datastream.match(/\r/)) datastream = datastream.replace(/\r\n?/g, ("\n"))
     SrcData = datastream.split("\n");
@@ -1835,8 +1890,9 @@ if(SrcData.startLine < 0) return false;
                     readExtension=true;continue;
                 break;
                 default:
-                    /* 時間関連以外 */
+// 時間関連以外
                     SrcData[props[nAme]] = vAlue;
+// 判定した値をプロパティで控える
             };
         };
         /* タイムラインプロパティまたは終了識別にマッチ */
@@ -1884,7 +1940,7 @@ if(! SrcData.stage)    SrcData.stage = new nas.Xps.XpsStage("0:"+nas.pmdb.pmWork
 //if(! SrcData.stage)    SrcData.stage = new nas.Xps.XpsStage("0:"+nas.pmdb.pmTemplates.members[0].stages.members[0]);
 if(! SrcData.job)      SrcData.job   = new nas.Xps.XpsJob("0:"+nas.Pm.jobNames[0]);
 if(! SrcData.currentStatus ) SrcData.currentStatus = (SrcData.job.id == 0)? new nas.Xps.JobStatus('Startup'):new nas.Xps.JobStatus('Fixed');
-    /* 第二パス終了・読み取った情報でXPSオブジェクトを再初期化(共通) */
+// 第二パス終了・読み取った情報でXPSオブジェクトを再初期化(共通)
 //console.log(SrcData);
 // 継続時間確定に先行してマージンを算出
     if (SrcData.headMargin < SrcData.trin.frames(SrcData.framerate) / 2)
@@ -1924,76 +1980,145 @@ var xmapidf = nas.Pm.stringifyIdf([
     currentNode.sessionIdf = SrcData.sessionIdf;
     currentNode.clientIdf  = SrcData.clientIdf;
 
-if(SrcData.job.toString(true) == this.pmu.nodeManager.nodes[0].toString(true)){
+    if(SrcData.job.toString(true) == this.pmu.nodeManager.nodes[0].toString(true)){
 //console.log('OK-match');
-}else{
+    }else{
 //console.log('NOGOOD :' +SrcData.job.toString(true) +' : '+ this.pmu.nodeManager.nodes[0].toString(true));
-}
-    /* 第二パスで読み取ったプロパティをXPSに転記
-     * time/currentStatus/extension_data 以外はそのまま転記
-     */
+    };
+//新フォーマットのデータにはsheetLooksが含まれる
+/*
+    sheetLooksは必ずしも実際のトラック数と一致はしないので注意が必要
+    現在の使用では sheetLooksを維持したままトラックの増減が行われる
+    トラックスペックに対して保持されるのはエリアオーダーでありエリアオーダー内のトラック数はトラックスペックと必ずしも一致しない
+*/
+    if( SrcData.sheetLooks ){
+console.log('srcdata has sheetLooks');
+console.log( SrcData.sheetLooks );
+//        this.sheetLooks = JSON.parse(SrcData.sheetLooks);
+        this.parseSheetLooks(JSON.parse(SrcData.sheetLooks));
+        if(SrcData.documentMode) this.documentMode = String(SrcData.documentMode).trim();
+    }else{
+//旧データにはsheetLooksが存在しないため 一旦標準的なデータを複製して、TrackSpecの整合をとる
+console.log('srcdata has no sheetLooks');
+        var options = SrcData.find(function(e){return (e.indexOf('[option\t') == 0)})
+        var soundCount   = 0;
+        var cellCount    = 0;
+        var cameraCount  = 0;
+        if(options){
+console.log(options);
+            var trackOptions = options.split('\t');
+console.log(trackOptions);
+            trackOptions.reverse().forEach(function(e){
+                var dtct = false;
+                if((nas.Xps.AreaOptions[e] == 'camera')||(nas.Xps.AreaOptions[e] == false)){
+                    if (!dtct) cameraCount ++ ;
+                }else if((typeof nas.Xps.AreaOptions[e] != 'undefined')||(nas.Xps.AreaOptions[e] != 'camera')){
+                    dtct = true;
+                };
+            });
+            trackOptions.forEach(function(e){
+                var dtct = false;
+                if((nas.Xps.AreaOptions[e] == 'sound')||(nas.Xps.AreaOptions[e] == false)){
+                    if (cellCount == 0) soundCount ++ ;
+                }else if((typeof nas.Xps.AreaOptions[e] != 'undefined')||(nas.Xps.AreaOptions[e] == 'sound')){
+                    dtct = true;
+                };
+            });
+            cellCount = (trackOptions.length - soundCount - cameraCount - 2)
+        };
+//        this.sheetLooks = JSON.parse(JSON.stringify(xUI.sheetLooks));
+//旧来データのトラックスペック
+/*        this.sheetLooks.trackSpec = [
+            ['timecode',1,'fix'],
+            ['reference',cellCount,'fix'],
+            ['sound',soundCount,'fix'],
+            ['replacement',cellCount,''],
+            ['camera',cameraCount,''],
+            ['comment',1,'']
+        ];// */
+console.log( this.sheetLooks.trackSpec );
+        this.documentMode = 'Page';
+    };
+/*
+//	///////////////////////フォーマット拡張
+    if(Object.keys(this.sheetLooks).length > 0){
+console.log('INIT TRACKSPEC')
+        this.init(this.sheetLooks.trackSpec, SheetDuration,SrcData.framerate);//再初期化
+    }else{
+    };// */
+//console.log('INIT TRACKCOUNT')
+//    this.init(SrcData.trackCount-2, SheetDuration,SrcData.framerate);//再初期化
+//    if( SrcData.sheetLooks ){
+//        this.parseSheetLooks(SrcData.sheetLooks);//再初期化
+//    };
+// 第二パスで読み取ったプロパティをXPSに転記
+// time/currentStatus/extension_data 以外はそのまま転記
     for (var id = 0; id < propNames.length; id++) {
         var prpName = propNames[id];
-        if (SrcData[prpName] && prpName != "time") this[prpName] = SrcData[prpName];
+//        if (SrcData[prpName] && prpName != "time") this[prpName] = SrcData[prpName];
+        if (SrcData[prpName] && prpName != "time") {
+            if((this[prpName].setValue)&&(this[prpName].setValue instanceof Function)){
+                this[prpName].setValue(SrcData[prpName]);
+            }else if((this[prpName].parse)&&(this[prpName].parse instanceof Function)){
+                this[prpName].parse(SrcData[prpName]);
+            }else{
+                this[prpName] = SrcData[prpName];
+            };
+        };
     };
-//拡張データ処理
-    if( SrcData.signatures ) this.signatures.parse(SrcData.signatures);
-    if( SrcData.sheetLooks ) this.sheetLooks = JSON.parse(SrcData.sheetLooks);
-    if( SrcData.timesheetImages ) this.timesheetImages.parse(SrcData.timesheetImages);
-    if( SrcData.noteImages )      this.noteImages.parse(SrcData.noteImages);
-
-    /* 読み取りデータを調べて得たキーメソッドとブランク位置を転記 */
+// 読み取りデータを調べて得たキーメソッドとブランク位置を転記
     for (var lyr = 0; lyr < SrcData.layers.length; lyr++) {
         this.xpsTracks[lyr].blmtd = SrcData.layers[lyr].blmtd;
         this.xpsTracks[lyr].blpos = SrcData.layers[lyr].blpos;
         this.xpsTracks[lyr].lot = SrcData.layers[lyr].lot;
     }
-    if (SrcData["memo"]) this.xpsTracks.noteText = SrcData["memo"];//memoがあれば転記
-    /* 各エントリのトラックプロパティとシート本体情報を取得(第三パス) */
+//memo(noteText)があれば転記
+    if (SrcData["memo"]) this.xpsTracks.noteText = SrcData["memo"];//後ほどメモパーサを作って入れ替え？
+//拡張データ処理
+    if( SrcData.signatures ) this.signatures.parse(SrcData.signatures);
+    if( SrcData.sheetLooks ) this.sheetLooks = JSON.parse(SrcData.sheetLooks);
+//画像データ
+    this.timesheetImages.clearMember();
+    if( SrcData.timesheetImages ) this.timesheetImages.parse(SrcData.timesheetImages);
+    this.noteImages.clearMember();
+    if( SrcData.noteImages )      this.noteImages.parse(SrcData.noteImages);
+// 各エントリのトラックプロパティとシート本体情報を取得(第三パス)
     var frame_id = 0;//読み取りフレーム初期化
-
 //pmu 同期
 //    this.syncPmuProps();
 
     for (var line = SrcData.layerHeader; line < SrcData.layerBodyEnd; line++) {
-        /**
-         * 角括弧で開始するデータはタイムライントラックプロパティ
-         */
+// 角括弧で開始するデータはタイムライントラックプロパティ
         if (SrcData[line].match(/^\[(([a-zA-Z]+)\t.*)\]$/)) {
             var layerProps = RegExp.$1.split("\t");
             var layerPropName = RegExp.$2;
-            /**
-             * "CELL"のみシート表記とプロパティ名が一致していないので置換 一致が少ない場合はテーブルが必要になる
-             */
+// "CELL"のみシート表記とプロパティ名が一致していないので置換 一致が少ない場合はテーブルが必要になる
             if (layerPropName == "CELL") {
                 layerPropName = "id";//cahanged "name" to "id" 20160818
-            }
-            /**
-             *  レイヤプロパティが空白の場合があるので適切なデータで置き換える?
-             *  読み込みで例外処理を作るべきか？
-             */
+            };
+// レイヤプロパティが空白の場合があるので適切なデータで置き換える?  読み込みで例外処理を作るべきか？
             for (var c = 0; c < SrcData.trackCount; c++) {
             	if(layerProps[c + 1]==""){
             		if (layerPropName=="option"){
             			layerProps[c + 1]=(c==0)?"dialog":"comment";
-            		}
-            	}
+            		};
+            	};
                 this.xpsTracks[c][layerPropName] = layerProps[c + 1];
             }
         } else {
-            /* ほかコメント以外はすべてシートデータ */
+// ほかコメント以外はすべてシートデータ
             if (!SrcData[line].match(/^\#.*$/)) {
                 var myLineAry = (SrcData[line].match(/\t/)) ? SrcData[line].split("\t") : SrcData[line].replace(/[\;\:\,]/g, "\t").split("\t");
                 for (var col = 1; col <= (SrcData.trackCount); col++) {
-                    /* シート本体データの取得 */
+// シート本体データの取得
                     this.xpsTracks[col - 1][frame_id] = (myLineAry[col] != undefined) ?
                         myLineAry[col].replace(/(^\s*|\s*$)/, "") : "";
-                }
+                };
                 frame_id++;
-            }
-        }
-    }
-    //読み出しデータからPmUnitを初期化
+            };
+        };
+    };
+//読み出しデータからPmUnitを初期化
 //nas.Pm.SCi = function SCi(cutName,cutProduct,cutTime,cutTRin,cutTRout,cutRate,cutFrate,cutId)
 //nas.Pm.PmUnit=function(parentData,productIdentifier)
 /*	var mySCi = new nas.Pm.SCi(
@@ -2010,19 +2135,23 @@ if(SrcData.job.toString(true) == this.pmu.nodeManager.nodes[0].toString(true)){
     var ln  = this.pmu.nodeManager.new_ManagementLine(this.line.toString(true));
     var stg = this.pmu.nodeManager.new_ManagementStage(this.stage.toString(true),ln);
     var nd  = this.pmu.nodeManager.new_Job(this.job.toString(true),stg);
-/*
+ */
+// 転記後にareaOrderの再初期化
+    this.xpsTracks.initAreaOrder(this.sheetLooks.trackSpec);
+    this.xpsTracks.assignAreaOrderMember();
+
 //console.log(JSON.stringify(this.pmu.nodeManager.getChart()));
-    /* データ読込終了時一括処理 checkdata
-     *
-     * 読み取ったデータを検査する(データ検査は別のメソッドにしろ!??)
-     * マップファイルは、現在サポート無し
-     * サポート開始時期未定
-     * この情報は、他の情報以前に判定して、マップオブジェクトの生成が必要。
-     * マップ未設定状態では、代用マップを作成して使用。
-     * 代用マップは、デフォルトで存在。
-     * 現在は、代用MAPオブジェクトを先行して作成してあるが、
-     * 本来のマップが確定するのはこのタイミングなので、注意!
-     */
+/* データ読込終了時一括処理 checkdata
+ *
+ * 読み取ったデータを検査する(データ検査は別のメソッドにしろ!??)
+ * マップファイルは、現在サポート無し
+ * サポート開始時期未定
+ * この情報は、他の情報以前に判定して、マップオブジェクトの生成が必要。
+ * マップ未設定状態では、代用マップを作成して使用。
+ * 代用マップは、デフォルトで存在。
+ * 現在は、代用MAPオブジェクトを先行して作成してあるが、
+ * 本来のマップが確定するのはこのタイミングなので、注意!
+ */
 //console.log(this.toString());
 //   仮設　ｘMap初期化　2018.12
 if (! (this.xMap.currentJob)) this.xMap.syncProperties(this); 
@@ -2056,7 +2185,10 @@ nas.Xps.prototype.toString = function (exprt){
      * @type {string}
      */
 //    var result = 'nasTIME-SHEET 0.4';//出力変数初期化(旧バージョン)
-    var result = 'nasTIME-SHEET 0.9x';//出力変数初期化
+//    var result = 'nasTIME-SHEET 0.5';//出力変数初期化
+//    var result = 'nasTIME-SHEET 0.5a';//以降はプロパティ化
+
+    var result = this.XpsFormatVersion ;
     /**
      * 共通プロパティ変数設定
      * @type {string}
@@ -2125,7 +2257,7 @@ if((this.currentStatus.message)&&(this.currentStatus.message.length))
      * レイヤ別プロパティをストリームに追加
      * @type {string[]}
      */
-    var Lprops = ["sizeX", "sizeY", "aspect", "lot", "blmtd", "blpos", "option", "link", "tag", "id"];
+    var Lprops = ["sizeX", "sizeY", "aspect", "lot", "blmtd", "blpos", "option", "link", "tag", "id", "value"];
 //	var Lprops=["sizeX","sizeY","aspect","lot","blmtd","blpos","option","link","CELL"];
     for (var prop = 0; prop < Lprops.length; prop++) {
         var propName = Lprops[prop];
@@ -2381,11 +2513,9 @@ nas.Xps.prototype.getNormarizedStream = function (layer_id) {
 };
 
 /**
-    ノートテキストを返す
+    Xpstノートテキストを返す
     行頭が"_※ "のエントリーは、システムがシートから拾い上げて追加するエントリー
-
 */
-if(typeof Xps == 'undefined') var Xps = function(){};
 nas.Xps.prototype.getNoteText = function(){
     var result = [];
 //トランジションが存在すればそれを記載
@@ -2422,13 +2552,13 @@ nas.Xps.prototype.getNoteText = function(){
 グループラベルが存在しない文字列の戻値は要素数１の配列
  */
 nas.Xps.sliceReplacementLabel = function (myStr){
+    let myLabel ;let myName ;
     if(myStr.match(/^(.+)[\s\-_]([^\s\-_].*)$/)){
-        var myLabel = RegExp.$1;
-        var myName  = RegExp.$2;
-    } else
-    if (myStr.match(/^([A-Z])(\(?.+\)?|\[?.+\]?|<?.+>?)$/)){
-        var myLabel = RegExp.$1;
-        var myName  = RegExp.$2;
+        myLabel = RegExp.$1;
+        myName  = RegExp.$2;
+    } else if (myStr.match(/^([A-Z])(\(?.+\)?|\[?.+\]?|<?.+>?)$/)){
+        myLabel = RegExp.$1;
+        myName  = RegExp.$2;
     } else {
         return [myStr];
     }
@@ -3123,10 +3253,10 @@ nas.Xps.XpsStage.prototype.reset = function(myString){
  *  @params {String} jobString
  *  jobを表す記述
  *  @example
- *  var A= new nas.Xps.XpsJob("1:[原画]");
- *  var A= new nas.Xps.XpsJob("[原画]:1");
+ *  var A= new nas.Xps.XpsJob("1:[原画]");//id前置
+ *  var A= new nas.Xps.XpsJob("[原画]:1");//id後置
  *  整数id部は前置・後置どちらの型式でも良い
- *   ':' は省略不可  Xpsへの記録時は後方型式を推奨
+ *   ':' は省略不可  Xpsへの記録時は後置形式を推奨
  */
 nas.Xps.XpsJob = function XpsJob(jobString){
     this.id   = 0 ;
@@ -3134,22 +3264,25 @@ nas.Xps.XpsJob = function XpsJob(jobString){
     if(jobString) this.parse(jobString);
 }
 /**
- * ジョブ記述をプロパティにパースする
- *  @params {String} jobString
+ *  @params {String | Object nas.Xps.XpsJob} jobDescription
+ *  @returns {Object} this
+ * ジョブ記述｜オブジェクトをプロパティにパースする
  */
-nas.Xps.XpsJob.prototype.parse = function(jobString){
-    if(typeof jobString == 'undefined')return this;
-    var prpArray=jobString.split(':');
+nas.Xps.XpsJob.prototype.parse = function(jobDescription){
+    if(typeof jobDescription == 'undefined') return this;
+    if(jobDescription instanceof nas.Xps.XpsJob) jobDescription = jobDescription.toString();
+    var prpArray= jobDescription.split(':');
     if(prpArray.length){
-        if(prpArray[0].match(/^\d+$/)){prpArray.reverse();}
+        if(prpArray[0].match(/^\d+$/)) prpArray.reverse();
         this.id = prpArray[1];
         this.name = prpArray[0].replace(/^\[|\]$/g,"");
-    }
+    };
     return this;
 }
 /** 文字列化して返す
  *  @params {bool} opt
- * 整数id部前置・後置切り替えオプション
+ *  @returns {String}
+ * 整数id部前置・後置切り替えオプション true:前置 / false:後置
  */
 nas.Xps.XpsJob.prototype.toString=function(opt){
    if(opt)     return [this.id,'['+this.name+']'].join(':');
@@ -3157,6 +3290,7 @@ nas.Xps.XpsJob.prototype.toString=function(opt){
 }
 /**
  *  @params {String} myString　次ステージ名
+ *  @returns {Object} this
  * 整数id部を、次ステージのために繰り上げる
  * 次ステージ名が与えられない場合は、ユーザハンドルに置き換えられる
  */
@@ -3307,7 +3441,7 @@ nas.Xps._getMapDefault = function(myOption) {
         case "stagework":
             return new nas.AnimationGeometry(null,"");
             break;
-        case "composit":
+        case "composite":
         case "effect":
         case "sfx":
             return new nas.AnimationComposit(null,"normal");
@@ -3500,13 +3634,13 @@ nas.Xps.XpsTrackCollection = function XpsTrackCollection(parent,index,duration,s
             this.parentXps.sheetLooks.trackSpec = trackSpec;//チェックして複製のほうが良い
             this.initAreaOrder(trackSpec);//エリアオーダーを再初期化
             this.areaOrder.forEach(function(e){
-                var trk = this.find(function(elm){return (Xps.AreaOptions[elm.option]==e.type);});
+                var trk = this.find(function(elm){return (nas.Xps.AreaOptions[elm.option]==e.type);});
                 while(trk){
                     if(trk){
                         if(e.members.length < e.tracks) e.members.push(trk);//orderArea側に参照を残す
                         this.splice(this.indexOf(trk),1);//直接削除
                     };
-                    trk = this.find(function(elm){return (Xps.AreaOptions[elm.option]==e.type);});
+                    trk = this.find(function(elm){return (nas.Xps.AreaOptions[elm.option]==e.type);});
                 };
             },this);
             this.areaOrder.forEach(function(e){
@@ -3652,8 +3786,8 @@ console.log('init area order');
             if(this.areaOrder[currentAreaId].type == 'comment')   break;//終端エリアは別処理
             if(
                 (this.areaOrder[currentAreaId].type == 'reference')||(
-                    (Xps.AreaOptions[this[i].option]==this.areaOrder[currentAreaId+1].type)&&
-                    (Xps.AreaOptions[this[i+1].option]!=this.areaOrder[currentAreaId].type)
+                    (nas.Xps.AreaOptions[this[i].option]==this.areaOrder[currentAreaId+1].type)&&
+                    (nas.Xps.AreaOptions[this[i+1].option]!=this.areaOrder[currentAreaId].type)
                 )
             ) currentAreaId++;
             this.areaOrder[currentAreaId].members.push(this[i]);
@@ -3738,8 +3872,8 @@ xUI.XPS.xpsTracks.areaOrder.findIndex(function(e){
 //本テーブルのエントリを削除
                 this.splice(targetIndex, 1);
                 removeCount ++;
-            }
-        }
+            };
+        };
         if(removeCount){this.renumber();}
         return removeCount;//削除カウントを返す
     };
@@ -3973,19 +4107,20 @@ nas.Xps.XpsTimelineTrack = function XpsTimelineTrack(myLabel, myType, myParent, 
         return newOne;
     }
 /**
-    @desc トラックのセルエントリの識別文字列を作成する
-    
-*/
+ *    @desc トラックのセルエントリの識別文字列を作成する
+ *    @params {String}    myStr
+ *   ??
+ */
     this.getCellIdentifier=function(myStr){
         if(this.option!="timing"){return null;}
-        this.LabelRegex=new RegExp("^"+this.id.replace(/[\\\-\+\[\]\(\)\.\^\$]/g,"\\$&") + "[\s\-_]?(.*)$")
+        this.LabelRegex=new RegExp("^"+this.id.replace(/[\\\-\+\[\]\(\)\.\^\$]/g,"\\$&") + "[\s\-_]?(.*)$");
         if(myStr.match(LableRegex)){
-            myName  = RegExp.$1;
+            var myName  = RegExp.$1;
             myLabel = this.id;
         }else{
-            mName = myStr;
-        }
-    }
+            var myName = myStr;
+        };
+    };
 /**
  * @desc タイムラインの中間処理メソッド
  * タイムラインをパースして有効データで埋まった１次元配列を返す

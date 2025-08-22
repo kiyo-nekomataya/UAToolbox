@@ -10,12 +10,6 @@ allRegion
 	downloadItemSet
 	exportScript
 	========
-	prefix
-	suffix
-	replacement
-	replacementRegex
-//	identifier
-	========
 	undo
 	redo
 	========
@@ -23,42 +17,28 @@ allRegion
 	stopwatch
 	fieldTable
 
-headerRegion
-	app_reName
-	app_console
-	app_productManager
-	app_storyBoard
-	app_timeSheet
-	about
-listRegion
-	selectrelease
-	handleAll
-	releaseAll
-	removeItem
-	nameIncr
-	nameDecr
-	nameReset
-	renameItems
-	showItemInfo
-	setThumbnailImage
-	openWithExternalTool
-	openFolderWidthFinder
-	openFolderWidthFileExplorer
-	addGrp
-	delGrp
-	========
-	sortItems
-	reverseItems
-	========
-	identifier
-	timesheet
-previewRegion
-	x1
-	x2
-	x3
-	x0
-	========
-	downloadImage
-	copyImageURL
-	copyImage
+xpsReferenceRegion
+	exchReference
+	extIO_importReference
+	extIO_exportReference
+xpsTCRegion
+	noteTEST
+xpsDialogRegion
+	noteTEST
+xpsSoundRegion
+
+xpsReplacementRegion
+	editNoteText
+
+xpsCameraworkRegion
+	noteTEST
+xpsStageworkRegion
+xpsSfxRegion
+xpsNoteTextRegion
+xpsSheetFooterRegion
+xpsSheetHeaderRegion
+	documentInfoXps
+xpsTrackLabelRegion
+	noteTEST
+
 [end]

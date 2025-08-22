@@ -8305,7 +8305,6 @@ console.log(putResult);
                             }
                         )
                     )-1];
-                
                 if(putResult[3]){
 //ターゲットがリファレンスを含むXpsタイムラインテーブルであった場合編集範囲を記録して累積する
                     current.selection = putResult[3];
@@ -8313,15 +8312,11 @@ console.log(putResult);
                     if(FrameStartAddress > putResult[3][0][1]) FrameStartAddress = putResult[3][0][1];
                     if(TrackEndAddress   < putResult[3][1][0]) TrackEndAddress   = putResult[3][1][0];
                     if(FrameEndAddress   < putResult[3][1][1]) FrameEndAddress   = putResult[3][1][1];
-                    if(true){
 //タイムライントラックが対象であった場合表示を同期
-//                        xUI.syncSheetCell(putResult[3]);
-//                        xUI.selectCell(nas.add(putResult[0],putResult[3][1]));
-                            xUI.syncSheetCell(putResult[3][0],putResult[3][1],toReference);
-                        };
-                    }else{
-                        if(input.selection) current.selection = input.selection;
-                    };
+                    xUI.syncSheetCell(putResult[3][0],putResult[3][1],toReference);
+                }else{
+                    if(input.selection) current.selection = input.selection;
+                };
 //                };
 //表示を同期
 //                xUI.syncSheetCell(putResult[3][0],putResult[3][1],toReference);
@@ -9756,12 +9751,28 @@ xUI.appContextMenu.common = [
 ];
 //xpst
 xUI.appContextMenu.doc_xpst = [
-    'onReference',
-    'onReferenceheader',
-    'onTimeguide',
-    'onTracklabel',
-    'onTimelinetrack',
-    'onTimelinetrackheader'
+	'onXpsTimeline',
+		'onXpsSelect',
+		'onXpsSelection',
+			'onXpsDialog',
+			'onXpsSound',
+			'onXpsReplacement',
+			'onXpsStill',
+			'onXpsCamera',
+			'onXpsStg',
+			'onXpsSfx',
+			'onXpsTracknote',
+			'onXpsTc',
+			'onXpsFramenote',
+	'onXpsReference',
+	'onTimeguide',
+
+	'onReferenceheader',
+	'onTracklabel',
+
+	'onXpsPageHeader',
+	'onXpsSignature',
+	'onXpsNoteText'
 ];
 //xMap
 xUI.appContextMenu.doc_xmap = [
@@ -10011,7 +10022,7 @@ console.log(xUI.activeDocument);
                     outer = false;
                     xUI.contextMenuRegion.onXpsReference           = true;
                 }else if(e.target.id.match(/^tc.+$/)){
-//tc track
+//timecode track
                     outer = false;
                     xUI.contextMenuRegion.onTimeguide           = true;
                 }else if(e.target.className.match(/^.+ref$/)){
@@ -10030,13 +10041,12 @@ console.log(xUI.activeDocument);
 //ページヘッダー
                     outer = false;
                     xUI.contextMenuRegion.onXpsPageHeader          = true;
-                    
                 }else if(e.target.className.match(/sigArea/)){
-//
+//ページヘッダー 署名欄
                     outer = false;
                     xUI.contextMenuRegion.onXpsSignature          = true;
                 }else if(e.target.className.match(/noteArea/)){
-//
+//ページヘッダー メモ欄
                     outer = false;
                     xUI.contextMenuRegion.onXpsNoteText          = true;
                 };
@@ -10075,6 +10085,7 @@ console.log(xUI.contextMenuRegion);
 */
         var vis = 0;
 //各クラスのアイテムを全処理
+console.log(xUI.appContextMenu['doc_xpst']);
         ['common','doc_xpst','doc_xmap','doc_pmdb','doc_stbd','app_reName'].forEach(function(ex){
             if(xUI.appContextMenu[ex])
             xUI.appContextMenu[ex].forEach(function(elm){
@@ -10085,8 +10096,8 @@ console.log(xUI.contextMenuRegion);
                     $('ul.cM'+elm).each(function(){$(this).hide();});
                 };
             });
+console.log(vis);
         });
-
 //ヒストリクラスを処理
         if(xUI.contextMenuRegion.onHistory){
             vis ++ ;
@@ -10110,14 +10121,15 @@ console.log(xUI.contextMenuRegion);
                 vis ++ ;
                 $('.noDm').each(function(){$(this).show();});
             }
-            if((xUI.app=='xpsedit')&&($('#pmui').isVisible())){
+            if(
+                ((xUI.app=='remaping')||((xUI.app=='xpsedit')))&&
+                ($('#pmui').isVisible())
+            ){
                 $('.noPm').each(function(){$(this).hide();});
             }else{
                 vis ++ ;
                 $('.noPm').each(function(){$(this).show();});
             };
-//        }else{
-//            $('ul.cMonHeadline').each(function(){$(this).hide();});
         };
         if(xUI.contextMenuRegion.onTracklabel){
             vis ++ ;
@@ -10127,6 +10139,7 @@ console.log(xUI.contextMenuRegion);
         }
         if(xUI.contextMenuRegion.onTimelinetrack){
             if(appHost.touchDevice) return;
+            vis ++;
 //            $('.cMonTrack').each(function(){$(this).show();});
             switch(xUI.XPS.xpsTracks[xUI.Select[0]].option){
             case 'dialog':
@@ -10146,9 +10159,8 @@ console.log(xUI.contextMenuRegion);
             break;
             default:
             };
-//        }else{
-//            $('.cMonTrack').each(function(){$(this).hide();});    
         };
+
 /*
     if(xUI.contextMenuRegion.onTimelinetrackheader){
         $('.cMonTrackHeader').each(function(){$(this).show();});
